@@ -16,8 +16,8 @@ const Stocks = async () => {
   const stocks = await getData()
 
   return (
-    <section className="p-5 m-5 space-y-5 border-2 border-custom-teal">
-      <h1 className="py-2 mx-auto text-xl text-center text-white bg-custom-teal">Акции</h1>
+    <section className="p-5 m-5 space-y-5 border-2 border-custom-teal/25">
+      <h1 className="py-2 mx-auto text-xl text-center border-2 text-custom-teal border-custom-teal">Акции</h1>
 
       {stocks.map((stock, idx) => (
         <div key={idx} className="flex justify-between w-full">
