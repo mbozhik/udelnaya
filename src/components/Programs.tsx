@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import {client, urlFor} from '@/lib/sanity'
+import {client, urlForImage} from '@/lib/sanity'
 
 interface Program {
   name: string
@@ -35,7 +35,7 @@ const Program = async () => {
         <Link key={idx} href={`/program/${program.slug.current}`} className="flex flex-col w-[24%] gap-5 p-5 border-2 border-custom-teal group">
           {program.images.map((image, index) => (
             <div key={index} className="w-full h-[15vw] relative self-center">
-              <Image src={urlFor(image).url()} className="object-cover" fill={true} alt={`program ${index}`} />
+              <Image src={urlForImage(image).url()} className="object-cover" fill={true} alt={`program ${index}`} />
             </div>
           ))}
 

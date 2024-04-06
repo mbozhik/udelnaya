@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import {client, urlFor} from '@/lib/sanity'
+import {client, urlForImage} from '@/lib/sanity'
 
 const getData = async (slug) => {
   const query = `
@@ -31,7 +31,7 @@ const ProgramPage = async ({params}) => {
         <div className="flex flex-col gap-5 p-5 border-2 border-custom-teal group">
           {program.images.map((image, index) => (
             <div key={index} className="w-full h-[15vw] relative self-center">
-              <Image src={urlFor(image).url()} className="object-cover" fill={true} alt={`program ${index}`} />
+              <Image src={urlForImage(image).url()} className="object-cover" fill={true} alt={`program ${index}`} />
             </div>
           ))}
 

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import {client, urlFor} from '@/lib/sanity'
+import {client, urlForImage} from '@/lib/sanity'
 
 const getData = async () => {
   const query = `
@@ -21,7 +21,7 @@ const Stocks = async () => {
         <div key={idx} className="flex justify-between w-full">
           {stock.images.map((image, index) => (
             <div key={index} className="s-[20vw] relative">
-              <Image src={urlFor(image).url()} className="object-cover" fill={true} alt={`stock ${index}`} />
+              <Image src={urlForImage(image).url()} className="object-cover" fill={true} alt={`stock ${index}`} />
             </div>
           ))}
         </div>
