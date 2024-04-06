@@ -8,7 +8,7 @@ const config: Config = {
     extend: {
       colors: {
         custom: {
-          violet: '#911BED',
+          teal: '#0E9291',
         },
       },
     },
