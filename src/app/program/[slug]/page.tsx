@@ -1,9 +1,13 @@
+import {unstable_noStore as noStore} from 'next/cache'
+
 import Link from 'next/link'
 import Image from 'next/image'
 
 import {client, urlForImage, urlForFile} from '@/lib/sanity'
 
 const getData = async (slug) => {
+  noStore()
+
   const query = `
     *[_type == 'program' && slug.current == '${slug}'][0] {
         name,
@@ -24,8 +28,8 @@ const ProgramPage = async ({params}) => {
   return (
     <section className="grid w-screen h-screen place-items-center">
       <div className="flex flex-col items-center w-1/2 gap-5">
-        <Link href={'/'} className="mx-auto duration-200 w-fit hover:text-custom-teal">
-          На главную
+        <Link prefetch={false} href={'/program/'} className="duration-200 block w-fit mt-5 mx-auto hover:text-custom-teal">
+          К программам
         </Link>
         <div className="flex flex-col gap-5 p-5 border-2 border-custom-teal group">
           <div className="flex gap-5">

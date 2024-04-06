@@ -1,3 +1,5 @@
+import {unstable_noStore as noStore} from 'next/cache'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import {client, urlForImage} from '@/lib/sanity'
@@ -11,9 +13,9 @@ interface Program {
   slug: {current: string}
 }
 
-export const revalidate = 30
-
 const getData = async (): Promise<Program[]> => {
+  noStore()
+
   const query = `
     *[_type == 'program'] {
         name,

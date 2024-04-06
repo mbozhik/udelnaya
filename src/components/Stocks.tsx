@@ -1,8 +1,12 @@
+import {unstable_noStore as noStore} from 'next/cache'
+
 import Image from 'next/image'
 
 import {client, urlForImage} from '@/lib/sanity'
 
 const getData = async () => {
+  noStore()
+
   const query = `
     *[_type == 'stocks'] {
         images
