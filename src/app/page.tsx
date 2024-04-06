@@ -1,5 +1,11 @@
-import Stocks from '../components/Stocks'
+import Stocks from '@/components/Stocks'
+import Program from '@/components/Programs'
 
 export default function Home() {
-  return <Stocks />
+  return (
+    <>
+      <Stocks />
+      <Program />
+    </>
+  )
 }
