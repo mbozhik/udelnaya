@@ -1,4 +1,6 @@
-export default {
+import {SchemaEntityTypes} from './index'
+
+const program: SchemaEntityTypes = {
   name: 'program',
   title: 'Program',
   type: 'document',
@@ -39,3 +41,5 @@ export default {
     },
   ],
 }
+
+export default program

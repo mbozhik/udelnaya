@@ -1,13 +1,17 @@
-export default {
+import {SchemaEntityTypes} from './index'
+
+const stocks: SchemaEntityTypes = {
   name: 'stocks',
   title: 'Stocks',
   type: 'document',
   fields: [
     {
       name: 'images',
-      tile: 'Stock Images',
+      title: 'Stock Images',
       type: 'array',
       of: [{type: 'image'}],
     },
   ],
 }
+
+export default stocks
