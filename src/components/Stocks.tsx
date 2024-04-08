@@ -19,15 +19,21 @@ const getData = async () => {
 const Stocks = async () => {
   const stocks = await getData()
 
+  if (!stocks) {
+    return <mark>Произошла ошибка при получении данных!</mark>
+  }
+
   return (
     <section className="p-5 m-5 space-y-5 border-2 border-custom-teal/25">
       {stocks.map((stock, idx) => (
         <div key={idx} className="flex justify-between w-full">
-          {stock.images.map((image, index) => (
-            <div key={index} className="s-[20vw] relative">
-              <Image src={urlForImage(image).url()} className="object-cover" fill={true} alt={`stock ${index}`} />
-            </div>
-          ))}
+          {stock.images &&
+            stock.images.length > 0 &&
+            stock.images.map((image, index) => (
+              <div key={index} className="s-[20vw] relative">
+                <Image src={urlForImage(image).url()} className="object-cover" fill={true} alt={`stock ${index}`} />
+              </div>
+            ))}
         </div>
       ))}
     </section>
