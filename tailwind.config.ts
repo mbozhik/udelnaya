@@ -6,9 +6,13 @@ const config: Config = {
   content: ['./src/pages/**/*.{js,ts,jsx,tsx,mdx}', './src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
+      fontWeight: {
+        book: '450',
+      },
       colors: {
         custom: {
-          teal: '#0E9291',
+          teal: '#0e9291',
+          gray: '#4c4c4c',
         },
       },
     },
