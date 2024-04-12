@@ -31,6 +31,8 @@ const SuisseIntl = localFont({
   ],
 })
 
+import Header from '#/Global/Header'
+
 export const metadata: Metadata = {
   title: 'Санаторий',
 }
@@ -42,8 +44,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className="scroll-smooth">
-      <body className={`${SuisseIntl.className} text-custom-gray`}>
-        <main>{children}</main>
+      <body className={`relative text-custom-gray ${SuisseIntl.className}`}>
+        <Header />
+        <main className="pt-20">{children}</main>
       </body>
     </html>
   )
