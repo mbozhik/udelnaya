@@ -10,7 +10,7 @@ interface Button {
 }
 
 export const buttonVariants = {
-  default: 'px-5 py-1.5 text-xl border-2 border-transparent duration-300 cursor-pointer',
+  default: 'px-5 sm:px-4 py-1.5 text-xl xl:text-lg sm:text-base border-2 border-transparent duration-300 cursor-pointer',
   primary: 'text-white bg-custom-teal hover:bg-custom-gray',
   secondary: 'text-custom-teal !border-custom-teal hover:!border-custom-gray hover:text-custom-gray',
 }
