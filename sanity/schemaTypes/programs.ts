@@ -1,6 +1,6 @@
-import {SchemaEntityTypes} from './index'
+import {Rule, SchemaTypeDefinition} from 'sanity'
 
-const program: SchemaEntityTypes = {
+const programs: SchemaTypeDefinition = {
   name: 'program',
   title: 'Program',
   type: 'document',
