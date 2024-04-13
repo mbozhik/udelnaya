@@ -1,0 +1,7 @@
+.swiper-pagination-bullet {
+  @apply !opacity-100 !bg-transparent !s-3 border-2 border-custom-teal sm:hidden;
+}
+
+.swiper-pagination-bullet-active {
+  @apply !bg-custom-teal;
+}

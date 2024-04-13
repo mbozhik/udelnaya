@@ -5,11 +5,3 @@
 mark {
   @apply px-2 py-0.5 bg-custom-teal text-white block w-fit;
 }
-
-.swiper-pagination-bullet {
-  @apply !bg-white !opacity-80 !s-3 sm:!s-2;
-}
-
-.swiper-pagination-bullet-active {
-  @apply !bg-custom-teal;
-}

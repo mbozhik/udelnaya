@@ -1,9 +1,9 @@
-import Slider from '#/App/index/Slider'
+import Stocks from '@/components/App/index/Stocks'
 
 export default function Home() {
   return (
     <>
-      <Slider />
+      <Stocks classes="w-full h-[60vh] xl:h-[65vh] sm:!h-[100svh] sm:h-[100vh]" />
     </>
   )
 }
