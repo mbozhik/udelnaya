@@ -1,45 +1,53 @@
 import {Rule, SchemaTypeDefinition} from 'sanity'
 
 const programs: SchemaTypeDefinition = {
-  name: 'program',
-  title: 'Program',
+  name: 'programs',
+  title: 'Программы',
   type: 'document',
   fields: [
     {
       name: 'name',
-      title: 'Program Name',
+      title: 'Название программы',
       type: 'string',
+      validation: (rule: Rule) => rule.required(),
     },
     {
       name: 'duration',
-      title: 'Program Duration',
+      title: 'Длительность программы',
       type: 'string',
     },
     {
       name: 'description',
-      title: 'Program Description',
+      title: 'Описание программы',
       type: 'text',
     },
     {
       name: 'images',
-      title: 'Program Images',
+      title: 'Изображения',
       type: 'array',
-      of: [{type: 'image'}],
+      of: [{type: 'image', options: {hotspot: true}}],
     },
     {
       name: 'pdf',
-      title: 'Program PDF',
+      title: 'PDF файл',
       type: 'file',
     },
     {
       name: 'slug',
-      title: 'Program Slug',
+      title: 'Ссылка',
       type: 'slug',
       options: {
         source: 'name',
       },
+      validation: (rule: Rule) => rule.required(),
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      media: 'images.0.asset',
+    },
+  },
 }
 
-export default program
+export default programs
