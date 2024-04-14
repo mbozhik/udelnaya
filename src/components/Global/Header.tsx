@@ -23,7 +23,9 @@ export default function Header() {
   return (
     <header className="fixed inset-0 z-50 flex justify-between w-full px-5 py-3 tracking-tight sm:px-3 h-fit bg-white/90 backdrop-filter backdrop-blur-sm">
       <div className="flex items-center gap-10">
-        <Image className="object-contain s-14 xl:s-12 sm:s-10" src={LogoImage} alt="Logo" />
+        <Link href="/">
+          <Image className="object-contain duration-300 s-14 xl:s-12 sm:s-10 hover:scale-110" src={LogoImage} alt="Logo" />
+        </Link>
 
         <nav className="text-xl xl:text-base font-book space-x-7 xl:space-x-5 sm:hidden">
           {Object.keys(headerContent.nav).map((key) => {
