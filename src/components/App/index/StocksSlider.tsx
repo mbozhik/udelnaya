@@ -8,6 +8,8 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import '@/assets/stylesheets/stocks_slider.css'
 
+import Heading from '#/UI/Heading'
+
 interface SliderProps {
   sliderData: {
     imageUrl: string
@@ -27,7 +29,7 @@ const Slider: React.FC<SliderProps> = ({sliderData, classes}) => {
           <div className="absolute inset-0 flex flex-col justify-center bg-black bg-opacity-50">
             <div className="w-[70%] sm:w-[90%] mt-5 mx-auto space-y-2 text-white sm:text-center">
               <h2 className="text-6xl font-medium uppercase xl:text-4xl xl:w-[80%] sm:text-3xl sm:w-full sm:mx-auto">{slide.title}</h2>
-              <p className="text-xl font-light sm:text-base sm:w-full sm:mx-auto">{slide.caption}</p>
+              <Heading type="caption" classes="font-light sm:w-full sm:mx-auto" text={slide.caption} />
             </div>
           </div>
         </SwiperSlide>
