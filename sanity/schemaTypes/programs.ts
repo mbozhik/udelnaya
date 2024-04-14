@@ -17,6 +17,13 @@ const programs: SchemaTypeDefinition = {
       type: 'string',
     },
     {
+      name: 'short_description',
+      title: 'Короткое описание программы',
+      type: 'string',
+      options: {maxLength: 90},
+      validation: (rule: Rule) => rule.required(),
+    },
+    {
       name: 'description',
       title: 'Описание программы',
       type: 'text',

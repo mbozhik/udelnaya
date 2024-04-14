@@ -4,14 +4,14 @@ import {client, urlForImage} from '@/lib/sanity'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import Heading from '#/UI/Heading'
 import Text from '#/UI/Text'
+import Button from '#/UI/Button'
 
 interface Program {
   name: string
-  duration: string
-  description: string
+  short_description: string
   images: Array<{asset: {url: string}}>
-  pdf: {asset: {url: string}}
   slug: {current: string}
 }
 
@@ -19,12 +19,10 @@ const getData = async (): Promise<Program[]> => {
   noStore()
 
   const query = `
-    *[_type == 'program'] {
+    *[_type == 'programs'] {
         name,
-        duration,
-        description,
+        short_description,
         images,
-        pdf,
         slug
     }`
 
@@ -40,31 +38,26 @@ const Program = async () => {
   }
 
   return (
-    <section data-section="programs-index" className="mt-20 space-y-7 text-center">
-      <Text type="heading" text="Программы" />
+    <section data-section="programs-index" className="mt-20 space-y-10 sm:space-y-7">
+      <Heading type="title" classes="text-center" text="Программы" />
 
-      <div className="grid grid-cols-4 xl:grid-cols-3 sm:grid-cols-1 items-start gap-5">
-        {programs.map(
-          (program, idx) =>
-            program.slug &&
-            program.slug.current && (
-              <Link key={idx} href={`/program/${program.slug.current}`} className="flex flex-col justify-between h-[500px] w-full gap-5 p-5 border-2 border-custom-teal group">
-                {program.images && program.images.length > 0 && (
-                  <div className="w-full h-[250px] relative self-center">
-                    <Image src={urlForImage(program.images[0]).url()} className="object-cover" fill={true} alt={`program 0`} />
-                  </div>
-                )}
+      <div className="grid items-start grid-cols-4 gap-5 xl:grid-cols-2 sm:grid-cols-1">
+        {programs.map((program, idx) => (
+          <Link className="flex flex-col justify-between border-[1.5px] border-custom-teal shadow-lg p-3 gap-5 group" href={`/program/${program.slug.current}`} key={idx}>
+            {program.images && program.images.length > 0 && (
+              <div className="relative self-center w-full aspect-square xl:aspect-video">
+                <Image src={urlForImage(program.images[0]).url()} className="object-cover w-full h-full" fill={true} alt={`program 0`} />
+              </div>
+            )}
 
-                <div className="space-y-2">
-                  <h1 className="text-2xl font-medium ">{program.name}</h1>
-                  <h2 className="line-clamp-3">{program.description}</h2>
-                </div>
-                <button title="Подробнее" className="w-full py-2 text-white duration-300 bg-custom-teal group-hover:bg-custom-teal/85">
-                  Подробнее
-                </button>
-              </Link>
-            ),
-        )}
+            <div className="space-y-1 tracking-tight">
+              <Text type="title" text={program.name} />
+              <Text classes="line-clamp-3 xl:line-clamp-2 sm:line-clamp-3" type="caption" text={program.short_description} />
+            </div>
+
+            <Button type="button" text="Подробнее" size="md" />
+          </Link>
+        ))}
       </div>
     </section>
   )
