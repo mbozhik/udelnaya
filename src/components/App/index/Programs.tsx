@@ -50,7 +50,7 @@ const Program = async () => {
               </div>
             )}
 
-            <div className="space-y-1 tracking-tight">
+            <div className="space-y-1">
               <Text type="title" text={program.name} />
               <Text classes="line-clamp-3 xl:line-clamp-2 sm:line-clamp-3" type="caption" text={program.short_description} />
             </div>
