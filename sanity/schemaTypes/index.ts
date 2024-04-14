@@ -1,4 +1,5 @@
-import programs from './programs'
 import stocks from './stocks'
+import medicine from './medicine'
+import programs from './programs'
 
-export const schemaTypes = [programs, stocks]
+export const schemaTypes = [stocks, medicine, programs]
