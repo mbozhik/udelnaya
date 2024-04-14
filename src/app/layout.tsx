@@ -34,7 +34,8 @@ const SuisseIntl = localFont({
 import Header from '#/Global/Header'
 
 export const metadata: Metadata = {
-  title: 'Санаторий',
+  title: 'Санаторий Удельная',
+  description: 'Санаторий «Удельная» является старейшей здравницей Центросоюза России, начав функционировать в 1936 году как дом отдыха для сотрудников потребкооперации на 120 койко-мест. Ознакомьтесь с нашими вариантами размещения!',
 }
 
 export default function RootLayout({
