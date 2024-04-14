@@ -47,7 +47,7 @@ export default function RootLayout({
     <html lang="ru" className="scroll-smooth">
       <body className={`relative text-custom-gray ${SuisseIntl.className}`}>
         <Header />
-        <main>{children}</main>
+        <section>{children}</section>
       </body>
     </html>
   )
