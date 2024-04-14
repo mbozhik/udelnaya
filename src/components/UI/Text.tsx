@@ -7,7 +7,7 @@ interface Props {
 const Text: React.FC<Props> = ({type = 'text', text, classes}) =>
   // prettier-ignore
   type === 'heading' ? (
-    <h1 className={`text-4xl font-book uppercase sm:text-2xl text-custom-blue ${classes}`} dangerouslySetInnerHTML={{__html: text || ''}} />
+    <h1 className={`text-5xl font-medium uppercase sm:text-2xl text-custom-blue ${classes}`} dangerouslySetInnerHTML={{__html: text || ''}} />
   ) : (
     <p className={`text-base sm:text-sm ${classes}`} dangerouslySetInnerHTML={{__html: text || ''}} />
   )
