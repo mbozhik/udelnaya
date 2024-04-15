@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Stocks classes="w-full h-[65vh] sm:!h-[100svh] sm:h-[100vh]" />
       <Container padding={false}>
-        <Medicine />
+        <Medicine classes="w-full h-[50vh]" />
         <Programs />
       </Container>
     </>

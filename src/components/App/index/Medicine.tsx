@@ -1,8 +1,7 @@
 import {unstable_noStore as noStore} from 'next/cache'
 import {client, urlForImage} from '@/lib/sanity'
 
-import Link from 'next/link'
-import Image from 'next/image'
+import MedicineSlider from '#/App/index/MedicineSlider'
 
 import Heading from '#/UI/Heading'
 import Text from '#/UI/Text'
@@ -12,7 +11,8 @@ interface Medicine {
   name: string
   description: string
   image: {asset: {url: string}}
-  slug: {current: string}
+  price: number
+  // slug: {current: string}
 }
 
 const getData = async (): Promise<Medicine[]> => {
@@ -31,34 +31,31 @@ const getData = async (): Promise<Medicine[]> => {
   return data
 }
 
-const Program = async () => {
+const Medicine = async ({classes}) => {
   const medicine: Medicine[] = await getData()
 
   if (!medicine) {
     return <mark>Произошла ошибка при получении данных!</mark>
   }
 
+  const sliderData = medicine.map((procedure) => ({
+    name: procedure.name,
+    description: procedure.description,
+    imageUrl: urlForImage(procedure.image).url(),
+    price: procedure.price,
+    // slug: procedure.slug.current,
+  }))
+  console.log('🚀 ~ sliderData ~ sliderData:', sliderData)
+
   return (
     <section data-section="medicine-index" className="mt-20 space-y-10">
       <Heading type="title" classes="text-center" text="Медицина" />
 
-      <div className="grid items-start grid-cols-2 gap-3 sm:grid-cols-1">
-        {medicine.slice(0, 2).map((procedure, idx) => (
-          <Link className="relative flex flex-col justify-between" href={`/procedure/${procedure.slug.current}`} key={idx}>
-            <Text type="title" text={procedure.name} classes="text-center text-white bg-custom-teal py-2 sm:text-xl font-normal !tracking-normal" />
-
-            {procedure.image && (
-              <div className="relative self-center w-full overflow-hidden aspect-video group">
-                <Image src={urlForImage(procedure.image).url()} className="object-cover w-full h-full duration-500 group-hover:scale-[102%]" fill={true} alt={`program 0`} />
-              </div>
-            )}
-          </Link>
-        ))}
-      </div>
+      <MedicineSlider sliderData={sliderData} classes={classes} />
 
       <Button type="link" href="/medicine" size="lg" variant="secondary" adavanced_hover={true} classes="w-full" text="Процедуры" />
     </section>
   )
 }
 
-export default Program
+export default Medicine
