@@ -5,9 +5,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {PortableText} from '@portabletext/react'
 
+import Container from '#/UI/Container'
 import Heading from '#/UI/Heading'
-import Text from '#/UI/Text'
 import Button from '#/UI/Button'
+import ImageSlider from './ImageSlider'
 
 interface ProgramPage {
   name: string
@@ -37,42 +38,60 @@ const getData = async (slug): Promise<ProgramPage> => {
 
 const ProgramPage = async ({params}) => {
   const program: ProgramPage = await getData(params.slug)
-  console.log('🚀 ~ ProgramPage ~ program:', program)
 
   if (!program) {
     return <mark>Произошла ошибка при получении данных!</mark>
   }
 
+  const generateSliderData = (images: Array<{asset: {url: string}}>) => {
+    if (images.length > 1) {
+      return images.map((image) => ({
+        imageUrl: urlForImage(image.asset).url(),
+      }))
+    } else {
+      return []
+    }
+  }
+
   return (
-    <section data-index={program.slug.current} className="grid w-[80%] mt-[20vh] mx-auto place-items-center">
-      <div className="space-y-5 group border-[1.5px] border-custom-primary shadow-lg p-3">
-        <div className="grid grid-cols-2 gap-10">
-          <div className="flex gap-5">
-            {program.images.map((image, index) => (
-              <div className="relative self-center w-full h-full overflow-hidden" key={index}>
-                <Image className="object-cover" src={urlForImage(image).url()} fill={true} alt={`${program.name}`} />
+    <Container width="3/4">
+      <section data-index={program.slug.current} className="grid mx-auto place-items-center">
+        <div className="space-y-5 group border-[1.5px] border-custom-primary shadow-lg p-5">
+          <div className="grid grid-cols-2 gap-10 items-center">
+            {program.images.length > 1 ? (
+              <ImageSlider classes="relative w-full h-[50vh] xl:h-full" sliderData={generateSliderData(program.images)} />
+            ) : (
+              program.images.map((image, index) => (
+                <div className="relative w-full h-[50vh] xl:h-full" key={index}>
+                  <Image className="object-cover" src={urlForImage(image.asset).url()} fill={true} alt={`${program.name}`} />
+                </div>
+              ))
+            )}
+
+            <div className="flex flex-col gap-5 xl:py-5">
+              <div className="space-y-2">
+                <Heading type="title" text={program.name} />
+
+                {program.duration && <mark>{program.duration}</mark>}
               </div>
-            ))}
-          </div>
 
-          <div className="self-center py-10 space-y-5">
-            <div className="space-y-2">
-              <Heading type="title" text={program.name} />
+              <div className="w-[90%]">
+                <PortableText value={program.description} />
+              </div>
 
-              {program.duration && <mark>{program.duration}</mark>}
+              {program.pdf ? (
+                <div className="grid grid-cols-2 gap-3">
+                  <Button type="link" text="Узнать детали" size="lg" variant="secondary" adavanced_hover={true} blank={true} href={urlForFile(program.pdf.asset._ref)} />
+                  <Button type="button" text="Забронировать" size="lg" adavanced_hover={true} classes="w-full" />
+                </div>
+              ) : (
+                <Button type="button" text="Забронировать" size="lg" adavanced_hover={true} classes="w-full" />
+              )}
             </div>
-
-            <div className="w-[90%]">
-              <PortableText value={program.description} />
-            </div>
-
-            {program.pdf && <Button type="link" text="Узнать детали" size="lg" variant="secondary" adavanced_hover={true} classes="w-fit" blank={true} href={urlForFile(program.pdf.asset._ref)} />}
           </div>
         </div>
-
-        <Button type="button" text="Забронировать" size="lg" adavanced_hover={true} classes="w-full" />
-      </div>
-    </section>
+      </section>
+    </Container>
   )
 }
 
