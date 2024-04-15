@@ -7,13 +7,13 @@ const medicine: SchemaTypeDefinition = {
   fields: [
     {
       name: 'name',
-      title: 'Название процедуры',
+      title: 'Название секции',
       type: 'string',
       validation: (rule: Rule) => rule.required(),
     },
     {
       name: 'description',
-      title: 'Описание процедуры',
+      title: 'Описание секции',
       type: 'text',
     },
     {
@@ -23,9 +23,9 @@ const medicine: SchemaTypeDefinition = {
       options: {hotspot: true},
     },
     {
-      name: 'price',
-      title: 'Цена процедуры',
-      type: 'number',
+      name: 'special_offer',
+      title: 'Есть ли акция на процедуру?',
+      type: 'boolean',
     },
     {
       name: 'slug',

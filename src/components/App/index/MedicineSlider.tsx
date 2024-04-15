@@ -1,11 +1,13 @@
 'use client'
 
+import Link from 'next/link'
 import Image from 'next/image'
 import {Swiper, SwiperSlide} from 'swiper/react'
-import {Pagination} from 'swiper/modules'
+import {Navigation} from 'swiper/modules'
 
 import 'swiper/css'
-import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import '%%/stylesheets/medicine_slider.css'
 
 import Heading from '#/UI/Heading'
 
@@ -14,26 +16,28 @@ interface SliderProps {
     name: string
     description: string
     imageUrl: string
-    price: number
-    // slug: {current: string}
+    special_offer: boolean
+    slug: string
   }[]
   classes: string
 }
 
 const Slider: React.FC<SliderProps> = ({sliderData, classes}) => {
   return (
-    <Swiper data-section="stocks-index" className={classes} slidesPerView={2} loop={true} speed={1000} pagination={{clickable: true}} modules={[Pagination]}>
+    <Swiper data-section="stocks-index" className={classes} slidesPerView={2} spaceBetween={10} loop={true} speed={1000} navigation={true} modules={[Navigation]}>
       {sliderData.map((slide, index) => (
-        <SwiperSlide className="relative grid place-items-center" key={index}>
-          <Image quality={100} priority={true} className="absolute inset-0 block object-cover s-full" src={slide.imageUrl} fill={true} alt={`акция ${index + 1}`} />
+        <SwiperSlide key={index}>
+          <Link className="relative grid place-items-center w-full h-full group overflow-hidden" href={`/procedure/${slide.slug}`}>
+            <Image quality={100} priority={true} className="object-cover s-full group-hover:scale-[103%] duration-500" src={slide.imageUrl} fill={true} alt={`акция ${index + 1}`} />
 
-          <div className="absolute inset-0 flex flex-col justify-center bg-black bg-opacity-50">
-            <div className="w-[90%] sm:w-[90%] mt-5 mx-auto space-y-2 text-white sm:text-center">
-              <Heading type="title" text={slide.name} />
-              <Heading type="caption" classes="font-light sm:w-full sm:mx-auto line-clamp-4" text={slide.description} />
-              <mark>{slide.price}</mark>
+            <div className="absolute inset-0 flex flex-col justify-end bg-black bg-opacity-45">
+              <div className="p-5 w-[92%] space-y-2 text-white sm:text-center">
+                {slide.special_offer && <mark>АКЦИЯ</mark>}
+                <Heading type="title" text={slide.name} />
+                <Heading type="caption" classes="line-clamp-2" text={slide.description} />
+              </div>
             </div>
-          </div>
+          </Link>
         </SwiperSlide>
       ))}
     </Swiper>

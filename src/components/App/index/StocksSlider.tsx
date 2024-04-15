@@ -6,7 +6,7 @@ import {Pagination, Autoplay} from 'swiper/modules'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
-import '@/assets/stylesheets/stocks_slider.css'
+import '%%/stylesheets/stocks_slider.css'
 
 import Heading from '#/UI/Heading'
 
