@@ -36,7 +36,7 @@ const Button: React.FC<Props> = ({type, text, variant = 'primary', size, adavanc
 
   if (type === 'link') {
     return (
-      <Link href={href} target={blank && '_blank'} className={buttonStyles}>
+      <Link href={href} target={blank && '_blank'} className={`block text-center ${buttonStyles}`}>
         {text}
       </Link>
     )

@@ -43,7 +43,8 @@ export default function Header() {
         <Link className="text-xl duration-200 xl:text-base font-book sm:hidden text-custom-teal hover:text-custom-gray" href={headerContent.contacts.tel.href}>
           {headerContent.contacts.tel.name}
         </Link>
-        <Button href="/" text="Забронировать" type="link" size="lg" adavanced_hover={true} />
+
+        <Button type="link" href="/" size="lg" adavanced_hover={true} text="Забронировать" />
       </div>
     </header>
   )
