@@ -1,6 +1,8 @@
 import {unstable_noStore as noStore} from 'next/cache'
 import {client, urlForImage} from '@/lib/sanity'
 
+import {isMobile} from '@bozzhik/is-mobile'
+
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -37,10 +39,13 @@ const Program = async () => {
     return <mark>Произошла ошибка при получении данных!</mark>
   }
 
-  const slides = programs.map((program, idx) => (
+  const sliceStart = isMobile ? 0 : 0
+  const sliceEnd = isMobile ? 2 : 4
+
+  const slides = programs.slice(sliceStart, sliceEnd).map((program, idx) => (
     <Link className="flex flex-col justify-between border-[1.5px] border-custom-primary shadow-lg p-3 gap-5 group" href={`/programs/${program.slug.current}`} key={idx}>
       <div className="relative self-center w-full overflow-hidden aspect-square xl:aspect-video group">
-        <Image src={urlForImage(program.images[0]).url()} className="object-cover w-full h-full group-hover:scale-[103%] duration-500" fill={true} alt={`program 0`} />
+        <Image className="object-cover w-full h-full group-hover:scale-[103%] duration-500" src={urlForImage(program.images[0]).url()} fill={true} alt={`program 0`} />
       </div>
 
       <div className="space-y-1">
@@ -57,6 +62,7 @@ const Program = async () => {
       <Heading type="title" classes="text-center" text="Программы" />
 
       <div className="grid items-start grid-cols-4 gap-5 xl:grid-cols-2 sm:grid-cols-1">{slides}</div>
+      <Button type="link" href="/programs" variant="secondary" adavanced_hover={true} size="lg" classes="w-full border-[1.5px]" text="Все программы" />
     </section>
   )
 }
