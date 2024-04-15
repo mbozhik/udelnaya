@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import Image from 'next/image'
-import LogoImage from '%/logo.png'
+import LogoImage from '%/logo.svg'
 
 import Button from '#/UI/Button'
 
