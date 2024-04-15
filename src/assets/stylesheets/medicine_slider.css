@@ -1,7 +1,8 @@
 .swiper-button-prev,
 .swiper-button-next {
   @apply !text-white h-full w-14 top-[22px] 
-  hover:!text-custom-primary duration-200;
+  hover:!text-custom-primary duration-200 
+  xl:scale-[75%];
 }
 
 .swiper-button-prev {

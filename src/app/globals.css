@@ -2,6 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-mark {
-  @apply px-2 py-0.5 bg-custom-primary text-white block w-fit;
-}
+@import '../assets/stylesheets/mark.css';
