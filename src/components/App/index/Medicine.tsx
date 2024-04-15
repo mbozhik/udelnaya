@@ -44,7 +44,7 @@ const Medicine = async ({classes}) => {
   }))
 
   return (
-    <section data-section="medicine-index" className="mt-20 space-y-10">
+    <section data-section="medicine-index" className="space-y-10">
       <Heading type="title" classes="text-center" text="Медицина" />
 
       <MedicineSlider sliderData={sliderData} classes={classes} />
