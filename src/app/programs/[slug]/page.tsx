@@ -53,34 +53,36 @@ const ProgramPage = async ({params}) => {
     }
   }
 
+  const imagesStyles = 'relative w-full h-[50vh] xl:h-full sm:h-[50vh]'
+
   return (
-    <Container width="3/4">
+    <Container width="3/4" last={true}>
       <section data-index={program.slug.current} className="grid mx-auto place-items-center">
-        <div className="space-y-5 group border-[1.5px] border-custom-primary shadow-lg p-5">
-          <div className="grid grid-cols-2 gap-10 items-center">
+        <div className="space-y-5 group border-[1.5px] border-custom-primary shadow-lg p-5 sm:p-3">
+          <div className="grid grid-cols-2 sm:grid-cols-1 gap-10 sm:gap-7 items-center">
             {program.images.length > 1 ? (
-              <ImageSlider classes="relative w-full h-[50vh] xl:h-full" sliderData={generateSliderData(program.images)} />
+              <ImageSlider classes={imagesStyles} sliderData={generateSliderData(program.images)} />
             ) : (
               program.images.map((image, index) => (
-                <div className="relative w-full h-[50vh] xl:h-full" key={index}>
+                <div className={`relative ${imagesStyles}`} key={index}>
                   <Image className="object-cover" src={urlForImage(image.asset).url()} fill={true} alt={`${program.name}`} />
                 </div>
               ))
             )}
 
-            <div className="flex flex-col gap-5 xl:py-5">
+            <div className="flex flex-col gap-5 xl:py-5 sm:py-0 sm:gap-5">
               <div className="space-y-2">
                 <Heading type="title" text={program.name} />
 
                 {program.duration && <mark>{program.duration}</mark>}
               </div>
 
-              <div className="w-[90%]">
+              <div className="w-[90%] sm:w-full">
                 <PortableText value={program.description} />
               </div>
 
               {program.pdf ? (
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-1">
                   <Button type="link" text="Узнать детали" size="lg" variant="secondary" adavanced_hover={true} blank={true} href={urlForFile(program.pdf.asset._ref)} />
                   <Button type="button" text="Забронировать" size="lg" adavanced_hover={true} classes="w-full" />
                 </div>
