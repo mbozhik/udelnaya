@@ -5,7 +5,7 @@ import LogoImage from '%/logo.svg'
 
 import Button from '#/UI/Button'
 
-const headerContent = {
+export const headerContent = {
   nav: {
     1: {name: 'О санатории', href: '/'},
     2: {name: 'Медицина', href: '/medicine/'},
