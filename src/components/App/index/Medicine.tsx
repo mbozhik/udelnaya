@@ -2,7 +2,7 @@ import {unstable_noStore as noStore} from 'next/cache'
 import {client, urlForImage} from '@/lib/sanity'
 
 import Heading from '#/UI/Heading'
-import MedicineSlider from '#/App/index/MedicineSlider'
+import MedicineSlider from '##/index/MedicineSlider'
 
 interface Medicine {
   name: string

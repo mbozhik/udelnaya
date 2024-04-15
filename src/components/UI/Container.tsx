@@ -10,7 +10,7 @@ interface Props {
 
 export const widthClasses = {
   default: 'mx-auto',
-  '1/2': 'w-[70%] xl:w-[60%] sm:w-[90%]',
+  '1/2': 'w-[70%] sm:w-[90%]',
   '3/4': 'w-[95%]',
 }
 
