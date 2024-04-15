@@ -20,19 +20,21 @@ const programs: SchemaTypeDefinition = {
       name: 'short_description',
       title: 'Короткое описание программы',
       type: 'string',
-      options: {maxLength: 100},
       validation: (rule: Rule) => rule.required(),
     },
     {
       name: 'description',
       title: 'Описание программы',
-      type: 'text',
+      type: 'array',
+      of: [{type: 'block'}],
+      validation: (rule: Rule) => rule.required(),
     },
     {
       name: 'images',
       title: 'Изображения',
       type: 'array',
       of: [{type: 'image', options: {hotspot: true}}],
+      validation: (rule: Rule) => rule.required(),
     },
     {
       name: 'pdf',

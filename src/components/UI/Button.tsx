@@ -15,7 +15,7 @@ interface Props {
 export const buttonVariants = {
   default: {
     styles: 'px-5 sm:px-4 py-1.5 border-2 border-custom-primary duration-300 cursor-pointer tracking-normal',
-    hover: 'group-hover:bg-custom-primary/85 group-hover:border-transparent',
+    hover: 'group-hover:opacity-85',
   },
   primary: {
     default: 'text-white bg-custom-primary',

@@ -1,15 +1,28 @@
 import {unstable_noStore as noStore} from 'next/cache'
+import {client, urlForImage, urlForFile} from '@/lib/sanity'
 
 import Link from 'next/link'
 import Image from 'next/image'
+import {PortableText} from '@portabletext/react'
 
-import {client, urlForImage, urlForFile} from '@/lib/sanity'
+import Heading from '#/UI/Heading'
+import Text from '#/UI/Text'
+import Button from '#/UI/Button'
 
-const getData = async (slug) => {
+interface ProgramPage {
+  name: string
+  duration: string
+  description: any
+  images: Array<{asset: {url: string}}>
+  pdf: {asset: {_ref: string}}
+  slug: {current: string}
+}
+
+const getData = async (slug): Promise<ProgramPage> => {
   noStore()
 
   const query = `
-    *[_type == 'program' && slug.current == '${slug}'][0] {
+    *[_type == 'programs' && slug.current == '${slug}'][0] {
         name,
         duration,
         description,
@@ -18,50 +31,46 @@ const getData = async (slug) => {
         slug
     }`
 
-  const data = await client.fetch(query)
+  const data: ProgramPage = await client.fetch(query)
   return data
 }
 
 const ProgramPage = async ({params}) => {
-  const program = await getData(params.slug)
+  const program: ProgramPage = await getData(params.slug)
+  console.log('🚀 ~ ProgramPage ~ program:', program)
 
   if (!program) {
     return <mark>Произошла ошибка при получении данных!</mark>
   }
 
   return (
-    <section className="grid w-screen h-screen place-items-center">
-      <div className="flex flex-col items-center w-1/2 gap-5">
-        <Link prefetch={false} href={'/program/'} className="duration-200 block w-fit mt-5 mx-auto hover:text-custom-primary">
-          К программам
-        </Link>
-        <div className="flex flex-col gap-5 p-5 border-2 border-custom-primary group">
+    <section data-index={program.slug.current} className="grid w-[80%] mt-[20vh] mx-auto place-items-center">
+      <div className="space-y-5 group border-[1.5px] border-custom-primary shadow-lg p-3">
+        <div className="grid grid-cols-2 gap-10">
           <div className="flex gap-5">
-            {program.images &&
-              program.images.length > 0 &&
-              program.images.map((image, index) => (
-                <div key={index} className="w-full h-[15vw] relative self-center">
-                  <Image src={urlForImage(image).url()} className="object-cover" fill={true} alt={`program ${index}`} />
-                </div>
-              ))}
+            {program.images.map((image, index) => (
+              <div className="relative self-center w-full h-full overflow-hidden" key={index}>
+                <Image className="object-cover" src={urlForImage(image).url()} fill={true} alt={`${program.name}`} />
+              </div>
+            ))}
           </div>
 
-          <div>
-            <h1 className="text-2xl font-medium">{program.name}</h1>
-            {program.duration && <h3 className="px-2 py-1 text-sm text-white bg-custom-primary w-fit">{program.duration}</h3>}
-            <h2 className="mt-5">{program.description}</h2>
+          <div className="self-center py-10 space-y-5">
+            <div className="space-y-2">
+              <Heading type="title" text={program.name} />
+
+              {program.duration && <mark>{program.duration}</mark>}
+            </div>
+
+            <div className="w-[90%]">
+              <PortableText value={program.description} />
+            </div>
+
+            {program.pdf && <Button type="link" text="Узнать детали" size="lg" variant="secondary" adavanced_hover={true} classes="w-fit" blank={true} href={urlForFile(program.pdf.asset._ref)} />}
           </div>
-
-          {program.pdf && (
-            <Link href={urlForFile(program.pdf.asset._ref)} className="px-2 py-1 text-sm text-white bg-custom-primary w-fit" target="_blank" rel="noopener noreferrer">
-              View PDF
-            </Link>
-          )}
-
-          <button title="Забронировать" className="w-full py-2 text-white duration-300 bg-custom-primary group-hover:bg-custom-primary/85" type="button">
-            Забронировать
-          </button>
         </div>
+
+        <Button type="button" text="Забронировать" size="lg" adavanced_hover={true} classes="w-full" />
       </div>
     </section>
   )
