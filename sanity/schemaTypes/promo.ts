@@ -1,8 +1,8 @@
 import {Rule, SchemaTypeDefinition} from 'sanity'
 
-const stocks: SchemaTypeDefinition = {
-  name: 'stocks',
-  title: 'Акции',
+const promo: SchemaTypeDefinition = {
+  name: 'promo',
+  title: 'Промо-акции (Слайдер)',
   type: 'document',
   fields: [
     {
@@ -17,7 +17,7 @@ const stocks: SchemaTypeDefinition = {
     },
     {
       name: 'image',
-      title: 'Stock Image',
+      title: 'Изображение',
       type: 'image',
       options: {hotspot: true},
       validation: (rule: Rule) => rule.required(),
@@ -32,4 +32,4 @@ const stocks: SchemaTypeDefinition = {
   },
 }
 
-export default stocks
+export default promo

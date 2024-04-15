@@ -2,7 +2,7 @@ import {Rule, SchemaTypeDefinition} from 'sanity'
 
 const medicine: SchemaTypeDefinition = {
   name: 'medicine',
-  title: 'Медицина',
+  title: '[Медицина]',
   type: 'document',
   fields: [
     {
@@ -40,6 +40,7 @@ const medicine: SchemaTypeDefinition = {
   preview: {
     select: {
       title: 'name',
+      subtitle: 'description',
       media: 'image',
     },
   },

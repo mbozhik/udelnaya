@@ -6,7 +6,7 @@ import {Pagination, Autoplay} from 'swiper/modules'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
-import '%%/stylesheets/stocks_slider.css'
+import '%%/stylesheets/promo_slider.css'
 
 import Heading from '#/UI/Heading'
 
@@ -21,7 +21,7 @@ interface SliderProps {
 
 const Slider: React.FC<SliderProps> = ({sliderData, classes}) => {
   return (
-    <Swiper data-section="stocks-index" className={classes} loop={true} speed={1000} autoplay={{delay: 3000}} pagination={{clickable: true}} grabCursor={true} modules={[Pagination, Autoplay]}>
+    <Swiper data-section="promo-index" className={classes} loop={true} speed={1000} autoplay={{delay: 3000}} pagination={{clickable: true}} grabCursor={true} modules={[Pagination, Autoplay]}>
       {sliderData.map((slide, index) => (
         <SwiperSlide className="relative grid place-items-center" key={index}>
           <Image quality={100} priority={true} className="absolute inset-0 block object-cover s-full" src={slide.imageUrl} fill={true} alt={`акция ${index + 1}`} />

@@ -1,6 +1,6 @@
 'use client'
 
-import isMobile from '@bozzhik/is-mobile'
+import {isMobile} from '@bozzhik/is-mobile'
 
 import Link from 'next/link'
 import Image from 'next/image'
