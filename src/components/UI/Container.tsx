@@ -1,8 +1,21 @@
+import {cn} from '@/lib/utils'
+
 interface Props {
   children: React.ReactNode
+  width?: '1/2' | '3/4'
   padding?: boolean
+  classes?: string
+  last?: boolean
 }
 
-export default function Container({padding = true, children}: Props) {
-  return <main className={`w-[70%] xl:w-[60%] sm:w-[90%] mx-auto pb-[15vh] ${padding ? 'pt-14' : ''}`}>{children}</main>
+export const widthClasses = {
+  default: 'mx-auto',
+  '1/2': 'w-[70%] xl:w-[60%] sm:w-[90%]',
+  '3/4': 'w-[95%]',
+}
+
+export default function Container({children, width = '1/2', padding = false, last, classes}: Props) {
+  const containerStyles = `${widthClasses.default} ${widthClasses[width]} ${padding && 'pt-14'} ${last && 'pb-[15vh]'} ${cn(classes)}`
+
+  return <main className={containerStyles}>{children}</main>
 }
