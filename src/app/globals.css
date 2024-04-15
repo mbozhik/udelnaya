@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 mark {
-  @apply px-2 py-0.5 bg-custom-teal text-white block w-fit;
+  @apply px-2 py-0.5 bg-custom-primary text-white block w-fit;
 }

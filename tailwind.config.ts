@@ -11,7 +11,9 @@ const config: Config = {
       },
       colors: {
         custom: {
-          teal: '#0e9291',
+          primary: '#0e9291',
+          // primary: '#8D150E',
+          // primary: '#7d756f',
           gray: '#4c4c4c',
           'light-gray': '#EBEBEB',
         },

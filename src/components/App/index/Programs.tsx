@@ -43,7 +43,7 @@ const Program = async () => {
 
       <div className="grid items-start grid-cols-4 gap-5 xl:grid-cols-2 sm:grid-cols-1">
         {programs.map((program, idx) => (
-          <Link className="flex flex-col justify-between border-[1.5px] border-custom-teal shadow-lg p-3 gap-5 group" href={`/program/${program.slug.current}`} key={idx}>
+          <Link className="flex flex-col justify-between border-[1.5px] border-custom-primary shadow-lg p-3 gap-5 group" href={`/program/${program.slug.current}`} key={idx}>
             {program.images && program.images.length > 0 && (
               <div className="relative self-center w-full aspect-square xl:aspect-video">
                 <Image src={urlForImage(program.images[0]).url()} className="object-cover w-full h-full" fill={true} alt={`program 0`} />

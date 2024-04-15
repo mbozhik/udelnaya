@@ -14,15 +14,15 @@ interface Props {
 
 export const buttonVariants = {
   default: {
-    styles: 'px-5 sm:px-4 py-1.5 border-2 border-custom-teal duration-300 cursor-pointer tracking-normal',
-    hover: 'group-hover:bg-custom-teal/85 group-hover:border-transparent',
+    styles: 'px-5 sm:px-4 py-1.5 border-2 border-custom-primary duration-300 cursor-pointer tracking-normal',
+    hover: 'group-hover:bg-custom-primary/85 group-hover:border-transparent',
   },
   primary: {
-    default: 'text-white bg-custom-teal',
+    default: 'text-white bg-custom-primary',
     hover: 'hover:bg-custom-gray hover:border-custom-gray',
   },
   secondary: {
-    default: 'text-custom-teal',
+    default: 'text-custom-primary',
     hover: 'hover:border-custom-gray hover:text-custom-gray',
   },
 }

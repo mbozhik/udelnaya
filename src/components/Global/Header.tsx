@@ -31,7 +31,7 @@ export default function Header() {
           {Object.keys(headerContent.nav).map((key) => {
             const {name, href} = headerContent.nav[key]
             return (
-              <Link key={key} href={href} className="duration-200 hover:text-custom-teal">
+              <Link key={key} href={href} className="duration-200 hover:text-custom-primary">
                 {name}
               </Link>
             )
@@ -40,7 +40,7 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-7">
-        <Link className="text-xl duration-200 xl:text-base font-book sm:hidden text-custom-teal hover:text-custom-gray" href={headerContent.contacts.tel.href}>
+        <Link className="text-xl duration-200 xl:text-base font-book sm:hidden text-custom-primary hover:text-custom-gray" href={headerContent.contacts.tel.href}>
           {headerContent.contacts.tel.name}
         </Link>
 
