@@ -2,7 +2,7 @@ import {cn} from '@/lib/utils'
 import Link from 'next/link'
 
 interface Props {
-  type: 'link' | 'button'
+  type: 'link' | 'button' | 'submit'
   text: string
   variant?: 'primary' | 'secondary'
   size: 'md' | 'lg'
@@ -11,6 +11,7 @@ interface Props {
   blank?: boolean
   classes?: string
   onClick?: () => void
+  [x: string]: any
 }
 
 export const buttonVariants = {
@@ -41,7 +42,7 @@ const Button: React.FC<Props> = ({type, text, variant = 'primary', size, adavanc
         {text}
       </Link>
     )
-  } else if (type === 'button') {
+  } else if (type === 'button' || type === 'submit') {
     return (
       <button className={buttonStyles} onClick={onClick} {...props}>
         {text}
