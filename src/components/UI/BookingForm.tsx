@@ -19,16 +19,23 @@ const schema = z.object({
 })
 
 type FormFields = z.infer<typeof schema>
+type CloseFormFunction = () => void
 
-const BoockingForm = ({closeForm}) => {
+type BookingFormProps = {
+  closeForm: CloseFormFunction
+  pre_name?: string
+  pre_email?: string
+}
+
+const BoockingForm: React.FC<BookingFormProps> = ({closeForm, pre_name, pre_email}) => {
   const {
     register,
     handleSubmit,
     formState: {errors, isSubmitting},
   } = useForm<FormFields>({
     defaultValues: {
-      name: '',
-      email: '',
+      name: pre_name || '',
+      email: pre_email || '',
       phone: '',
       wish: '',
     },
