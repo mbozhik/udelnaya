@@ -13,9 +13,8 @@ export default function Home() {
         <Medicine classes="w-full h-[50vh] xl:h-[55vh]" />
         <Programs />
         <Rooms />
+        <Questions />
       </Container>
-
-      <Questions />
     </>
   )
 }

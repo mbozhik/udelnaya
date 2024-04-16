@@ -5,7 +5,6 @@ interface Props {
   width?: '2/3' | '3/4'
   padding?: boolean
   classes?: string
-  last?: boolean
 }
 
 export const widthClasses = {
@@ -14,8 +13,8 @@ export const widthClasses = {
   '3/4': 'w-[80%] sm:w-[93%]',
 }
 
-export default function Container({children, width = '2/3', padding = true, last, classes}: Props) {
-  const containerStyles = `${widthClasses.default} ${widthClasses[width]} ${padding && 'pt-36 xl:pt-28 sm:pt-24'} ${last && 'pb-[15vh]'} ${cn(classes)}`
+export default function Container({children, width = '2/3', padding = true, classes}: Props) {
+  const containerStyles = `${widthClasses.default} ${widthClasses[width]} ${padding && 'pt-36 xl:pt-28 sm:pt-24'} ${cn(classes)}`
 
   return <main className={containerStyles}>{children}</main>
 }

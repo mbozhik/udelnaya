@@ -3,7 +3,7 @@ import Programs from '##/index/Programs'
 
 export default function Program() {
   return (
-    <Container last={true}>
+    <Container>
       <Programs />
     </Container>
   )

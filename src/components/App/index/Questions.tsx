@@ -5,7 +5,7 @@ import {headerContent} from '#/Global/Header'
 
 export default function Questions() {
   return (
-    <section data-section="questions-index" className="mt-20 bg-custom-light-gray py-20">
+    <section data-section="questions-index" className="my-20 bg-custom-light-gray py-20">
       <div className="flex flex-col items-center gap-7">
         <div className="space-y-2 text-center">
           <Heading type="title" text="У вас остались вопросы?" />

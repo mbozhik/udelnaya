@@ -32,6 +32,7 @@ const SuisseIntl = localFont({
 })
 
 import Header from '#/Global/Header'
+import Footer from '#/Global/Footer'
 
 export const metadata: Metadata = {
   title: 'Санаторий Удельная',
@@ -48,6 +49,7 @@ export default function RootLayout({
       <body className={`relative text-custom-gray ${SuisseIntl.className}`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )

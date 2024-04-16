@@ -56,7 +56,7 @@ const ProgramPage = async ({params}) => {
   const imagesStyles = 'relative w-full h-[50vh] xl:h-full sm:h-[50vh]'
 
   return (
-    <Container width="3/4" last={true}>
+    <Container width="3/4">
       <section data-index={program.slug.current} className="grid mx-auto place-items-center">
         <div className="space-y-5 group border-[1.5px] border-custom-primary shadow-lg p-5 sm:p-3">
           <div className="grid grid-cols-2 sm:grid-cols-1 gap-10 sm:gap-7 items-center">
