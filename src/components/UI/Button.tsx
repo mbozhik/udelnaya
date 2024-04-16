@@ -1,3 +1,4 @@
+import {isMobile} from '@bozzhik/is-mobile'
 import {cn} from '@/lib/utils'
 import Link from 'next/link'
 
@@ -22,17 +23,19 @@ export const buttonVariants = {
   primary: {
     default: 'text-white bg-custom-primary',
     hover: 'hover:bg-custom-gray hover:border-custom-gray',
+    hover_mobile: 'active:bg-custom-gray active:border-custom-gray',
   },
   secondary: {
     default: 'text-custom-primary',
     hover: 'hover:border-custom-gray hover:text-custom-gray',
+    hover_mobile: 'active:border-custom-gray active:text-custom-gray',
   },
 }
 
 const Button: React.FC<Props> = ({type, text, variant = 'primary', size, adavanced_hover = false, href, blank, classes, onClick, ...props}) => {
   const buttonStyles = `
   ${buttonVariants.default.styles} ${buttonVariants[variant].default} 
-  ${adavanced_hover ? buttonVariants[variant].hover : buttonVariants.default.hover} 
+  ${adavanced_hover ? (!isMobile ? buttonVariants[variant].hover : buttonVariants[variant].hover_mobile) : buttonVariants.default.hover} 
   ${size === 'lg' && 'text-xl xl:text-lg sm:text-base'} ${cn(classes)}
   `
 
