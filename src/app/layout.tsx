@@ -32,7 +32,6 @@ const SuisseIntl = localFont({
 })
 
 import Header from '#/Global/Header'
-import BookingForm from '#/UI/BookingForm'
 import Footer from '#/Global/Footer'
 
 export const metadata: Metadata = {
@@ -49,7 +48,6 @@ export default function RootLayout({
     <html lang="ru" className="scroll-smooth">
       <body className={`relative text-custom-gray ${SuisseIntl.className}`}>
         <Header />
-        <BookingForm />
         {children}
         <Footer />
       </body>

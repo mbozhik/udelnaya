@@ -20,7 +20,7 @@ const schema = z.object({
 
 type FormFields = z.infer<typeof schema>
 
-const BoockingForm = () => {
+const BoockingForm = ({closeForm}) => {
   const {
     register,
     handleSubmit,
@@ -35,10 +35,7 @@ const BoockingForm = () => {
     resolver: zodResolver(schema),
   })
 
-  const [isFormVisible, setIsFormVisible] = useState(true)
   const [submitMessage, setSubmitMessage] = useState('')
-
-  const closeForm = () => setIsFormVisible(false)
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
@@ -66,10 +63,10 @@ const BoockingForm = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [])
+  }, [closeForm])
 
   return (
-    <section className={`fixed inset-0 z-50  w-screen h-screen place-items-center bg-black/25 ${isFormVisible ? 'grid' : 'hidden'}`}>
+    <section className="fixed inset-0 z-50 grid w-screen h-screen place-items-center bg-black/25">
       <div id="FORM_WRAPPER" className="w-[25%] xl:w-[35%] sm:w-[95%] p-5 sm:p-3 bg-white shadow-md">
         {submitMessage ? (
           <Heading type="title" text={submitMessage} classes="text-4xl sm:text-2xl text-center" />
