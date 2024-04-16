@@ -2,7 +2,7 @@ import {cn} from '@/lib/utils'
 import Link from 'next/link'
 
 interface Props {
-  type: 'link' | 'button'
+  type: 'link' | 'button' | 'submit'
   text: string
   variant?: 'primary' | 'secondary'
   size: 'md' | 'lg'
@@ -10,6 +10,8 @@ interface Props {
   href?: string
   blank?: boolean
   classes?: string
+  onClick?: () => void
+  [x: string]: any
 }
 
 export const buttonVariants = {
@@ -27,7 +29,7 @@ export const buttonVariants = {
   },
 }
 
-const Button: React.FC<Props> = ({type, text, variant = 'primary', size, adavanced_hover = false, href, blank, classes}) => {
+const Button: React.FC<Props> = ({type, text, variant = 'primary', size, adavanced_hover = false, href, blank, classes, onClick, ...props}) => {
   const buttonStyles = `
   ${buttonVariants.default.styles} ${buttonVariants[variant].default} 
   ${adavanced_hover ? buttonVariants[variant].hover : buttonVariants.default.hover} 
@@ -36,12 +38,16 @@ const Button: React.FC<Props> = ({type, text, variant = 'primary', size, adavanc
 
   if (type === 'link') {
     return (
-      <Link href={href} target={blank && '_blank'} className={`block text-center ${buttonStyles}`}>
+      <Link href={href} target={blank && '_blank'} className={`block text-center ${buttonStyles}`} {...props}>
         {text}
       </Link>
     )
-  } else if (type === 'button') {
-    return <button className={buttonStyles}>{text}</button>
+  } else if (type === 'button' || type === 'submit') {
+    return (
+      <button className={buttonStyles} onClick={onClick} {...props}>
+        {text}
+      </button>
+    )
   }
 }
 
