@@ -2,6 +2,7 @@ import {unstable_noStore as noStore} from 'next/cache'
 import {client, urlForImage} from '@/lib/sanity'
 
 import Heading from '#/UI/Heading'
+import Button from '#/UI/Button'
 import MedicineSlider from '##/index/MedicineSlider'
 
 interface Medicine {
@@ -47,7 +48,11 @@ const Medicine = async ({classes}) => {
     <section data-section="medicine-index" className="space-y-10">
       <Heading type="title" classes="text-center" text="Медицина" />
 
-      <MedicineSlider sliderData={sliderData} classes={classes} />
+      <div className="space-y-5">
+        <MedicineSlider sliderData={sliderData} classes={classes} />
+
+        <Button type="link" href="/rooms" variant="secondary" adavanced_hover={true} size="lg" classes="w-full border-[1.5px]" text="Узнать подробнее" />
+      </div>
     </section>
   )
 }
