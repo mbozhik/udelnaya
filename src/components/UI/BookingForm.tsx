@@ -80,7 +80,7 @@ const BoockingForm: React.FC<BookingFormProps> = ({closeForm, pre_name, pre_emai
         ) : (
           <div className="flex flex-col gap-5">
             <div className="flex justify-between">
-              <Heading type="title" classes="text-4xl sm:text-2xl" text="Бронирование" />
+              <Heading type="title" classes="text-3xl sm:text-2xl" text="Бронирование" />
               <span onClick={closeForm} className="-mt-2 text-4xl leading-none duration-200 cursor-pointer hover:text-custom-primary">
                 &times;
               </span>
@@ -88,26 +88,26 @@ const BoockingForm: React.FC<BookingFormProps> = ({closeForm, pre_name, pre_emai
 
             <form className="space-y-4 sm:space-y-3" onSubmit={handleSubmit(onSubmit)}>
               <div className="space-y-2">
-                <Input {...register('name')} type="text" placeholder="Имя" className="px-3" />
+                <Input {...register('name')} type="text" placeholder="Имя" />
                 {errors.name && <div className="text-red-500">{errors.name.message}</div>}
 
-                <Input {...register('email')} type="text" placeholder="E-mail" className="px-3" />
+                <Input {...register('email')} type="text" placeholder="E-mail" />
                 {errors.email && <div className="text-red-500">{errors.email.message}</div>}
 
-                <Input {...register('phone')} type="text" placeholder="Телефон" className="px-3" />
+                <Input {...register('phone')} type="text" placeholder="Телефон" />
                 {errors.phone && <div className="text-red-500">{errors.phone.message}</div>}
 
-                <Input {...register('time')} type="text" placeholder="Дата и время заезда" className="px-3" />
+                <Input {...register('time')} type="text" placeholder="Дата и время заезда" />
                 {errors.time && <div className="text-red-500">{errors.time.message}</div>}
 
                 <textarea
                   {...register('wish')}
                   placeholder="Сообщение"
                   rows={5}
-                  className="px-3 py-1.5 sm:py-3 w-full duration-200 bg-white placeholder:text-custom-gray
-                               border-[1.5px] border-custom-gray outline-none 
-                               focus-visible:border-custom-primary focus-visible:placeholder:text-custom-primary
-                               disabled:cursor-not-allowed disabled:opacity-50"
+                  className="px-3.5 py-1.5 sm:py-3 w-full duration-200 text-lg sm:text-base 
+                             border-[1.5px] border-custom-gray outline-none bg-white 
+                             focus-visible:border-custom-primary focus-visible:placeholder:text-custom-primary 
+                             disabled:cursor-not-allowed disabled:opacity-50 placeholder:text-custom-gray"
                 ></textarea>
                 {errors.wish && <div className="text-red-500">{errors.wish.message}</div>}
               </div>

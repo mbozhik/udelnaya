@@ -29,7 +29,7 @@ export default function Booking() {
             <Input placeholder="Имя" className="h-[90%]" value={name} onChange={(e) => setName(e.target.value)} />
             <Input placeholder="E-mail" className="h-[90%]" value={email} onChange={(e) => setEmail(e.target.value)} />
 
-            <Button type="button" onClick={toggleFormVisibility} classes="w-full" size="lg" text="Заполнить заявку" />
+            <Button type="button" onClick={toggleFormVisibility} classes="w-full" size="lg" adavanced_hover={true} text="Заполнить заявку" />
           </div>
         </Container>
       </section>
