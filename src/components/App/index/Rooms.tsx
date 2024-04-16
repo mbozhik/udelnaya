@@ -62,7 +62,7 @@ const Room = async () => {
       <Heading type="title" classes="text-center" text="Номера" />
 
       <div className="grid items-start grid-cols-3 gap-5 xl:grid-cols-2 sm:grid-cols-1">{slides}</div>
-      <Button type="link" href="/rooms" variant="secondary" adavanced_hover={true} size="lg" classes="w-full border-[1.5px]" text="Все номера" />
+      {/* <Button type="link" href="/rooms" variant="secondary" adavanced_hover={true} size="lg" classes="w-full border-[1.5px]" text="Все номера" /> */}
     </section>
   )
 }
