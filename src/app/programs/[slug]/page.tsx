@@ -8,7 +8,7 @@ import {PortableText} from '@portabletext/react'
 import Container from '#/UI/Container'
 import Heading from '#/UI/Heading'
 import Button from '#/UI/Button'
-import ImageSlider from './ImageSlider'
+import ImageSlider from '#/UI/ImageSlider'
 
 interface ProgramPage {
   name: string

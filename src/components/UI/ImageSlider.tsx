@@ -13,11 +13,12 @@ interface SliderProps {
     imageUrl: string
   }[]
   classes: string
+  enable_autoplay?: boolean
 }
 
-const Slider: React.FC<SliderProps> = ({sliderData, classes}) => {
+const Slider: React.FC<SliderProps> = ({sliderData, classes, enable_autoplay = true}) => {
   return (
-    <Swiper data-section="promo-index" className={classes} loop={true} speed={1000} autoplay={{delay: 3000}} pagination={{clickable: true}} grabCursor={true} modules={[Pagination, Autoplay]}>
+    <Swiper data-section="promo-index" className={classes} loop={true} speed={1000} {...(enable_autoplay && {autoplay: {delay: 3000}})} pagination={{clickable: true}} grabCursor={true} modules={[Pagination, Autoplay]}>
       {sliderData.map((slide, index) => (
         <SwiperSlide className="w-full h-full" key={index}>
           <Image quality={100} priority={true} className="object-cover s-full" src={slide.imageUrl} fill={true} sizes="50vw" alt={`акция ${index + 1}`} />
