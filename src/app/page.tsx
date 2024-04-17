@@ -12,7 +12,7 @@ export default function Home() {
       <Promo classes="w-full h-[65vh] sm:!h-[100svh] sm:h-[100vh]" />
       <Booking />
       <Container padding={false} classes="mt-20 space-y-20">
-        <Medicine classes="w-full h-[50vh] xl:h-[55vh]" />
+        <Medicine />
         <Programs />
         <Rooms />
         <Questions />

@@ -50,7 +50,7 @@ const Program = async () => {
 
       <div className="space-y-1">
         <Text type="title" text={program.name} />
-        <Text classes="line-clamp-3 xl:line-clamp-2 sm:line-clamp-3" type="caption" text={program.short_description} />
+        <Text classes="line-clamp-2 sm:line-clamp-3" type="caption" text={program.short_description} />
       </div>
 
       <Button type="button" text="Подробнее" size="md" />

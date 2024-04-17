@@ -1,8 +1,9 @@
 import {unstable_noStore as noStore} from 'next/cache'
 import {client, urlForImage} from '@/lib/sanity'
 
+import Link from 'next/link'
+import Image from 'next/image'
 import Heading from '#/UI/Heading'
-import MedicineSlider from '##/index/MedicineSlider'
 
 interface Medicine {
   name: string
@@ -28,7 +29,7 @@ const getData = async (): Promise<Medicine[]> => {
   return data
 }
 
-const Medicine = async ({classes}) => {
+const Medicine = async () => {
   const medicine: Medicine[] = await getData()
 
   if (!medicine) {
@@ -47,8 +48,19 @@ const Medicine = async ({classes}) => {
     <section data-section="medicine-index" className="space-y-7">
       <Heading type="title" classes="text-center" text="Медицина" />
 
-      <div className="space-y-5">
-        <MedicineSlider sliderData={sliderData} classes={classes} />
+      <div className="flex justify-between items-center gap-3">
+        {sliderData.map((slide, index) => (
+          <Link key={index} className="relative grid w-full h-[40vh] overflow-hidden place-items-center group" href={`/procedure/${slide.slug}`}>
+            <Image quality={100} priority={true} className="object-cover w-full h-full  group-hover:scale-[103%] duration-500" src={slide.imageUrl} fill={true} sizes="25vw" alt={`акция ${index + 1}`} />
+
+            <div className="absolute inset-0 flex flex-col justify-end bg-black/40">
+              <div className="p-5 w-[92%] space-y-2 sm:space-y-1 text-white flex flex-col justify-between h-full">
+                {slide.special_offer ? <mark>АКЦИЯ</mark> : <span></span>}
+                <Heading type="subtitle" text={slide.name} />
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
     </section>
   )
