@@ -9,7 +9,7 @@ import Booking from '#/UI/Booking'
 export default function Home() {
   return (
     <>
-      <Promo classes="w-full h-[65vh] sm:!h-[100svh] sm:h-[100vh]" />
+      <Promo />
       <Booking />
       <Container padding={false} classes="mt-20 space-y-20">
         <Medicine />

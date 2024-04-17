@@ -54,7 +54,7 @@ const Medicine = async () => {
             <Image quality={100} priority={true} className="object-cover w-full h-full  group-hover:scale-[103%] duration-500" src={slide.imageUrl} fill={true} sizes="25vw" alt={`акция ${index + 1}`} />
 
             <div className="absolute inset-0 flex flex-col justify-end bg-black/40">
-              <div className="p-5 w-[92%] space-y-2 sm:space-y-1 text-white flex flex-col justify-between h-full">
+              <div className="p-5 xl:p-3 w-[92%] space-y-2 sm:space-y-1 text-white flex flex-col justify-between h-full">
                 {slide.special_offer ? <mark>АКЦИЯ</mark> : <span></span>}
                 <Heading type="subtitle" text={slide.name} />
               </div>

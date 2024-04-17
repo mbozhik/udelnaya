@@ -18,7 +18,7 @@ export default function Questions() {
         <div className="flex flex-col items-center gap-7">
           <div className="space-y-2 text-center">
             <Heading type="title" text="У вас остались вопросы?" />
-            <Heading type="caption" classes="w-[70%] sm:w-[95%] mx-auto" text="Вы можете оставить заявку на сайте и наш менеджер свяжется с вами, либо наберите нас прямо сейчас!" />
+            <Heading type="caption" classes="w-[70%] sm:w-[95%] mx-auto" text="Оставьте заявку на сайте и наш менеджер свяжется с вами, либо позвоните прямо сейчас!" />
           </div>
 
           <div className="flex gap-3 sm:gap-2 sm:flex-col sm:w-[93%]">

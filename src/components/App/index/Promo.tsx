@@ -17,7 +17,7 @@ const getData = async () => {
   return data
 }
 
-const Promo = async ({classes}) => {
+const Promo = async () => {
   const promo = await getData()
 
   if (!promo) {
@@ -30,7 +30,7 @@ const Promo = async ({classes}) => {
     caption: promotion.caption,
   }))
 
-  return <PromoSlider sliderData={sliderData} classes={classes} />
+  return <PromoSlider sliderData={sliderData} classes="w-full h-[65vh] sm:!h-[100svh] sm:h-[100vh]" />
 }
 
 export default Promo
