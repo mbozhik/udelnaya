@@ -28,7 +28,7 @@ const Slider: React.FC<SliderProps> = ({sliderData, classes}) => {
   const slides = sliderData.map((slide, index) => (
     <SwiperSlide key={index}>
       <Link className="relative grid w-full h-full overflow-hidden place-items-center group" href={`/procedure/${slide.slug}`}>
-        <Image quality={100} priority={true} className="object-cover s-full group-hover:scale-[103%] duration-500" src={slide.imageUrl} fill={true} alt={`акция ${index + 1}`} />
+        <Image quality={100} priority={true} className="object-cover s-full group-hover:scale-[103%] duration-500" src={slide.imageUrl} fill={true} sizes="25vw" alt={`акция ${index + 1}`} />
 
         <div className="absolute inset-0 flex flex-col justify-end bg-black bg-opacity-45">
           <div className="p-5 w-[92%] space-y-2 sm:space-y-1 text-white">

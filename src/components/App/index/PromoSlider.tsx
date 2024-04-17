@@ -24,7 +24,7 @@ const Slider: React.FC<SliderProps> = ({sliderData, classes}) => {
     <Swiper data-section="promo-index" className={classes} loop={true} speed={1000} autoplay={{delay: 3000}} pagination={{clickable: true}} grabCursor={true} modules={[Pagination, Autoplay]}>
       {sliderData.map((slide, index) => (
         <SwiperSlide className="relative grid place-items-center" key={index}>
-          <Image quality={100} priority={true} className="absolute inset-0 block object-cover s-full" src={slide.imageUrl} fill={true} alt={`акция ${index + 1}`} />
+          <Image quality={100} priority={true} className="absolute inset-0 block object-cover s-full" src={slide.imageUrl} fill={true} sizes="100vw" alt={`акция ${index + 1}`} />
 
           <div className="absolute inset-0 flex flex-col justify-center bg-black bg-opacity-50">
             <div className="w-[70%] sm:w-[90%] mt-5 mx-auto space-y-2 xl:space-y-1 text-white sm:text-center">

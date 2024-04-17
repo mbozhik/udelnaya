@@ -45,7 +45,7 @@ const Room = async () => {
   const slides = rooms.slice(sliceStart, sliceEnd).map((room, idx) => (
     <Link className="flex flex-col h-[50vh] xl:h-auto justify-between border-[1.5px] border-custom-primary shadow-lg p-3 gap-5 group" href={`/rooms/${room.slug.current}`} key={idx}>
       <div className="relative self-center w-full overflow-hidden aspect-square xl:aspect-video group">
-        <Image className="object-cover w-full xl:h-[40vh] group-hover:scale-[103%] duration-500" src={urlForImage(room.images[0]).url()} fill={true} alt={`room 0`} />
+        <Image className="object-cover w-full xl:h-[40vh] group-hover:scale-[103%] duration-500" src={urlForImage(room.images[0]).url()} fill={true} sizes="25vw" alt={`room 0`} />
       </div>
 
       <div className="space-y-1">

@@ -20,7 +20,7 @@ const Slider: React.FC<SliderProps> = ({sliderData, classes}) => {
     <Swiper data-section="promo-index" className={classes} loop={true} speed={1000} autoplay={{delay: 3000}} pagination={{clickable: true}} grabCursor={true} modules={[Pagination, Autoplay]}>
       {sliderData.map((slide, index) => (
         <SwiperSlide className="w-full h-full" key={index}>
-          <Image quality={100} priority={true} className="object-cover s-full" src={slide.imageUrl} fill={true} alt={`акция ${index + 1}`} />
+          <Image quality={100} priority={true} className="object-cover s-full" src={slide.imageUrl} fill={true} sizes="50vw" alt={`акция ${index + 1}`} />
         </SwiperSlide>
       ))}
     </Swiper>
