@@ -1,10 +1,13 @@
 'use client'
 
+// import {isMobile} from '@bozzhik/is-mobile'
+const isMobile = true
+
 import Image from 'next/image'
 import {PortableText} from '@portabletext/react'
 
 import {Swiper, SwiperSlide} from 'swiper/react'
-import {Navigation} from 'swiper/modules'
+import {Navigation, Autoplay} from 'swiper/modules'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -32,38 +35,42 @@ const RoomsSlider: React.FC<SliderProps> = ({sliderData, classes}) => {
     }))
   }
 
+  const imagesStyles = 'relative w-full h-[50vh]'
+
   const slides = sliderData.map((slide, index) => (
     <SwiperSlide key={index} className="bg-custom-light-gray">
-      <div className="grid grid-cols-2 sm:grid-cols-1 gap-10 p-16">
+      <div className="grid grid-cols-2 sm:grid-cols-1 gap-10 p-16 xl:p-14 sm:p-3">
         {slide.imageUrls.length > 1 ? (
-          <ImageSlider sliderData={generateSliderData(slide.imageUrls)} enable_autoplay={false} classes="relative w-full h-[50vh] xl:h-full sm:h-[50vh]" />
+          <ImageSlider sliderData={generateSliderData(slide.imageUrls)} enable_autoplay={false} classes={imagesStyles} />
         ) : (
           slide.imageUrls.map((imageUrl, index) => (
-            <div className="relative w-full h-[50vh] xl:h-full sm:h-[50vh]" key={index}>
+            <div className={imagesStyles} key={index}>
               <Image className="object-cover" src={imageUrl} fill={true} sizes="25vw" alt={`${slide.name}`} />
             </div>
           ))
         )}
 
-        <div className="flex flex-col gap-5 self-center">
-          <Heading type="title" classes="" text={slide.name} />
+        <div className="flex flex-col gap-5 sm:gap-3 self-center">
+          <Heading type="subtitle" classes="" text={slide.name} />
 
-          <div className="w-fit">
+          <div className="w-fit xl:text-sm sm:mb-4">
             <PortableText value={slide.specification} />
           </div>
 
-          <Button type="link" size="lg" classes="w-fit px-10" adavanced_hover={true} href={`/rooms/${slide.slug}`} text="Узнать детали" />
+          <Button type="link" size="lg" classes="w-fit px-10 sm:w-full" adavanced_hover={true} href={`/rooms/${slide.slug}`} text="Узнать детали" />
         </div>
       </div>
     </SwiperSlide>
   ))
 
-  return (
-    <>
-      <Swiper data-section="rooms-index" className={classes} slidesPerView={1} loop={true} speed={1000} navigation={true} modules={[Navigation]}>
-        {slides}
-      </Swiper>
-    </>
+  return !isMobile ? (
+    <Swiper data-section="rooms-index" className={classes} slidesPerView={1} loop={true} speed={1000} navigation={true} modules={[Navigation]}>
+      {slides}
+    </Swiper>
+  ) : (
+    <Swiper data-section="rooms-mobile-index" className={classes} slidesPerView={1} autoplay={{delay: 2000, disableOnInteraction: true}} loop={true} speed={1000} navigation={true} modules={[Navigation, Autoplay]}>
+      {slides}
+    </Swiper>
   )
 }
 

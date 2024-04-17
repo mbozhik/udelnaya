@@ -1,12 +1,12 @@
 .swiper-button-prev,
 .swiper-button-next {
-  @apply !text-custom-gray h-full w-14 top-[22px] 
+  @apply !text-custom-gray h-full w-14 top-[22px] sm:hidden 
   hover:!text-custom-primary duration-200;
 }
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  @apply text-4xl;
+  @apply text-4xl xl:text-3xl;
 }
 
 .swiper-button-prev {
