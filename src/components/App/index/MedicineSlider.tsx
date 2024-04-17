@@ -33,7 +33,7 @@ const Slider: React.FC<SliderProps> = ({sliderData, classes}) => {
         <div className="absolute inset-0 flex flex-col justify-end bg-black bg-opacity-45">
           <div className="p-5 w-[92%] space-y-2 sm:space-y-1 text-white">
             {slide.special_offer && <mark>АКЦИЯ</mark>}
-            <Heading type="title" text={slide.name} />
+            <Heading type="subtitle" text={slide.name} />
             <Heading type="caption" classes="line-clamp-2 sm:hidden" text={slide.description} />
           </div>
         </div>
