@@ -1,10 +1,12 @@
 import Container from '#/UI/Container'
+
 import Promo from '@/components/App/index/Promo'
+import Booking from '#/UI/Booking'
 import Programs from '##/index/Programs'
 import Medicine from '##/index/Medicine'
 import Rooms from '##/index/Rooms'
+import Corporate from '##/index/Corporate'
 import Questions from '##/index/Questions'
-import Booking from '#/UI/Booking'
 
 export default function Home() {
   return (
@@ -15,6 +17,7 @@ export default function Home() {
         <Medicine />
         <Programs />
         <Rooms />
+        <Corporate />
         <Questions />
       </Container>
     </>
