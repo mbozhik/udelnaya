@@ -7,6 +7,7 @@ import RoomsSlider from '##/index/RoomsSlider'
 interface Room {
   name: string
   description: string
+  specification: any
   images: Array<{asset: {url: string}}>
   slug: {current: string}
 }
@@ -18,6 +19,7 @@ const getData = async (): Promise<Room[]> => {
     *[_type == 'rooms'] {
         name,
         description,
+        specification,
         images,
         slug
     }`
@@ -36,7 +38,8 @@ const Rooms = async () => {
   const sliderData = rooms.map((room) => ({
     name: room.name,
     description: room.description,
-    imageUrl: urlForImage(room.images[0]).url(),
+    specification: room.specification,
+    imageUrls: room.images.map((image) => urlForImage(image.asset).url()),
     slug: room.slug.current,
   }))
 
@@ -44,9 +47,7 @@ const Rooms = async () => {
     <section data-section="rooms-index" className="space-y-7">
       <Heading type="title" classes="text-center" text="Номера" />
 
-      <div className="space-y-5">
-        <RoomsSlider sliderData={sliderData} classes="w-full h-[50vh] xl:h-[55vh]" />
-      </div>
+      <RoomsSlider sliderData={sliderData} classes="w-full" />
     </section>
   )
 }

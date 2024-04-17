@@ -1,0 +1,18 @@
+.swiper-button-prev,
+.swiper-button-next {
+  @apply !text-custom-gray h-full w-14 top-[22px] 
+  hover:!text-custom-primary duration-200;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  @apply text-4xl;
+}
+
+.swiper-button-prev {
+  @apply left-0;
+}
+
+.swiper-button-next {
+  @apply right-0;
+}
