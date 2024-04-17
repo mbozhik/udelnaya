@@ -22,7 +22,7 @@ export default function Booking() {
         <Container padding={false}>
           <div className="grid items-center grid-cols-4 gap-5 sm:gap-2 sm:grid-cols-1">
             <div className="-space-y-1 sm:mx-auto sm:mb-2">
-              <Text type="title" classes="xl:text-lg" text="Бронирование номера" />
+              <Text type="title" classes="text-lg" text="Бронирование номера" />
               <Text type="caption" classes="font-light sm:hidden" text="Оставьте заявку" />
             </div>
 

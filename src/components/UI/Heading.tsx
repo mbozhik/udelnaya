@@ -8,9 +8,9 @@ interface Props {
 
 const Heading: React.FC<Props> = ({type, text, classes}) => {
   if (type === 'title') {
-    return <h1 className={`text-5xl xl:text-4xl sm:text-3xl font-medium uppercase tracking-tight ${cn(classes)}`} dangerouslySetInnerHTML={{__html: text || ''}} />
+    return <h1 className={`text-4xl sm:text-3xl font-medium uppercase tracking-tight ${cn(classes)}`} dangerouslySetInnerHTML={{__html: text || ''}} />
   } else if (type === 'caption') {
-    return <p className={`text-xl xl:text-lg sm:text-base font-light ${cn(classes)}`} dangerouslySetInnerHTML={{__html: text || ''}} />
+    return <p className={`text-base xl:text-lg sm:text-base font-light ${cn(classes)}`} dangerouslySetInnerHTML={{__html: text || ''}} />
   }
 }
 
