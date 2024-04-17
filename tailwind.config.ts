@@ -19,9 +19,8 @@ const config = {
       },
       colors: {
         custom: {
-          primary: '#0e9291',
-          // primary: '#8D150E',
-          // primary: '#7d756f',
+          // primary: '#0e9291',
+          primary: '#991C2F',
           gray: '#4c4c4c',
           'light-gray': '#EBEBEB',
         },
