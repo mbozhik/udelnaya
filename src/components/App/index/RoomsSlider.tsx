@@ -55,8 +55,6 @@ const RoomsSlider: React.FC<SliderProps> = ({sliderData, classes}) => {
           <div className="w-fit xl:text-sm sm:mb-4">
             <PortableText value={slide.specification} />
           </div>
-
-          <Button type="link" size="lg" classes="w-fit px-10 sm:w-full" adavanced_hover={true} href={`/rooms/${slide.slug}`} text="Узнать детали" />
         </div>
       </div>
     </SwiperSlide>
