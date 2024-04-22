@@ -34,11 +34,11 @@ const RoomsSlider: React.FC<SliderProps> = ({sliderData, classes}) => {
     }))
   }
 
-  const imagesStyles = 'relative w-full h-[50vh] rounded-md overflow-hidden'
+  const imagesStyles = 'relative w-full h-[50vh] sm:max-h-[35vh] rounded-md overflow-hidden'
 
   const slides = sliderData.map((slide, index) => (
     <SwiperSlide key={index} className="bg-custom-light-gray">
-      <div className="grid grid-cols-2 sm:grid-cols-1 gap-10 p-16 xl:p-14 sm:p-3">
+      <div className="grid grid-cols-2 gap-10 p-16 sm:gap-3 sm:grid-cols-1 xl:p-14 sm:p-3">
         {slide.imageUrls.length > 1 ? (
           <ImageSlider sliderData={generateSliderData(slide.imageUrls)} enable_autoplay={false} classes={imagesStyles} />
         ) : (
@@ -49,7 +49,7 @@ const RoomsSlider: React.FC<SliderProps> = ({sliderData, classes}) => {
           ))
         )}
 
-        <div className="flex flex-col gap-5 sm:gap-3 self-center">
+        <div className="flex flex-col self-center gap-5 sm:gap-2">
           <Heading type="subtitle" classes="" text={slide.name} />
 
           <div className="w-fit xl:text-sm sm:mb-4">

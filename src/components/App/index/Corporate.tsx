@@ -23,12 +23,12 @@ const corporateData = {
 
 export default function Corporate() {
   return (
-    <section data-section="corporate-index" className="space-y-7">
+    <section data-section="corporate-index" className="space-y-7 sm:space-y-5">
       <Heading type="title" classes="text-center" text="Корпоративным клиентам" />
 
       <div className="grid grid-cols-3 gap-5 sm:grid-cols-1">
         {Object.entries(corporateData).map(([key, value]) => (
-          <div key={key} className="flex flex-col items-center gap-5 p-3 pb-5 sm:p-3 sm:gap-2 rounded-md bg-custom-light-gray">
+          <div key={key} className="flex flex-col items-center gap-5 p-3 pb-5 rounded-md sm:p-3 sm:gap-2 bg-custom-light-gray">
             <Image className="object-cover w-full h-full rounded-[4px]" src={value.image} alt={value.title} />
             <Text type="title" classes="text-center !font-book xl:text-xl sm:text-lg" text={value.title} />
           </div>

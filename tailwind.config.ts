@@ -26,7 +26,7 @@ const config = {
         },
       },
       boxShadow: {
-        card: '0px 5px 20px -3px #00000040',
+        card: '0px 5px 15px -3px #00000040',
       },
       keyframes: {
         'accordion-down': {

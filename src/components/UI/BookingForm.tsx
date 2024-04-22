@@ -104,7 +104,7 @@ const BoockingForm: React.FC<BookingFormProps> = ({closeForm, pre_name, pre_emai
                   {...register('wish')}
                   placeholder="Сообщение"
                   rows={5}
-                  className="px-3.5 py-1.5 sm:py-3 w-full duration-200 
+                  className="px-3.5 py-1.5 sm:py-3 w-full rounded-md duration-200 
                              border-[1.5px] border-custom-gray outline-none bg-white 
                              focus-visible:border-custom-primary focus-visible:placeholder:text-custom-primary 
                              disabled:cursor-not-allowed disabled:opacity-50 placeholder:text-custom-gray"

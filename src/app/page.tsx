@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <Promo />
       <Booking />
-      <Container padding={false} classes="mt-20 space-y-20">
+      <Container padding={false} classes="mt-20 space-y-20 sm:mt-14 sm:space-y-14">
         <Medicine />
         <Programs />
         <Rooms />
