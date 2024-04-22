@@ -50,7 +50,7 @@ const Rooms = async () => {
     <section data-section="rooms-index" className="space-y-7">
       <Heading type="title" classes="text-center" text="Номера" />
 
-      <RoomsSlider sliderData={sliderData} classes="w-full" />
+      <RoomsSlider sliderData={sliderData} classes="w-full rounded-md" />
     </section>
   )
 }

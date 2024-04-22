@@ -1,7 +1,6 @@
 'use client'
 
-// import {isMobile} from '@bozzhik/is-mobile'
-const isMobile = true
+import {isMobile} from '@bozzhik/is-mobile'
 
 import Image from 'next/image'
 import {PortableText} from '@portabletext/react'
@@ -35,7 +34,7 @@ const RoomsSlider: React.FC<SliderProps> = ({sliderData, classes}) => {
     }))
   }
 
-  const imagesStyles = 'relative w-full h-[50vh]'
+  const imagesStyles = 'relative w-full h-[50vh] rounded-md overflow-hidden'
 
   const slides = sliderData.map((slide, index) => (
     <SwiperSlide key={index} className="bg-custom-light-gray">
@@ -64,7 +63,7 @@ const RoomsSlider: React.FC<SliderProps> = ({sliderData, classes}) => {
   ))
 
   return !isMobile ? (
-    <Swiper data-section="rooms-index" className={classes} slidesPerView={1} loop={true} speed={1000} navigation={true} modules={[Navigation]}>
+    <Swiper data-section="rooms-index" className={classes} slidesPerView={1} autoplay={{delay: 2000, disableOnInteraction: true}} loop={true} speed={1000} navigation={true} modules={[Navigation, Autoplay]}>
       {slides}
     </Swiper>
   ) : (

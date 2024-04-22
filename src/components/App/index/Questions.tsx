@@ -14,7 +14,7 @@ export default function Questions() {
 
   return (
     <>
-      <section data-section="questions-index" className="py-20 my-20 bg-custom-light-gray">
+      <section data-section="questions-index" className="py-20 my-20 bg-custom-light-gray rounded-md">
         <div className="flex flex-col items-center gap-7">
           <div className="space-y-2 text-center">
             <Heading type="title" text="У вас остались вопросы?" />
