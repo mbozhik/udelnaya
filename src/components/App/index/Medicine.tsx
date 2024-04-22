@@ -1,5 +1,5 @@
-import {unstable_noStore as noStore} from 'next/cache'
 import {client, urlForImage} from '@/lib/sanity'
+import {revalidateOnTime} from '@/lib/utils'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -13,20 +13,23 @@ interface Medicine {
   slug: {current: string}
 }
 
-const getData = async (): Promise<Medicine[]> => {
-  noStore()
-
-  const query = `
-    *[_type == 'medicine'] {
+async function getData(): Promise<Medicine[]> {
+  const data = await client.fetch<Medicine>(
+    `*[_type == 'medicine'] {
         name,
         description,
         image,
         special_offer,
         slug
-    }`
-
-  const data: Medicine[] = await client.fetch(query)
-  return data
+    }`,
+    {},
+    {
+      next: {
+        revalidate: revalidateOnTime,
+      },
+    },
+  )
+  return Array.isArray(data) ? data : []
 }
 
 const Medicine = async () => {

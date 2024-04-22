@@ -1,4 +1,3 @@
-import {unstable_noStore as noStore} from 'next/cache'
 import {client, urlForImage, urlForFile} from '@/lib/sanity'
 
 import Link from 'next/link'
@@ -9,6 +8,7 @@ import Container from '#/UI/Container'
 import Heading from '#/UI/Heading'
 import Button from '#/UI/Button'
 import ImageSlider from '#/UI/ImageSlider'
+import {revalidateOnTime} from '@/lib/utils'
 
 interface ProgramPage {
   name: string
@@ -19,25 +19,28 @@ interface ProgramPage {
   slug: {current: string}
 }
 
-const getData = async (slug): Promise<ProgramPage> => {
-  noStore()
-
-  const query = `
-    *[_type == 'programs' && slug.current == '${slug}'][0] {
+async function getData(slug): Promise<ProgramPage | null> {
+  const data = await client.fetch<ProgramPage>(
+    `*[_type == 'programs' && slug.current == '${slug}'][0] {
         name,
         duration,
         description,
         images,
         pdf,
         slug
-    }`
-
-  const data: ProgramPage = await client.fetch(query)
-  return data
+    }`,
+    {},
+    {
+      next: {
+        revalidate: revalidateOnTime,
+      },
+    },
+  )
+  return data || null
 }
 
 const ProgramPage = async ({params}) => {
-  const program: ProgramPage = await getData(params.slug)
+  const program: ProgramPage | null = await getData(params.slug)
 
   if (!program) {
     return <mark>Произошла ошибка при получении данных!</mark>

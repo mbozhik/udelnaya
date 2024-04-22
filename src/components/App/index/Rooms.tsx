@@ -1,8 +1,8 @@
-import {unstable_noStore as noStore} from 'next/cache'
 import {client, urlForImage} from '@/lib/sanity'
 
 import Heading from '#/UI/Heading'
 import RoomsSlider from '##/index/RoomsSlider'
+import {revalidateOnTime} from '@/lib/utils'
 
 interface Room {
   name: string
@@ -12,20 +12,23 @@ interface Room {
   slug: {current: string}
 }
 
-const getData = async (): Promise<Room[]> => {
-  noStore()
-
-  const query = `
-    *[_type == 'rooms'] {
+async function getData(): Promise<Room[]> {
+  const data = await client.fetch<Room>(
+    `*[_type == 'rooms'] {
         name,
         description,
         specification,
         images,
         slug
-    }`
-
-  const data: Room[] = await client.fetch(query)
-  return data
+    }`,
+    {},
+    {
+      next: {
+        revalidate: revalidateOnTime,
+      },
+    },
+  )
+  return Array.isArray(data) ? data : []
 }
 
 const Rooms = async () => {
