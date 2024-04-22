@@ -38,7 +38,7 @@ const RoomsSlider: React.FC<SliderProps> = ({sliderData, classes}) => {
 
   const slides = sliderData.map((slide, index) => (
     <SwiperSlide key={index} className="bg-custom-light-gray">
-      <div className="grid grid-cols-2 gap-10 p-16 sm:gap-3 sm:grid-cols-1 xl:p-14 sm:p-3">
+      <div className="grid grid-cols-2 gap-10 px-16 py-10 sm:gap-3 sm:grid-cols-1 xl:p-14 sm:p-3">
         {slide.imageUrls.length > 1 ? (
           <ImageSlider sliderData={generateSliderData(slide.imageUrls)} enable_autoplay={false} classes={imagesStyles} />
         ) : (
