@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {PortableText} from '@portabletext/react'
 
-import Container from '#/UI/Container'
+import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
 import Button from '#/UI/Button'
 import ImageSlider from '#/UI/ImageSlider'

@@ -1,6 +1,6 @@
-import Button from '#/UI/Button'
 import Link from 'next/link'
-import Container from '../UI/Container'
+import Button from '#/UI/Button'
+import Container from '#/Global/Container'
 
 const footerContent = {
   nav: {

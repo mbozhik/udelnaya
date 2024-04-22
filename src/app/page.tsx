@@ -1,4 +1,4 @@
-import Container from '#/UI/Container'
+import Container from '#/Global/Container'
 
 import Promo from '@/components/App/index/Promo'
 import Booking from '#/UI/Booking'

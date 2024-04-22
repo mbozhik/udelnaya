@@ -2,7 +2,7 @@
 
 import {useState} from 'react'
 
-import Container from '#/UI/Container'
+import Container from '#/Global/Container'
 import Text from '#/UI/Text'
 import Button from '#/UI/Button'
 import BoockingForm from '#/UI/BookingForm'

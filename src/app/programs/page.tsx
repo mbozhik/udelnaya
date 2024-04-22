@@ -1,4 +1,4 @@
-import Container from '#/UI/Container'
+import Container from '#/Global/Container'
 import Programs from '##/index/Programs'
 
 export default function Program() {
