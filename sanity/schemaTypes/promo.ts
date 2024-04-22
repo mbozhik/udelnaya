@@ -19,8 +19,12 @@ const promo: SchemaTypeDefinition = {
       name: 'image',
       title: 'Изображение',
       type: 'image',
-      options: {hotspot: true},
       validation: (rule: Rule) => rule.required(),
+    },
+    {
+      name: 'mobile_image',
+      title: 'Мобильное изображение',
+      type: 'image',
     },
   ],
   preview: {

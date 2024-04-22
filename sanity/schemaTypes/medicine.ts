@@ -20,7 +20,6 @@ const medicine: SchemaTypeDefinition = {
       name: 'image',
       title: 'Изображение',
       type: 'image',
-      options: {hotspot: true},
     },
     {
       name: 'special_offer',

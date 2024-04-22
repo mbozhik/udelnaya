@@ -33,7 +33,7 @@ const programs: SchemaTypeDefinition = {
       name: 'images',
       title: 'Изображения',
       type: 'array',
-      of: [{type: 'image', options: {hotspot: true}}],
+      of: [{type: 'image'}],
       validation: (rule: Rule) => rule.required(),
     },
     {
