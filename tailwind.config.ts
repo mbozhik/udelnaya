@@ -25,6 +25,9 @@ const config = {
           'light-gray': '#EBEBEB',
         },
       },
+      boxShadow: {
+        card: '0px 5px 20px -3px #00000040',
+      },
       keyframes: {
         'accordion-down': {
           from: {height: '0'},

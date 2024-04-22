@@ -46,17 +46,15 @@ const Program = async () => {
   const sliceEnd = isMobile ? 2 : 4
 
   const slides = programs.slice(sliceStart, sliceEnd).map((program, idx) => (
-    <Link className={`flex flex-col justify-between border-[1.5px] border-custom-primary shadow-lg p-3 gap-5 group ${idx === 3 && 'xl:hidden'}`} href={`/programs/${program.slug.current}`} key={idx}>
+    <Link className={`flex flex-col justify-between rounded-md shadow-card p-3 pb-4 gap-5 group ${idx === 3 && 'xl:hidden'}`} href={`/programs/${program.slug.current}`} key={idx}>
       <div className="relative self-center w-full overflow-hidden aspect-square xl:aspect-video group">
-        <Image className="object-cover w-full h-full group-hover:scale-[102%] duration-500" src={urlForImage(program.images[0]).url()} fill={true} sizes="25vw" alt={`program 0`} />
+        <Image className="object-cover w-full h-full group-hover:scale-[102%] duration-500 rounded-[4px]" src={urlForImage(program.images[0]).url()} fill={true} sizes="25vw" alt={`program 0`} />
       </div>
 
-      <div className="space-y-1">
+      <div>
         <Text type="title" text={program.name} />
         <Text classes="line-clamp-2 sm:line-clamp-3" type="caption" text={program.short_description} />
       </div>
-
-      <Button type="button" text="Подробнее" size="md" />
     </Link>
   ))
 
