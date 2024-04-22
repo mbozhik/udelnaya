@@ -4,6 +4,7 @@ import {revalidateOnTime} from '@/lib/utils'
 import Link from 'next/link'
 import Image from 'next/image'
 import Heading from '#/UI/Heading'
+import Text from '#/UI/Text'
 
 interface Medicine {
   name: string
@@ -48,19 +49,16 @@ const Medicine = async () => {
   }))
 
   return (
-    <section data-section="medicine-index" className="space-y-7">
+    <section data-section="medicine-index" className="space-y-7 sm:space-y-5">
       <Heading type="title" classes="text-center" text="Медицина" />
 
-      <div className="flex justify-between items-center gap-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-1">
         {sliderData.map((slide, index) => (
-          <Link key={index} className="relative grid w-full h-[40vh] overflow-hidden place-items-center group" href={`/procedure/${slide.slug}`}>
-            <Image quality={100} priority={true} className="object-cover w-full h-full  group-hover:scale-[103%] duration-500" src={slide.imageUrl} fill={true} sizes="25vw" alt={`акция ${index + 1}`} />
+          <Link key={index} className="relative overflow-hidden group h-[30vh] sm:h-[25vh] rounded-md" href={`/procedure/${slide.slug}`}>
+            <Image quality={100} priority={true} className="object-cover w-full h-full block group-hover:scale-[103%] duration-500" src={slide.imageUrl} fill={true} sizes="25vw" alt={`акция ${index + 1}`} />
 
-            <div className="absolute inset-0 flex flex-col justify-end bg-black/40">
-              <div className="p-5 xl:p-3 w-[92%] space-y-2 sm:space-y-1 text-white flex flex-col justify-between h-full">
-                {slide.special_offer ? <mark>АКЦИЯ</mark> : <span></span>}
-                <Heading type="subtitle" text={slide.name} />
-              </div>
+            <div className="absolute bottom-0 w-[97%] sm:w-[97.5%] px-4 py-2.5 sm:px-3 sm:py-1.5 m-2 sm:m-1 rounded-[4px] bg-white/85 sm:bg-white group-hover:bg-white duration-300">
+              <Text type="title" text={slide.name} classes="font-normal sm:text-xl" />
             </div>
           </Link>
         ))}
