@@ -3,10 +3,11 @@ import {revalidateOnTime} from '@/lib/utils'
 
 import PromoSlider from '##/index/PromoSlider'
 
-interface Promo {
+export interface Promo {
   title: string
   caption: string
   image: Array<{asset: {url: string}}>
+  mobile_image?: any
 }
 
 async function getData(): Promise<Promo[]> {
@@ -14,7 +15,8 @@ async function getData(): Promise<Promo[]> {
     `*[_type == 'promo'] {
       title,
       caption,
-      image
+      image,
+      mobile_image,
     }`,
     {},
     {
@@ -35,6 +37,7 @@ const Promo = async () => {
 
   const sliderData = promo.map((promotion) => ({
     imageUrl: urlForImage(promotion.image).url(),
+    mobileImageUrl: promotion.mobile_image && urlForImage(promotion.mobile_image).url(),
     title: promotion.title,
     caption: promotion.caption,
   }))

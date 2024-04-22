@@ -29,7 +29,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed inset-0 z-50 flex justify-between w-full px-5 py-2 sm:py-1.5 tracking-tight sm:px-3 h-fit bg-white/90 backdrop-filter backdrop-blur-sm">
+      <header className="fixed inset-0 z-50 flex justify-between w-full px-5 py-2 sm:py-1.5 tracking-tight sm:px-3 h-fit bg-white/90 backdrop-filter backdrop-blur-[2px]">
         <div className="flex items-center gap-7">
           <Link href="/">
             <Image className="object-contain duration-300 s-14 xl:s-12 hover:scale-110" src={LogoImage} alt="Logo" />
