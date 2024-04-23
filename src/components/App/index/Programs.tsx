@@ -1,6 +1,4 @@
 import {client, urlForImage} from '@/lib/sanity'
-
-import {isMobile} from '@bozzhik/is-mobile'
 import {revalidateOnTime} from '@/lib/utils'
 
 import Link from 'next/link'
@@ -10,19 +8,19 @@ import Heading from '#/UI/Heading'
 import Text from '#/UI/Text'
 import Button from '#/UI/Button'
 
-interface Program {
+interface ProgramCategories {
   name: string
-  short_description: string
-  images: Array<{asset: {url: string}}>
+  description: string
+  image: Array<{asset: {url: string}}>
   slug: {current: string}
 }
 
-async function getData(): Promise<Program[]> {
-  const data = await client.fetch<Program>(
-    `*[_type == 'programs'] {
+async function getData(): Promise<ProgramCategories[]> {
+  const data = await client.fetch<ProgramCategories>(
+    `*[_type == 'programs_category'] {
         name,
-        short_description,
-        images,
+        description,
+        image,
         slug
     }`,
     {},
@@ -35,22 +33,23 @@ async function getData(): Promise<Program[]> {
   return Array.isArray(data) ? data : []
 }
 
-const Program = async () => {
-  const programs: Program[] = await getData()
+const ProgramCategories = async () => {
+  const programCategories: ProgramCategories[] = await getData()
+  console.log('🚀 ~ ProgramCategories ~ programCategories:', programCategories)
 
-  if (!programs) {
+  if (!programCategories) {
     return <mark>Произошла ошибка при получении данных!</mark>
   }
 
-  const slides = programs.map((program, idx) => (
-    <Link className="flex flex-col justify-between gap-4 p-3 pb-4 rounded-md xl:gap-3 shadow-card group" href={`/programs/${program.slug.current}`} key={idx}>
+  const slides = programCategories.map((category, idx) => (
+    <Link className="flex flex-col justify-between gap-4 p-3 pb-4 rounded-md xl:gap-3 shadow-card group" href={`/programs/#${category.slug.current}`} key={idx}>
       <div className="relative self-center w-full overflow-hidden aspect-video group">
-        <Image className="object-cover w-full h-full group-hover:scale-[102%] duration-500 rounded-[4px]" src={urlForImage(program.images[0]).url()} fill={true} sizes="25vw" alt={`program 0`} />
+        <Image className="object-cover w-full h-full group-hover:scale-[102%] duration-500 rounded-[4px]" src={urlForImage(category.image).url()} fill={true} sizes="25vw" alt={`category 0`} />
       </div>
 
       <div>
-        <Text type="title" text={program.name} />
-        <Text classes="line-clamp-3" type="caption" text={program.short_description} />
+        <Text type="title" text={category.name} />
+        <Text classes="line-clamp-3" type="caption" text={category.description} />
       </div>
     </Link>
   ))
@@ -65,4 +64,4 @@ const Program = async () => {
   )
 }
 
-export default Program
+export default ProgramCategories
