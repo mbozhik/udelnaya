@@ -11,7 +11,7 @@ import Text from '#/UI/Text'
 interface Program {
   name: string
   short_description: string
-  type: Array<{name: string; slug: string}>
+  type: Array<{name: string; slug: {current: string}}>
   images: Array<{asset: {url: string}}>
   slug: {current: string}
 }
@@ -42,19 +42,18 @@ const ProgramsPage = async () => {
     return <mark>Произошла ошибка при получении данных!</mark>
   }
 
-  const programCategories = Array.from(new Set(programs.flatMap((program) => program.type.map((type) => type.name))))
+  const programCategories = Array.from(new Set(programs.flatMap((program) => program.type.map((type) => ({name: type.name, slug: type.slug.current})))))
 
   return (
     <Container classes="space-y-7 xl:space-y-5">
       <Heading type="title" text="Программы" />
 
       {programCategories.map((category, idx) => (
-        <section className="space-y-5 bg-custom-light-gray p-3 rounded-md" key={idx}>
-          <Text type="title" classes="text-center" text={category} />
-
+        <section id={category.slug} className="space-y-5 bg-custom-light-gray p-3 rounded-md" key={idx}>
+          <Text type="title" classes="text-center" text={category.name} />
           <div className="grid items-start grid-cols-3 gap-3 sm:grid-cols-1">
             {programs
-              .filter((program) => program.type.some((type) => type.name === category))
+              .filter((program) => program.type.some((type) => type.name === category.name))
               .map((program, idx) => (
                 <Link className="flex flex-col justify-between gap-4 p-3 pb-4 rounded-md xl:gap-3 shadow-card group bg-white" href={`/programs/${program.slug.current}`} key={idx}>
                   <div className="relative self-center w-full overflow-hidden aspect-video group">
