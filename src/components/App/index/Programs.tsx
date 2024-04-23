@@ -35,7 +35,6 @@ async function getData(): Promise<ProgramCategories[]> {
 
 const ProgramCategories = async () => {
   const programCategories: ProgramCategories[] = await getData()
-  console.log('🚀 ~ ProgramCategories ~ programCategories:', programCategories)
 
   if (!programCategories) {
     return <mark>Произошла ошибка при получении данных!</mark>

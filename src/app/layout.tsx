@@ -45,11 +45,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ru" className="scroll-smooth">
-      <body className={`relative text-custom-gray ${SuisseIntl.className}`}>
-        <Header />
-        {children}
-        <Footer />
+    <html lang="ru" className="scroll-smooth h-full">
+      <body className={`relative h-full text-custom-gray ${SuisseIntl.className}`}>
+        <div className="min-h-full flex flex-col">
+          <Header />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   )
