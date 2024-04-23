@@ -2,7 +2,7 @@ import {Rule, SchemaTypeDefinition} from 'sanity'
 
 const promo: SchemaTypeDefinition = {
   name: 'promo',
-  title: 'Промо-акции (Слайдер)',
+  title: 'Промо-акции',
   type: 'document',
   fields: [
     {
