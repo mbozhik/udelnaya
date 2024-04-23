@@ -31,7 +31,7 @@ const programs: SchemaTypeDefinition = {
     },
     {
       name: 'type',
-      title: 'Типа программы',
+      title: 'Тип программы',
       type: 'array',
       of: [{type: 'reference', to: {type: 'programs_category'}}],
       validation: (rule: Rule) => rule.required(),
