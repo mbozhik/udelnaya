@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import LogoImage from '%/logo.svg'
 
+import Text from '#/UI/Text'
 import Button from '#/UI/Button'
 import BoockingForm from '#/UI/BookingForm'
 
@@ -29,22 +30,16 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed inset-0 z-50 flex justify-between w-full px-5 py-2 sm:py-1.5 tracking-tight sm:px-3 h-fit bg-white/90 backdrop-filter backdrop-blur-[2px]">
-        <div className="flex items-center gap-7">
+      <header className="fixed inset-0 z-50 flex justify-between w-full px-5 py-1.5 sm:py-1.5 tracking-tight sm:px-3 h-fit bg-white/90 backdrop-filter backdrop-blur-[2px]">
+        <div className="flex items-center gap-5">
           <Link href="/">
             <Image className="object-contain duration-300 s-14 xl:s-12 hover:scale-110" src={LogoImage} alt="Logo" />
           </Link>
 
-          <nav className="text-lg xl:text-base font-book space-x-7 xl:space-x-5 sm:hidden">
-            {Object.keys(headerContent.nav).map((key) => {
-              const {name, href} = headerContent.nav[key]
-              return (
-                <Link key={key} href={href} className="duration-200 hover:text-custom-primary">
-                  {name}
-                </Link>
-              )
-            })}
-          </nav>
+          <div>
+            <Text type="title" text="Санаторий «Удельная»" classes="text-xl" />
+            <Text text="Медицинский центр, реабилитация, оздоровительные программы в Подмосковье" classes="text-sm leading-[1.15]" />
+          </div>
         </div>
 
         <div className="flex items-center gap-7">
