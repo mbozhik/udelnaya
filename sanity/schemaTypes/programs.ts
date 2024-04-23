@@ -2,7 +2,7 @@ import {Rule, SchemaTypeDefinition} from 'sanity'
 
 const programs: SchemaTypeDefinition = {
   name: 'programs',
-  title: 'Программы',
+  title: '[Программы] Список',
   type: 'document',
   fields: [
     {
@@ -48,6 +48,13 @@ const programs: SchemaTypeDefinition = {
       options: {
         source: 'name',
       },
+      validation: (rule: Rule) => rule.required(),
+    },
+    {
+      name: 'type',
+      title: 'Типа программы',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'programs_category'}}],
       validation: (rule: Rule) => rule.required(),
     },
   ],

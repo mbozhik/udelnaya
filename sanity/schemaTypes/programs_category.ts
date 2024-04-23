@@ -1,30 +1,27 @@
 import {Rule, SchemaTypeDefinition} from 'sanity'
 
-const medicine: SchemaTypeDefinition = {
-  name: 'medicine',
-  title: '[Медицина] Категории',
+const programs: SchemaTypeDefinition = {
+  name: 'programs_category',
+  title: '[Программы] Категории',
   type: 'document',
   fields: [
     {
       name: 'name',
-      title: 'Название секции',
+      title: 'Название категории',
       type: 'string',
       validation: (rule: Rule) => rule.required(),
     },
     {
       name: 'description',
-      title: 'Описание секции',
+      title: 'Описание категории',
       type: 'text',
+      validation: (rule: Rule) => rule.required(),
     },
     {
       name: 'image',
-      title: 'Изображение',
+      title: 'Изображение категории',
       type: 'image',
-    },
-    {
-      name: 'special_offer',
-      title: 'Есть ли акция на процедуру?',
-      type: 'boolean',
+      validation: (rule: Rule) => rule.required(),
     },
     {
       name: 'slug',
@@ -39,10 +36,9 @@ const medicine: SchemaTypeDefinition = {
   preview: {
     select: {
       title: 'name',
-      subtitle: 'description',
       media: 'image',
     },
   },
 }
 
-export default medicine
+export default programs
