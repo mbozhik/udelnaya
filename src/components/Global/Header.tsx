@@ -28,27 +28,49 @@ export default function Header() {
   const [isFormVisible, setIsFormVisible] = useState(false)
   const toggleFormVisibility = () => setIsFormVisible(!isFormVisible)
 
+  const keys = Object.keys(headerContent.nav)
+
   return (
     <>
-      <header className="fixed inset-0 z-50 flex justify-between w-full px-5 py-1.5 sm:py-1.5 tracking-tight sm:px-3 h-fit bg-white/90 backdrop-filter backdrop-blur-[2px]">
-        <div className="flex items-center gap-5">
-          <Link href="/">
-            <Image className="object-contain duration-300 s-14 xl:s-12 hover:scale-110" src={LogoImage} alt="Logo" />
-          </Link>
+      <header className="fixed inset-0 z-50 w-full flex flex-col tracking-tight bg-white/90 h-fit backdrop-filter backdrop-blur-[2px] shadow-nav sm:shadow-nav_mobile">
+        <section className="flex justify-between w-full px-5 py-1.5 xl:py-2 sm:px-3">
+          <div className="flex items-center gap-5">
+            <Link href="/">
+              <Image className="object-contain duration-300 s-14 xl:s-12 hover:scale-110" src={LogoImage} alt="Logo" />
+            </Link>
 
-          <div>
-            <Text type="title" text="Санаторий «Удельная»" classes="text-xl" />
-            <Text text="Медицинский центр, реабилитация, оздоровительные программы в Подмосковье" classes="text-sm leading-[1.15]" />
+            <div className="sm:hidden">
+              <Text type="title" text="Санаторий «Удельная»" classes="text-xl xl:text-lg" />
+              <Text text="Медицинский центр, реабилитация, оздоровительные программы в Подмосковье" classes="text-sm leading-[1.15] xl:leading-none" />
+            </div>
           </div>
-        </div>
 
-        <div className="flex items-center gap-7">
-          <Link className="text-lg duration-200 xl:text-base font-book sm:hidden text-custom-primary hover:text-custom-gray" href={headerContent.contacts.tel.href}>
-            {headerContent.contacts.tel.name}
-          </Link>
+          <div className="flex items-center gap-7">
+            <Link className="text-lg duration-200 xl:text-base font-book sm:hidden text-custom-primary hover:text-custom-gray" href={headerContent.contacts.tel.href}>
+              {headerContent.contacts.tel.name}
+            </Link>
 
-          <Button onClick={toggleFormVisibility} type="button" size="lg" adavanced_hover={true} text="Забронировать" />
-        </div>
+            <Button onClick={toggleFormVisibility} type="button" size="lg" adavanced_hover={true} text="Забронировать" />
+          </div>
+        </section>
+
+        <nav className="flex sm:grid sm:grid-cols-4 justify-center border-t-[1.5px] border-b-[1.5px] font-book border-custom-gray/70 ">
+          {keys.map((key, index) => {
+            const linkClasses = `py-1.5 px-5 sm:px-2 sm:text-xs sm:font-normal sm:text-center
+                        border-l-[1.5px] border-custom-gray/70 
+                        hover:bg-custom-gray/15 duration-300 
+                        ${index === keys.length - 1 && 'border-r-[1.5px]'} 
+                        ${index === 4 && 'xl:hidden'} 
+                        ${index === 5 && 'sm:hidden'} `
+
+            const {name, href} = headerContent.nav[key]
+            return (
+              <Link key={key} href={href} className={linkClasses}>
+                {name}
+              </Link>
+            )
+          })}
+        </nav>
       </header>
 
       {isFormVisible && <BoockingForm closeForm={toggleFormVisibility} />}
