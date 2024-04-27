@@ -25,6 +25,7 @@ const promo: SchemaTypeDefinition = {
       name: 'mobile_image',
       title: 'Мобильное изображение',
       type: 'image',
+      validation: (rule: Rule) => rule.required(),
     },
   ],
   preview: {

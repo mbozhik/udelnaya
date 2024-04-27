@@ -1,13 +1,20 @@
 import {client, urlForImage} from '@/lib/sanity'
 import {revalidateOnTime} from '@/lib/utils'
 
-import PromoSlider from '##/index/PromoSlider'
+import dynamic from 'next/dynamic'
+
+const PromoSlider = dynamic(
+  () => {
+    return import('##/index/PromoSlider')
+  },
+  {ssr: false},
+)
 
 export interface Promo {
   title: string
   caption: string
   image: Array<{asset: {url: string}}>
-  mobile_image?: any
+  mobile_image: Array<{asset: {url: string}}>
 }
 
 async function getData(): Promise<Promo[]> {
@@ -37,7 +44,7 @@ const Promo = async () => {
 
   const sliderData = promo.map((promotion) => ({
     imageUrl: urlForImage(promotion.image).url(),
-    mobileImageUrl: promotion.mobile_image && urlForImage(promotion.mobile_image).url(),
+    mobileImageUrl: urlForImage(promotion.mobile_image).url(),
     title: promotion.title,
     caption: promotion.caption,
   }))
