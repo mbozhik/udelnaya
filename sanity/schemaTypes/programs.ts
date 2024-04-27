@@ -62,7 +62,15 @@ const programs: SchemaTypeDefinition = {
   preview: {
     select: {
       title: 'name',
+      type: 'type.0.name',
       media: 'images.0.asset',
+    },
+    prepare(selection) {
+      const {title, type} = selection
+      return {
+        title: title,
+        subtitle: `Тип: ${type ? type : '-'}`,
+      }
     },
   },
 }
