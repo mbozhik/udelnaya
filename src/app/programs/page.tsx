@@ -11,6 +11,7 @@ import Text from '#/UI/Text'
 interface Program {
   name: string
   short_description: string
+  id: number
   type: Array<{name: string; slug: {current: string}}>
   images: Array<{asset: {url: string}}>
   slug: {current: string}
@@ -21,6 +22,7 @@ async function getData(): Promise<Program[]> {
     `*[_type == 'programs'] {
         name,
         short_description,
+        id,
         type[] -> { name, slug },
         images,
         slug,
@@ -54,6 +56,7 @@ const ProgramsPage = async () => {
           <div className="grid items-start grid-cols-3 gap-3 sm:grid-cols-1">
             {programs
               .filter((program) => program.type.some((type) => type.name === category.name))
+              .sort((a, b) => a.id - b.id)
               .map((program, idx) => (
                 <Link className="flex flex-col justify-between gap-4 p-3 pb-4 rounded-md xl:gap-3 shadow-card group bg-white" href={`/programs/${program.slug.current}`} key={idx}>
                   <div className="relative self-center w-full overflow-hidden aspect-video group">
