@@ -14,7 +14,6 @@ import '%%/stylesheets/rooms_slider.css'
 
 import Heading from '#/UI/Heading'
 import ImageSlider from '#/UI/ImageSlider'
-import Button from '#/UI/Button'
 
 interface SliderProps {
   sliderData: {
