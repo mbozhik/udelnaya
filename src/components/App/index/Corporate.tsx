@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import CorporateImage1 from '%/corporate/1.jpg'
-import CorporateImage2 from '%/corporate/2.jpg'
-import CorporateImage3 from '%/corporate/3.jpg'
+import GroupVisits from '%/corporate/group-visits.jpg'
+import Weddings from '%/corporate/weddings.jpg'
+import CorporateEvents from '%/corporate/corporate-events.jpg'
 
 import Heading from '#/UI/Heading'
 import Text from '#/UI/Text'
@@ -9,15 +9,15 @@ import Text from '#/UI/Text'
 const corporateData = {
   1: {
     title: 'Груповые заезды',
-    image: CorporateImage1,
+    image: GroupVisits,
   },
   2: {
     title: 'Проведение свадеб',
-    image: CorporateImage2,
+    image: Weddings,
   },
   3: {
     title: 'Корпоративные мероприятия',
-    image: CorporateImage3,
+    image: CorporateEvents,
   },
 }
 
