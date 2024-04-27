@@ -66,10 +66,11 @@ const programs: SchemaTypeDefinition = {
       media: 'images.0.asset',
     },
     prepare(selection) {
-      const {title, type} = selection
+      const {title, type, media} = selection
       return {
         title: title,
         subtitle: `Тип: ${type ? type : '-'}`,
+        media: media,
       }
     },
   },
