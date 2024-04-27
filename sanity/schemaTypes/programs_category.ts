@@ -18,6 +18,13 @@ const programs: SchemaTypeDefinition = {
       validation: (rule: Rule) => rule.required(),
     },
     {
+      name: 'id',
+      title: 'ID категории',
+      description: 'От 1 до 3',
+      type: 'number',
+      validation: (rule: Rule) => rule.required(),
+    },
+    {
       name: 'image',
       title: 'Изображение категории',
       type: 'image',
@@ -36,6 +43,7 @@ const programs: SchemaTypeDefinition = {
   preview: {
     select: {
       title: 'name',
+      subtitle: 'id',
       media: 'image',
     },
   },
