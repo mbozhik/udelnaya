@@ -32,8 +32,8 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed inset-0 z-50 w-full flex flex-col tracking-tight bg-white/90 h-fit backdrop-filter backdrop-blur-[2px] shadow-nav sm:shadow-nav_mobile">
-        <section className="flex justify-between w-full px-5 py-1.5 xl:py-2 sm:px-3">
+      <header className="fixed inset-0 z-50 w-full flex flex-col tracking-tight bg-white h-fit backdrop-filter backdrop-blur-[2px] shadow-nav sm:shadow-nav_mobile">
+        <section className="flex justify-between w-full p-5 sm:px-3 sm:py-2">
           <div className="flex items-center gap-5">
             <Link href="/">
               <Image className="object-contain duration-300 s-14 xl:s-12 hover:scale-110" src={LogoImage} alt="Logo" />
@@ -41,7 +41,7 @@ export default function Header() {
 
             <div className="sm:hidden">
               <Text type="title" text="Санаторий «Удельная»" classes="text-xl xl:text-lg" />
-              <Text text="Медицинский центр, реабилитация, оздоровительные программы в Подмосковье" classes="text-sm leading-[1.15] xl:leading-none" />
+              <Text text="Медицинский центр, реабилитация, оздоровительные программы в Подмосковье" classes="text-base xl:text-sm leading-[1.15] xl:leading-none" />
             </div>
           </div>
 
