@@ -4,17 +4,17 @@ interface Props {
   children: React.ReactNode
   width?: '2/3' | '3/4'
   padding?: boolean
-  classes?: string
+  className?: string
 }
 
-export const widthClasses = {
+export const widthclassName = {
   default: 'mx-auto flex-auto',
   '2/3': 'w-[60%] xl:w-[70%] sm:w-[90%]',
   '3/4': 'w-[80%] sm:w-[93%]',
 }
 
-export default function Container({children, width = '2/3', padding = true, classes}: Props) {
-  const containerStyles = `${widthClasses.default} ${widthClasses[width]} ${padding && 'pt-36 xl:pt-28 sm:pt-24'} ${cn(classes)}`
+export default function Container({children, width = '2/3', padding = true, className}: Props) {
+  const containerStyles = `${widthclassName.default} ${widthclassName[width]} ${padding && 'pt-36 xl:pt-28 sm:pt-24'} ${cn(className)}`
 
   return <main className={containerStyles}>{children}</main>
 }

@@ -50,7 +50,7 @@ const Medicine = async () => {
 
   return (
     <section data-section="medicine-index" className="space-y-7 sm:space-y-5">
-      <Heading type="title" classes="text-center" text="Медицина" />
+      <Heading type="title" className="text-center" text="Медицина" />
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-1">
         {sliderData.map((slide, index) => (
@@ -58,7 +58,7 @@ const Medicine = async () => {
             <Image quality={100} priority={true} className="object-cover w-full h-full block group-hover:scale-[102%] duration-500" src={slide.imageUrl} fill={true} sizes="25vw" alt={`акция ${index + 1}`} />
 
             <div className="absolute bottom-0 w-[97%] sm:w-[97.5%] px-4 py-2.5 sm:px-3 sm:py-1.5 m-2 sm:m-1 rounded-[4px] bg-white/75 sm:bg-white group-hover:bg-white duration-300">
-              <Text type="title" text={slide.name} classes="font-normal sm:text-xl" />
+              <Text type="title" text={slide.name} className="font-normal sm:text-xl" />
             </div>
           </Link>
         ))}

@@ -47,12 +47,12 @@ const ProgramsPage = async () => {
   const programCategories = Array.from(new Set(programs.flatMap((program) => program.type.map((type) => ({name: type.name, slug: type.slug.current})))))
 
   return (
-    <Container classes="space-y-7 xl:space-y-5">
+    <Container className="space-y-7 xl:space-y-5">
       <Heading type="title" text="Программы" />
 
       {programCategories.map((category, idx) => (
         <section id={category.slug} className="space-y-5 bg-custom-light-gray p-3 rounded-md" key={idx}>
-          <Text type="title" classes="text-center" text={category.name} />
+          <Text type="title" className="text-center" text={category.name} />
           <div className="grid items-start grid-cols-3 gap-3 sm:grid-cols-1">
             {programs
               .filter((program) => program.type.some((type) => type.name === category.name))
@@ -65,7 +65,7 @@ const ProgramsPage = async () => {
 
                   <div>
                     <Text type="title" text={program.name} />
-                    <Text classes="line-clamp-3" type="caption" text={program.short_description} />
+                    <Text className="line-clamp-3" type="caption" text={program.short_description} />
                   </div>
                 </Link>
               ))}

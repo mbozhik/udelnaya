@@ -52,17 +52,17 @@ const ProgramCategories = async () => {
 
         <div>
           <Text type="title" text={category.name} />
-          <Text classes="line-clamp-3" type="caption" text={category.description} />
+          <Text type="caption" text={category.description} />
         </div>
       </Link>
     ))
 
   return (
     <section data-section="programs-index" className="space-y-7 xl:space-y-5">
-      <Heading type="title" classes="text-center" text="Программы" />
+      <Heading type="title" className="text-center" text="Программы" />
 
       <div className="grid items-start grid-cols-3 gap-3 sm:grid-cols-1">{slides}</div>
-      <Button type="link" href="/programs" variant="secondary" adavanced_hover={true} size="lg" classes="w-full border-[1.5px]" text="Все программы" />
+      <Button type="link" href="/programs" variant="secondary" adavanced_hover={true} size="lg" className="w-full border-[1.5px]" text="Все программы" />
     </section>
   )
 }

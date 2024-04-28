@@ -19,12 +19,12 @@ interface SliderProps {
     imageUrl: string
     mobileImageUrl: string
   }[]
-  classes: string
+  className: string
 }
 
-const Slider: React.FC<SliderProps> = ({sliderData, classes}) => {
+const Slider: React.FC<SliderProps> = ({sliderData, className}) => {
   return (
-    <Swiper data-section="promo-index" className={classes} loop={true} speed={1000} autoplay={{delay: 3000, disableOnInteraction: true}} pagination={{clickable: true}} grabCursor={true} modules={[Pagination, Autoplay]}>
+    <Swiper data-section="promo-index" className={className} loop={true} speed={1000} autoplay={{delay: 3000, disableOnInteraction: true}} pagination={{clickable: true}} grabCursor={true} modules={[Pagination, Autoplay]}>
       {sliderData.map((slide, index) => (
         <SwiperSlide className="relative grid place-items-center" key={index}>
           <Image quality={100} priority={true} className="absolute inset-0 block object-cover s-full" width={isMobile ? 450 : 1920} height={isMobile ? 900 : 700} alt={`акция ${index + 1}`} src={isMobile ? slide.mobileImageUrl : slide.imageUrl} />
@@ -32,7 +32,7 @@ const Slider: React.FC<SliderProps> = ({sliderData, classes}) => {
           <div className="absolute inset-0 flex flex-col justify-center bg-black bg-opacity-10">
             <div className="w-[75%] xl:w-[85%] mx-auto mt-5 space-y-2 xl:space-y-1 text-white sm:text-center">
               <h2 className="text-6xl xl:text-5xl sm:text-3xl font-medium uppercase max-w-[20ch] sm:w-full sm:mx-auto">{slide.title}</h2>
-              <Heading type="caption" classes="sm:w-full sm:mx-auto text-lg xl:text-base" text={slide.caption} />
+              <Heading type="caption" className="sm:w-full sm:mx-auto text-lg xl:text-base" text={slide.caption} />
             </div>
           </div>
         </SwiperSlide>

@@ -23,10 +23,10 @@ interface SliderProps {
     imageUrls: string[]
     slug: string
   }[]
-  classes: string
+  className: string
 }
 
-const RoomsSlider: React.FC<SliderProps> = ({sliderData, classes}) => {
+const RoomsSlider: React.FC<SliderProps> = ({sliderData, className}) => {
   const generateSliderData = (images: string[]) => {
     return images.map((imageUrl) => ({
       imageUrl: imageUrl,
@@ -39,7 +39,7 @@ const RoomsSlider: React.FC<SliderProps> = ({sliderData, classes}) => {
     <SwiperSlide key={index} className="bg-custom-light-gray">
       <div className="grid grid-cols-2 gap-10 px-16 py-10 sm:gap-3 sm:grid-cols-1 xl:p-14 sm:p-3">
         {slide.imageUrls.length > 1 ? (
-          <ImageSlider sliderData={generateSliderData(slide.imageUrls)} enable_autoplay={false} classes={imagesStyles} />
+          <ImageSlider sliderData={generateSliderData(slide.imageUrls)} enable_autoplay={false} className={imagesStyles} />
         ) : (
           slide.imageUrls.map((imageUrl, index) => (
             <div className={imagesStyles} key={index}>
@@ -49,7 +49,7 @@ const RoomsSlider: React.FC<SliderProps> = ({sliderData, classes}) => {
         )}
 
         <div className="flex flex-col self-center gap-5 sm:gap-2">
-          <Heading type="subtitle" classes="" text={slide.name} />
+          <Heading type="subtitle" className="" text={slide.name} />
 
           <div className="w-fit xl:text-sm sm:mb-4">
             <PortableText value={slide.specification} />
@@ -60,11 +60,11 @@ const RoomsSlider: React.FC<SliderProps> = ({sliderData, classes}) => {
   ))
 
   return !isMobile ? (
-    <Swiper data-section="rooms-index" className={classes} slidesPerView={1} autoplay={{delay: 2000, disableOnInteraction: true}} loop={true} speed={1000} navigation={true} modules={[Navigation, Autoplay]}>
+    <Swiper data-section="rooms-index" className={className} slidesPerView={1} autoplay={{delay: 2000, disableOnInteraction: true}} loop={true} speed={1000} navigation={true} modules={[Navigation, Autoplay]}>
       {slides}
     </Swiper>
   ) : (
-    <Swiper data-section="rooms-mobile-index" className={classes} slidesPerView={1} autoplay={{delay: 2000, disableOnInteraction: true}} loop={true} speed={1000} navigation={true} modules={[Navigation, Autoplay]}>
+    <Swiper data-section="rooms-mobile-index" className={className} slidesPerView={1} autoplay={{delay: 2000, disableOnInteraction: true}} loop={true} speed={1000} navigation={true} modules={[Navigation, Autoplay]}>
       {slides}
     </Swiper>
   )

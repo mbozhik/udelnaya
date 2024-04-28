@@ -76,11 +76,11 @@ const BoockingForm: React.FC<BookingFormProps> = ({closeForm, pre_name, pre_emai
     <section className="fixed inset-0 z-50 grid w-screen h-screen place-items-center bg-black/25">
       <div id="FORM_WRAPPER" className="w-[25%] xl:w-[35%] sm:w-[95%] p-5 sm:p-3 bg-white shadow-md">
         {submitMessage ? (
-          <Heading type="title" text={submitMessage} classes="text-4xl sm:text-2xl text-center" />
+          <Heading type="title" text={submitMessage} className="text-4xl sm:text-2xl text-center" />
         ) : (
           <div className="flex flex-col gap-5">
             <div className="flex justify-between">
-              <Heading type="title" classes="text-3xl sm:text-2xl" text="Бронирование" />
+              <Heading type="title" className="text-3xl sm:text-2xl" text="Бронирование" />
               <span onClick={closeForm} className="-mt-2 text-4xl leading-none duration-200 cursor-pointer hover:text-custom-primary">
                 &times;
               </span>
@@ -112,7 +112,7 @@ const BoockingForm: React.FC<BookingFormProps> = ({closeForm, pre_name, pre_emai
                 {errors.wish && <div className="text-red-500">{errors.wish.message}</div>}
               </div>
 
-              <Button disabled={isSubmitting} type="submit" text={isSubmitting ? 'Отправка...' : 'Отправить'} size="lg" adavanced_hover={true} classes="w-full border-none" />
+              <Button disabled={isSubmitting} type="submit" text={isSubmitting ? 'Отправка...' : 'Отправить'} size="lg" adavanced_hover={true} className="w-full border-none" />
               {errors.root && <div className="text-red-500">{errors.root.message}</div>}
             </form>
           </div>

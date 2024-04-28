@@ -66,7 +66,7 @@ const ProgramPage = async ({params}) => {
         <div className="space-y-5 group border-[1.5px] border-custom-primary shadow-lg p-5 sm:p-3">
           <div className="grid grid-cols-2 sm:grid-cols-1 gap-10 sm:gap-7 items-center">
             {program.images.length > 1 ? (
-              <ImageSlider classes={imagesStyles} sliderData={generateSliderData(program.images)} />
+              <ImageSlider className={imagesStyles} sliderData={generateSliderData(program.images)} />
             ) : (
               program.images.map((image, index) => (
                 <div className={`relative ${imagesStyles}`} key={index}>
@@ -94,11 +94,11 @@ const ProgramPage = async ({params}) => {
 
               {program.pdf ? (
                 <div className="flex gap-3">
-                  <Button type="link" text="Узнать детали" size="lg" variant="secondary" classes="w-fit" adavanced_hover={true} blank={true} href={urlForFile(program.pdf.asset._ref)} />
-                  <Button type="button" text="Забронировать" size="lg" adavanced_hover={true} classes="w-fit" />
+                  <Button type="link" text="Узнать детали" size="lg" variant="secondary" className="w-fit" adavanced_hover={true} blank={true} href={urlForFile(program.pdf.asset._ref)} />
+                  <Button type="button" text="Забронировать" size="lg" adavanced_hover={true} className="w-fit" />
                 </div>
               ) : (
-                <Button type="button" text="Забронировать" size="lg" adavanced_hover={true} classes="w-fit" />
+                <Button type="button" text="Забронировать" size="lg" adavanced_hover={true} className="w-fit" />
               )}
             </div>
           </div>

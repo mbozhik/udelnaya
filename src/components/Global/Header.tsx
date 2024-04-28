@@ -40,8 +40,8 @@ export default function Header() {
             </Link>
 
             <div className="sm:hidden">
-              <Text type="title" text="Санаторий «Удельная»" classes="text-xl xl:text-lg" />
-              <Text text="Медицинский центр, реабилитация, оздоровительные программы в Подмосковье" classes="text-base xl:text-sm leading-[1.15] xl:leading-none" />
+              <Text type="title" text="Санаторий «Удельная»" className="text-xl xl:text-lg" />
+              <Text text="Медицинский центр, реабилитация, оздоровительные программы в Подмосковье" className="text-base xl:text-sm leading-[1.15] xl:leading-none" />
             </div>
           </div>
 
@@ -56,7 +56,7 @@ export default function Header() {
 
         <nav className="flex sm:grid sm:grid-cols-4 justify-center border-t-[1.5px] border-b-[1.5px] font-book border-custom-gray/70 ">
           {keys.map((key, index) => {
-            const linkClasses = `py-1.5 px-5 sm:px-2 sm:text-xs sm:font-normal sm:text-center
+            const linkclassName = `py-1.5 px-5 sm:px-2 sm:text-xs sm:font-normal sm:text-center
                         border-l-[1.5px] border-custom-gray/70 
                         hover:bg-custom-gray/15 duration-300 
                         ${index === keys.length - 1 && 'border-r-[1.5px]'} 
@@ -65,7 +65,7 @@ export default function Header() {
 
             const {name, href} = headerContent.nav[key]
             return (
-              <Link key={key} href={href} className={linkClasses}>
+              <Link key={key} href={href} className={linkclassName}>
                 {name}
               </Link>
             )

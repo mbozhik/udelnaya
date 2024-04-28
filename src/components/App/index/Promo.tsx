@@ -49,7 +49,7 @@ const Promo = async () => {
     caption: promotion.caption,
   }))
 
-  return <PromoSlider sliderData={sliderData} classes="mt-[12.5vh] xl:mt-[15vh] sm:mt-0 w-full h-[70vh] sm:!h-[100svh] sm:h-[100vh]" />
+  return <PromoSlider sliderData={sliderData} className="mt-[12.5vh] xl:mt-[15vh] sm:mt-0 w-full h-[70vh] sm:!h-[100svh] sm:h-[100vh]" />
 }
 
 export default Promo

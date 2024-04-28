@@ -22,7 +22,7 @@ export default function Footer() {
     <footer className="bg-custom-light-gray pt-10 pb-5 mt-20">
       <Container padding={false}>
         <div className="space-y-5 xl:space-y-5 sm:space-y-5">
-          <Button type="link" href="/" size="lg" classes="uppercase" adavanced_hover={true} text={`Цены на услуги ${currentYear}`} />
+          <Button type="link" href="/" size="lg" className="uppercase" adavanced_hover={true} text={`Цены на услуги ${currentYear}`} />
 
           <div className="space-y-2 sm:space-y-5">
             <div className="flex sm:flex-col justify-between sm:gap-2">
