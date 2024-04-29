@@ -45,7 +45,7 @@ const ProgramCategories = async () => {
   const slides = programCategories
     .sort((a, b) => a.id - b.id)
     .map((category, idx) => (
-      <Link className="flex flex-col justify-between gap-4 p-3 pb-4 rounded-md xl:gap-3 shadow-card group" href={`/programs/${category.slug.current}`} key={idx}>
+      <Link className="flex flex-col justify-between gap-4 p-3 pb-4 rounded-md xl:gap-3 shadow-card group" href={`/programs/categories/${category.slug.current}`} key={idx}>
         <div className="relative self-center w-full overflow-hidden aspect-video group">
           <Image className="object-cover w-full h-full group-hover:scale-[102%] duration-500 rounded-[4px]" src={urlForImage(category.image).url()} fill={true} sizes="25vw" alt={category.name} />
         </div>
@@ -62,7 +62,6 @@ const ProgramCategories = async () => {
       <Heading type="title" className="text-center" text="Программы" />
 
       <div className="grid items-start grid-cols-3 gap-3 sm:grid-cols-1">{slides}</div>
-      <Button type="link" href="/programs" variant="secondary" adavanced_hover={true} size="lg" className="w-full border-[1.5px]" text="Все программы" />
     </section>
   )
 }
