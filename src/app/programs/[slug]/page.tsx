@@ -17,19 +17,19 @@ interface ProgramPage {
   type: Array<{name: string; slug: string}>
   images: Array<{asset: {url: string}}>
   pdf: {asset: {_ref: string}}
-  slug: {current: string}
+  [x: string]: any
 }
 
-async function getData(slug): Promise<ProgramPage | null> {
+async function getData(): Promise<ProgramPage> {
   const data = await client.fetch<ProgramPage>(
-    `*[_type == 'programs' && slug.current == '${slug}'][0] {
+    `*[_type == 'programs'] {
         name,
         duration,
         description,
         type[] -> { name, slug },
         images,
         pdf,
-        slug
+        slug,
     }`,
     {},
     {
@@ -38,15 +38,19 @@ async function getData(slug): Promise<ProgramPage | null> {
       },
     },
   )
-  return data || null
+  return data
 }
 
 const ProgramPage = async ({params}) => {
-  const program: ProgramPage | null = await getData(params.slug)
+  const programs: ProgramPage = await getData()
 
-  if (!program) {
+  if (!programs) {
     return <mark>Произошла ошибка при получении данных!</mark>
   }
+
+  const categorizedPrograms: ProgramPage = programs.filter((program) => {
+    return program.type.some((type) => type.slug.current === params.slug)
+  })
 
   const generateSliderData = (images: Array<{asset: {url: string}}>) => {
     if (images.length > 1) {
@@ -58,13 +62,17 @@ const ProgramPage = async ({params}) => {
     }
   }
 
-  const imagesStyles = 'relative w-full h-[50vh] aspect-square xl:h-full sm:h-[50vh]'
+  const imagesStyles = 'relative s-36 aspect-square'
 
   return (
     <Container width="2/3">
-      <section data-index={program.slug.current} className="grid mx-auto place-items-center">
-        <div className="space-y-5 group border-[1.5px] border-custom-primary shadow-lg p-5 sm:p-3">
-          <div className="grid grid-cols-2 sm:grid-cols-1 gap-10 sm:gap-7 items-center">
+      <h1>{params.slug}</h1>
+      <section data-index={params.slug}>
+        {categorizedPrograms.map((program, index) => (
+          <div key={index} className="border-custom-primary border">
+            <h1>{program.name}</h1>
+            <p>{program.duration}</p>
+
             {program.images.length > 1 ? (
               <ImageSlider className={imagesStyles} sliderData={generateSliderData(program.images)} />
             ) : (
@@ -75,34 +83,13 @@ const ProgramPage = async ({params}) => {
               ))
             )}
 
-            <div className="flex flex-col gap-5 xl:py-5 sm:py-0 sm:gap-5">
-              <div className="space-y-2">
-                <mark>
-                  {program.type.map((type, index) => (
-                    <span key={index}>{type.name}</span>
-                  ))}
-                </mark>
-
-                <Heading type="title" text={program.name} />
-
-                {program.duration && <h1>{program.duration}</h1>}
-              </div>
-
-              <div className="w-[90%] sm:w-full">
-                <PortableText value={program.description} />
-              </div>
-
-              {program.pdf ? (
-                <div className="flex gap-3">
-                  <Button type="link" text="Узнать детали" size="lg" variant="secondary" className="w-fit" adavanced_hover={true} blank={true} href={urlForFile(program.pdf.asset._ref)} />
-                  <Button type="button" text="Забронировать" size="lg" adavanced_hover={true} className="w-fit" />
-                </div>
-              ) : (
-                <Button type="button" text="Забронировать" size="lg" adavanced_hover={true} className="w-fit" />
-              )}
-            </div>
+            <mark>
+              {program.type.map((type, index) => (
+                <span key={index}>{type.slug.current}</span>
+              ))}
+            </mark>
           </div>
-        </div>
+        ))}
       </section>
     </Container>
   )

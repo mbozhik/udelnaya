@@ -14,7 +14,7 @@ export const widthclassName = {
 }
 
 export default function Container({children, width = '2/3', padding = true, className}: Props) {
-  const containerStyles = `${widthclassName.default} ${widthclassName[width]} ${padding && 'pt-36 xl:pt-28 sm:pt-24'} ${cn(className)}`
+  const containerStyles = `${widthclassName.default} ${widthclassName[width]} ${padding && 'pt-36 sm:pt-24'} ${cn(className)}`
 
   return <main className={containerStyles}>{children}</main>
 }

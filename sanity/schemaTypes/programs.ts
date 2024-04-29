@@ -48,7 +48,6 @@ const programs: SchemaTypeDefinition = {
       title: 'PDF файл',
       type: 'file',
     },
-
     {
       name: 'slug',
       title: 'Ссылка',

@@ -45,7 +45,7 @@ const ProgramCategories = async () => {
   const slides = programCategories
     .sort((a, b) => a.id - b.id)
     .map((category, idx) => (
-      <Link className="flex flex-col justify-between gap-4 p-3 pb-4 rounded-md xl:gap-3 shadow-card group" href={`/programs/#${category.slug.current}`} key={idx}>
+      <Link className="flex flex-col justify-between gap-4 p-3 pb-4 rounded-md xl:gap-3 shadow-card group" href={`/programs/${category.slug.current}`} key={idx}>
         <div className="relative self-center w-full overflow-hidden aspect-video group">
           <Image className="object-cover w-full h-full group-hover:scale-[102%] duration-500 rounded-[4px]" src={urlForImage(category.image).url()} fill={true} sizes="25vw" alt={category.name} />
         </div>
