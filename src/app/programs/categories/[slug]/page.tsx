@@ -64,7 +64,7 @@ const ProgramPage = async ({params}) => {
     }
   }
 
-  const imagesStyles = 'relative w-[45vw] sm:w-full aspect-[3/2] rounded-[4px]'
+  const imagesStyles = 'relative w-[70%] sm:w-full aspect-[3/2] rounded-[4px]'
 
   return (
     <Container width="2/3" className="space-y-5 mt-7">
@@ -85,13 +85,13 @@ const ProgramPage = async ({params}) => {
               )}
             </>
 
-            <div className="space-y-4">
-              <div className="pr-10 space-y-1 sm:pr-2">
+            <div className="space-y-4 pr-10 sm:pr-2">
+              <div className="space-y-1">
                 <Text type="title" text={program.name} />
-                <PortableText value={program.short_description} />
+                <mark className="bg-custom-gray">{program.duration}</mark>
               </div>
 
-              <mark className="bg-custom-gray">{program.duration}</mark>
+              <PortableText value={program.short_description} />
             </div>
           </Link>
         ))}
