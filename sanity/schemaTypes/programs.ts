@@ -19,7 +19,8 @@ const programs: SchemaTypeDefinition = {
     {
       name: 'short_description',
       title: 'Короткое описание программы',
-      type: 'string',
+      type: 'array',
+      of: [{type: 'block'}],
       validation: (rule: Rule) => rule.required(),
     },
     {

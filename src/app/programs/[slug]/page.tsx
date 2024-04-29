@@ -1,4 +1,5 @@
 import {client, urlForImage, urlForFile} from '@/lib/sanity'
+import {revalidateOnTime} from '@/lib/utils'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -6,15 +7,14 @@ import {PortableText} from '@portabletext/react'
 
 import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
-import Button from '#/UI/Button'
+import Text from '#/UI/Text'
 import ImageSlider from '#/UI/ImageSlider'
-import {revalidateOnTime} from '@/lib/utils'
 
 interface ProgramPage {
   name: string
   duration: string
-  description: any
-  type: Array<{name: string; slug: string}>
+  short_description: any
+  type: Array<{name: string; slug: {current: string}}>
   images: Array<{asset: {url: string}}>
   pdf: {asset: {_ref: string}}
   [x: string]: any
@@ -25,7 +25,7 @@ async function getData(): Promise<ProgramPage> {
     `*[_type == 'programs'] {
         name,
         duration,
-        description,
+        short_description,
         type[] -> { name, slug },
         images,
         pdf,
@@ -48,9 +48,11 @@ const ProgramPage = async ({params}) => {
     return <mark>Произошла ошибка при получении данных!</mark>
   }
 
-  const categorizedPrograms: ProgramPage = programs.filter((program) => {
+  const categorizedPrograms: ProgramPage[] = programs.filter((program) => {
     return program.type.some((type) => type.slug.current === params.slug)
   })
+
+  const pageTitle = categorizedPrograms.flatMap((program) => program.type).find((type) => type.slug.current === params.slug)?.name || 'Категория не найдена'
 
   const generateSliderData = (images: Array<{asset: {url: string}}>) => {
     if (images.length > 1) {
@@ -62,33 +64,36 @@ const ProgramPage = async ({params}) => {
     }
   }
 
-  const imagesStyles = 'relative s-36 aspect-square'
+  const imagesStyles = 'relative w-[45vw] sm:w-full aspect-[3/2] rounded-[4px]'
 
   return (
-    <Container width="2/3">
-      <h1>{params.slug}</h1>
-      <section data-index={params.slug}>
+    <Container width="2/3" className="space-y-5 mt-7">
+      <Heading type="title" text={pageTitle} />
+
+      <section data-index={params.slug} className="space-y-5">
         {categorizedPrograms.map((program, index) => (
-          <div key={index} className="border-custom-primary border">
-            <h1>{program.name}</h1>
-            <p>{program.duration}</p>
+          <Link className="flex items-center gap-10 px-3 py-5 rounded-md sm:gap-5 sm:flex-col shadow-card group" href={`/programs/${program.slug.current}`} key={index}>
+            <>
+              {program.images.length > 1 ? (
+                <ImageSlider className={imagesStyles} sliderData={generateSliderData(program.images)} />
+              ) : (
+                program.images.map((image, index) => (
+                  <div className={`relative ${imagesStyles}`} key={index}>
+                    <Image className="object-cover" src={urlForImage(image.asset).url()} fill={true} sizes="25vw" alt={`${program.name}`} />
+                  </div>
+                ))
+              )}
+            </>
 
-            {program.images.length > 1 ? (
-              <ImageSlider className={imagesStyles} sliderData={generateSliderData(program.images)} />
-            ) : (
-              program.images.map((image, index) => (
-                <div className={`relative ${imagesStyles}`} key={index}>
-                  <Image className="object-cover" src={urlForImage(image.asset).url()} fill={true} sizes="25vw" alt={`${program.name}`} />
-                </div>
-              ))
-            )}
+            <div className="space-y-4">
+              <div className="pr-10 space-y-1 sm:pr-2">
+                <Text type="title" text={program.name} />
+                <PortableText value={program.short_description} />
+              </div>
 
-            <mark>
-              {program.type.map((type, index) => (
-                <span key={index}>{type.slug.current}</span>
-              ))}
-            </mark>
-          </div>
+              <mark className="bg-custom-gray">{program.duration}</mark>
+            </div>
+          </Link>
         ))}
       </section>
     </Container>
