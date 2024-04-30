@@ -23,7 +23,7 @@ const corporateData = {
 
 export default function Corporate() {
   return (
-    <section data-section="corporate-index" className="space-y-7 sm:space-y-5">
+    <section data-section="corporate-index" className="mb-20 space-y-7 sm:space-y-5">
       <Heading type="title" className="text-center" text="Корпоративным клиентам" />
 
       <div className="grid grid-cols-3 gap-3 sm:grid-cols-1">

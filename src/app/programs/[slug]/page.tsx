@@ -1,15 +1,14 @@
 import {client, urlForImage, urlForFile} from '@/lib/sanity'
+import {revalidateOnTime} from '@/lib/utils'
 
-import Link from 'next/link'
 import Image from 'next/image'
 import {PortableText} from '@portabletext/react'
 
 import Container from '#/Global/Container'
-import Heading from '#/UI/Heading'
+import ImageSlider from '#/UI/ImageSlider'
 import Text from '#/UI/Text'
 import Button from '#/UI/Button'
-import ImageSlider from '#/UI/ImageSlider'
-import {revalidateOnTime} from '@/lib/utils'
+import Questions from '##/index/Questions'
 
 interface ProgramPage {
   name: string
@@ -65,7 +64,7 @@ const ProgramPage = async ({params}) => {
 
   return (
     <Container width="2/3">
-      <section data-index={program.slug.current} className="mt-10">
+      <section data-index={program.slug.current} className="mt-14 mb-20">
         <div className="p-5 space-y-7 shadow-card rounded-md group sm:p-3">
           <div className="flex items-center gap-10 sm:gap-5 sm:flex-col">
             <>
@@ -96,17 +95,12 @@ const ProgramPage = async ({params}) => {
               <PortableText value={program.description} />
             </div>
 
-            {program.pdf ? (
-              <div className="flex gap-3 sm:flex-col">
-                <Button type="link" text="Узнать детали" size="lg" variant="secondary" className="w-fit sm:w-full sm:py-3" adavanced_hover={true} blank={true} href={urlForFile(program.pdf.asset._ref)} />
-                <Button type="button" text="Забронировать" size="lg" adavanced_hover={true} className="w-fit sm:w-full sm:py-3" />
-              </div>
-            ) : (
-              <Button type="button" text="Забронировать" size="lg" adavanced_hover={true} className="w-fit sm:w-full sm:py-3" />
-            )}
+            {program.pdf && <Button type="link" text="Узнать детали" size="lg" variant="secondary" className="sm:w-full sm:py-3" adavanced_hover={true} blank={true} href={urlForFile(program.pdf.asset._ref)} />}
           </div>
         </div>
       </section>
+
+      <Questions />
     </Container>
   )
 }
