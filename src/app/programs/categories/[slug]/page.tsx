@@ -9,6 +9,7 @@ import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
 import Text from '#/UI/Text'
 import ImageSlider from '#/UI/ImageSlider'
+import Questions from '##/index/Questions'
 
 interface ProgramPage {
   name: string
@@ -67,35 +68,38 @@ const ProgramPage = async ({params}) => {
   const imagesStyles = 'relative col-span-2 w-full aspect-[3/2] rounded-[4px]'
 
   return (
-    <Container width="2/3" className="space-y-5 mt-7">
-      <Heading type="title" text={pageTitle} />
+    <Container width="2/3" className="space-y-20 mt-7">
+      <div className="space-y-5">
+        <Heading type="title" text={pageTitle} />
+        <section data-index={params.slug} className="space-y-5">
+          {categorizedPrograms.map((program, index) => (
+            <Link className="grid grid-cols-6 items-center gap-10 px-3 py-5 rounded-md sm:gap-5 sm:flex-col shadow-card group" href={`/programs/${program.slug.current}`} key={index}>
+              <>
+                {program.images.length > 1 ? (
+                  <ImageSlider className={imagesStyles} sliderData={generateSliderData(program.images)} />
+                ) : (
+                  program.images.map((image, index) => (
+                    <div className={`relative ${imagesStyles}`} key={index}>
+                      <Image className="object-cover" src={urlForImage(image.asset).url()} fill={true} sizes="25vw" alt={`${program.name}`} />
+                    </div>
+                  ))
+                )}
+              </>
 
-      <section data-index={params.slug} className="space-y-5">
-        {categorizedPrograms.map((program, index) => (
-          <Link className="grid grid-cols-6 items-center gap-10 px-3 py-5 rounded-md sm:gap-5 sm:flex-col shadow-card group" href={`/programs/${program.slug.current}`} key={index}>
-            <>
-              {program.images.length > 1 ? (
-                <ImageSlider className={imagesStyles} sliderData={generateSliderData(program.images)} />
-              ) : (
-                program.images.map((image, index) => (
-                  <div className={`relative ${imagesStyles}`} key={index}>
-                    <Image className="object-cover" src={urlForImage(image.asset).url()} fill={true} sizes="25vw" alt={`${program.name}`} />
-                  </div>
-                ))
-              )}
-            </>
+              <div className="col-span-4 space-y-4 pr-10 sm:pr-2">
+                <div className="space-y-1">
+                  <Text type="title" text={program.name} />
+                  <mark className="bg-custom-gray">{program.duration}</mark>
+                </div>
 
-            <div className="col-span-4 space-y-4 pr-10 sm:pr-2">
-              <div className="space-y-1">
-                <Text type="title" text={program.name} />
-                <mark className="bg-custom-gray">{program.duration}</mark>
+                <PortableText value={program.short_description} />
               </div>
+            </Link>
+          ))}
+        </section>
+      </div>
 
-              <PortableText value={program.short_description} />
-            </div>
-          </Link>
-        ))}
-      </section>
+      <Questions />
     </Container>
   )
 }
