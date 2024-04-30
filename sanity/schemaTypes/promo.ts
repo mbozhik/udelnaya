@@ -22,6 +22,12 @@ const promo: SchemaTypeDefinition = {
       validation: (rule: Rule) => rule.required(),
     },
     {
+      name: 'description',
+      title: 'Описание программы',
+      type: 'array',
+      of: [{type: 'block'}],
+    },
+    {
       name: 'image',
       title: 'Изображение',
       type: 'image',
@@ -31,6 +37,15 @@ const promo: SchemaTypeDefinition = {
       name: 'mobile_image',
       title: 'Мобильное изображение',
       type: 'image',
+      validation: (rule: Rule) => rule.required(),
+    },
+    {
+      name: 'slug',
+      title: 'Ссылка',
+      type: 'slug',
+      options: {
+        source: 'title',
+      },
       validation: (rule: Rule) => rule.required(),
     },
   ],
