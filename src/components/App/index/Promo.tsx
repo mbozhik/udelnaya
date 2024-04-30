@@ -10,9 +10,10 @@ const PromoSlider = dynamic(
   {ssr: false},
 )
 
-export interface Promo {
+interface Promo {
   title: string
   caption: string
+  id: number
   image: Array<{asset: {url: string}}>
   mobile_image: Array<{asset: {url: string}}>
 }
@@ -22,6 +23,7 @@ async function getData(): Promise<Promo[]> {
     `*[_type == 'promo'] {
       title,
       caption,
+      id,
       image,
       mobile_image,
     }`,
@@ -42,11 +44,12 @@ const Promo = async () => {
     return <mark>Произошла ошибка при получении данных!</mark>
   }
 
-  const sliderData = promo.map((promotion) => ({
-    imageUrl: urlForImage(promotion.image).url(),
-    mobileImageUrl: urlForImage(promotion.mobile_image).url(),
-    title: promotion.title,
-    caption: promotion.caption,
+  const sliderData = promo.map((promo) => ({
+    title: promo.title,
+    caption: promo.caption,
+    id: promo.id,
+    imageUrl: urlForImage(promo.image).url(),
+    mobileImageUrl: urlForImage(promo.mobile_image).url(),
   }))
 
   const mobileScreenHeight = 'sm:!h-[100svh] sm:h-[100vh]'

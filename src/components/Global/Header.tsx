@@ -23,8 +23,8 @@ export const headerData = {
             href: '/sanatorium/about',
           },
           {
-            title: 'Новости',
-            href: '/sanatorium/news',
+            title: 'Акции',
+            href: '/sanatorium/promo',
           },
           {
             title: 'Важная информация',
