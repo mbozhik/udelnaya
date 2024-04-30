@@ -64,7 +64,7 @@ const ProgramPage = async ({params}) => {
     }
   }
 
-  const imagesStyles = 'relative w-[70%] sm:w-full aspect-[3/2] rounded-[4px]'
+  const imagesStyles = 'relative col-span-2 w-full aspect-[3/2] rounded-[4px]'
 
   return (
     <Container width="2/3" className="space-y-5 mt-7">
@@ -72,7 +72,7 @@ const ProgramPage = async ({params}) => {
 
       <section data-index={params.slug} className="space-y-5">
         {categorizedPrograms.map((program, index) => (
-          <Link className="flex items-center gap-10 px-3 py-5 rounded-md sm:gap-5 sm:flex-col shadow-card group" href={`/programs/${program.slug.current}`} key={index}>
+          <Link className="grid grid-cols-6 items-center gap-10 px-3 py-5 rounded-md sm:gap-5 sm:flex-col shadow-card group" href={`/programs/${program.slug.current}`} key={index}>
             <>
               {program.images.length > 1 ? (
                 <ImageSlider className={imagesStyles} sliderData={generateSliderData(program.images)} />
@@ -85,7 +85,7 @@ const ProgramPage = async ({params}) => {
               )}
             </>
 
-            <div className="space-y-4 pr-10 sm:pr-2">
+            <div className="col-span-4 space-y-4 pr-10 sm:pr-2">
               <div className="space-y-1">
                 <Text type="title" text={program.name} />
                 <mark className="bg-custom-gray">{program.duration}</mark>
