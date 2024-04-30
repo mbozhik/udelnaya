@@ -40,19 +40,19 @@ export const headerData = {
         content: [
           {
             title: 'Специалисты',
-            href: '/medecine/specialists',
+            href: '/medicine/specialisty',
           },
           {
             title: 'Диагностика',
-            href: '/medicine/specialists#diagnostics',
+            href: '/medicine/diagnostika',
           },
           {
             title: 'Процедуры',
-            href: '/medicine/procedures',
+            href: '/medicine/procedury',
           },
           {
             title: 'ОМС Реабилитация',
-            href: '/medicine/oms',
+            href: '/medicine/oms-reabilitaciya',
           },
         ],
       },

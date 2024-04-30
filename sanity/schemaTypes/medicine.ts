@@ -12,14 +12,24 @@ const medicine: SchemaTypeDefinition = {
       validation: (rule: Rule) => rule.required(),
     },
     {
+      name: 'short_description',
+      title: 'Короткое описание программы',
+      type: 'array',
+      of: [{type: 'block'}],
+      validation: (rule: Rule) => rule.required(),
+    },
+    {
       name: 'description',
-      title: 'Описание секции',
-      type: 'text',
+      title: 'Описание программы',
+      type: 'array',
+      of: [{type: 'block'}],
+      validation: (rule: Rule) => rule.required(),
     },
     {
       name: 'image',
       title: 'Изображение',
       type: 'image',
+      validation: (rule: Rule) => rule.required(),
     },
     {
       name: 'special_offer',
