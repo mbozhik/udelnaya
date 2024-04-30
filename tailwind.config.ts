@@ -23,6 +23,7 @@ const config = {
           primary: '#991C2F',
           gray: '#4c4c4c',
           'light-gray': '#f4f4f4',
+          'dirty-white': '#e4e4e4',
         },
       },
       boxShadow: {

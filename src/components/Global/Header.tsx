@@ -9,26 +9,93 @@ import LogoImage from '%/logo.svg'
 import Text from '#/UI/Text'
 import Button from '#/UI/Button'
 import BoockingForm from '#/UI/BookingForm'
+import Nav from '#/Global/Nav'
 
-export const headerContent = {
+export const headerData = {
   nav: {
-    1: {name: 'О санатории', href: '/'},
-    2: {name: 'Медицина', href: '/medicine/'},
-    3: {name: 'Программы', href: '/programs/'},
-    4: {name: 'Номера', href: '/rooms/'},
-    5: {name: 'Корпоративным клиентам', href: '/corporate/'},
-    6: {name: 'Контакты', href: '/contacts/'},
+    1: {
+      type: 'link',
+      config: {
+        name: 'О санатории',
+        href: '/',
+      },
+    },
+    2: {
+      type: 'link',
+      config: {
+        name: 'Медицина',
+        href: '/medicine/',
+      },
+    },
+    3: {
+      type: 'dropdown',
+      config: {
+        name: 'Программы',
+        href: '/programs/',
+        content: [
+          {
+            title: 'Alert Dialog',
+            href: '/docs/primitives/alert-dialog',
+            description: 'A modal dialog that interrupts the user with important content and expects a response.',
+          },
+          {
+            title: 'Hover Card',
+            href: '/docs/primitives/hover-card',
+            description: 'For sighted users to preview content available behind a link.',
+          },
+          {
+            title: 'Progress',
+            href: '/docs/primitives/progress',
+            description: 'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
+          },
+        ],
+      },
+    },
+    4: {
+      type: 'dropdown',
+      config: {
+        name: 'Программы',
+        href: '/programs/',
+        content: [
+          {
+            title: 'Alert Dialog',
+            href: '/docs/primitives/alert-dialog',
+            description: 'A modal dialog that interrupts the user with important content and expects a response.',
+          },
+          {
+            title: 'Hover Card',
+            href: '/docs/primitives/hover-card',
+            description: 'For sighted users to preview content available behind a link.',
+          },
+          {
+            title: 'Progress',
+            href: '/docs/primitives/progress',
+            description: 'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
+          },
+        ],
+      },
+    },
+    44: {
+      type: 'link',
+      config: {
+        name: 'Номера',
+        href: '/rooms/',
+      },
+    },
+    6: {
+      type: 'link',
+      config: {
+        name: 'Контакты',
+        href: '/contacts/',
+      },
+    },
   },
-  contacts: {
-    tel: {name: '8 (800) 100-35-45', href: 'tel:+78001003545'},
-  },
+  tel: {name: '8 (800) 100-35-45', href: 'tel:+78001003545'},
 }
 
 export default function Header() {
   const [isFormVisible, setIsFormVisible] = useState(false)
   const toggleFormVisibility = () => setIsFormVisible(!isFormVisible)
-
-  const keys = Object.keys(headerContent.nav)
 
   return (
     <>
@@ -46,31 +113,15 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-7">
-            <Link className="text-lg duration-200 xl:text-base font-book sm:hidden text-custom-primary hover:text-custom-gray" href={headerContent.contacts.tel.href}>
-              {headerContent.contacts.tel.name}
+            <Link className="text-lg duration-200 xl:text-base font-book sm:hidden text-custom-primary hover:text-custom-gray" href={headerData.tel.href}>
+              {headerData.tel.name}
             </Link>
 
             <Button onClick={toggleFormVisibility} type="button" size="lg" adavanced_hover={true} text="Забронировать" />
           </div>
         </section>
 
-        <nav className="flex sm:grid sm:grid-cols-4 justify-center border-t-[1.5px] border-b-[1.5px] font-book border-custom-gray/70 ">
-          {keys.map((key, index) => {
-            const linkclassName = `py-1.5 px-5 sm:px-2 sm:text-xs sm:font-normal sm:text-center
-                        border-l-[1.5px] border-custom-gray/70 
-                        hover:bg-custom-gray/15 duration-300 
-                        ${index === keys.length - 1 && 'border-r-[1.5px]'} 
-                        ${index === 4 && 'xl:hidden'} 
-                        ${index === 5 && 'sm:hidden'} `
-
-            const {name, href} = headerContent.nav[key]
-            return (
-              <Link key={key} href={href} className={linkclassName}>
-                {name}
-              </Link>
-            )
-          })}
-        </nav>
+        <Nav />
       </header>
 
       {isFormVisible && <BoockingForm closeForm={toggleFormVisibility} />}

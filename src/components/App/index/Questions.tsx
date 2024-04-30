@@ -6,7 +6,7 @@ import Heading from '#/UI/Heading'
 import Button from '#/UI/Button'
 import BoockingForm from '#/UI/BookingForm'
 
-import {headerContent} from '#/Global/Header'
+import {headerData} from '#/Global/Header'
 
 export default function Questions() {
   const [isFormVisible, setIsFormVisible] = useState(false)
@@ -22,7 +22,7 @@ export default function Questions() {
           </div>
 
           <div className="flex gap-3 sm:gap-2 sm:flex-col sm:w-[93%]">
-            <Button type="link" href={headerContent.contacts.tel.href} className="px-14 sm:!w-full" variant="secondary" size="lg" adavanced_hover={true} text="Позвонить нам" />
+            <Button type="link" href={headerData.tel.href} className="px-14 sm:!w-full" variant="secondary" size="lg" adavanced_hover={true} text="Позвонить нам" />
             <Button type="button" onClick={toggleFormVisibility} className="px-14 sm:w-full" size="lg" adavanced_hover={true} text="Оставить заявку" />
           </div>
         </div>
