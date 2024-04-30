@@ -14,39 +14,65 @@ import Nav from '#/Global/Nav'
 export const headerData = {
   nav: {
     1: {
-      type: 'link',
+      type: 'dropdown',
       config: {
-        name: 'О санатории',
-        href: '/',
+        name: 'Санаторий',
+        content: [
+          {
+            title: 'О Санатории',
+            href: '/sanatorium/about',
+          },
+          {
+            title: 'Новости',
+            href: '/sanatorium/news',
+          },
+          {
+            title: 'Важная информация',
+            href: '/sanatorium/info',
+          },
+        ],
       },
     },
     2: {
-      type: 'link',
+      type: 'dropdown',
       config: {
         name: 'Медицина',
-        href: '/medicine/',
+        content: [
+          {
+            title: 'Специалисты',
+            href: '/medecine/specialists',
+          },
+          {
+            title: 'Диагностика',
+            href: '/medicine/specialists#diagnostics',
+          },
+          {
+            title: 'Процедуры',
+            href: '/medicine/procedures',
+          },
+          {
+            title: 'ОМС Реабилитация',
+            href: '/medicine/oms',
+          },
+        ],
       },
     },
     3: {
       type: 'dropdown',
       config: {
         name: 'Программы',
-        href: '/programs/',
         content: [
           {
-            title: 'Alert Dialog',
-            href: '/docs/primitives/alert-dialog',
-            description: 'A modal dialog that interrupts the user with important content and expects a response.',
+            title: 'Базовые',
+            href: '/programs/categories/bazovye',
           },
           {
-            title: 'Hover Card',
-            href: '/docs/primitives/hover-card',
-            description: 'For sighted users to preview content available behind a link.',
+            title: 'Оздоровительные',
+            href: '/programs/categories/ozdorovitelnye',
           },
           {
-            title: 'Progress',
-            href: '/docs/primitives/progress',
-            description: 'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
+            title: 'Лечебно-реабилитационные',
+            href: '/programs/categories/lechebno-reabilitacionnye',
           },
         ],
       },
@@ -55,14 +81,14 @@ export const headerData = {
       type: 'link',
       config: {
         name: 'Номера',
-        href: '/rooms/',
+        href: '/#rooms',
       },
     },
     5: {
       type: 'link',
       config: {
         name: 'Контакты',
-        href: '/contacts/',
+        href: '#',
       },
     },
   },
