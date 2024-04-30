@@ -85,13 +85,15 @@ const ProgramPage = async ({params}) => {
                 <mark className="bg-custom-gray">{program.duration}</mark>
               </div>
 
-              <PortableText value={program.short_description} />
+              <div className="tracking-tight sm:text-sm">
+                <PortableText value={program.short_description} />
+              </div>
             </div>
           </div>
 
           <div className="space-y-7 sm:space-y-5">
             <hr className="hidden sm:block" />
-            <div className="pr-10 sm:pr-2">
+            <div className="pr-10 sm:pr-2 tracking-tight sm:text-sm">
               <PortableText value={program.description} />
             </div>
 

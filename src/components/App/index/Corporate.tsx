@@ -30,7 +30,7 @@ export default function Corporate() {
         {Object.entries(corporateData).map(([key, value]) => (
           <div key={key} className="flex flex-col items-center gap-3 p-3 pb-3 rounded-md sm:p-3 sm:gap-2 shadow-card">
             <Image className="object-cover w-full h-full rounded-[4px]" src={value.image} alt={value.title} />
-            <Text type="title" className="text-center !font-book xl:text-xl sm:text-lg" text={value.title} />
+            <Text type="title" className="text-xl xl:text-lg !font-book" text={value.title} />
           </div>
         ))}
       </div>

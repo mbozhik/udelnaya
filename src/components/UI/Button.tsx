@@ -33,15 +33,11 @@ export const buttonVariants = {
 }
 
 const Button: React.FC<Props> = ({type, text, variant = 'primary', size, adavanced_hover = false, href, blank, className, onClick, ...props}) => {
-  const buttonStyles = `
-  ${buttonVariants.default.styles} ${buttonVariants[variant].default} 
-  ${adavanced_hover ? (!isMobile ? buttonVariants[variant].hover : buttonVariants[variant].hover_mobile) : buttonVariants.default.hover} 
-  ${size === 'lg' && 'text-lg sm:text-base'}}
-  `
+  const buttonStyles = `${buttonVariants.default.styles} ${buttonVariants[variant].default} ${adavanced_hover ? (!isMobile ? buttonVariants[variant].hover : buttonVariants[variant].hover_mobile) : buttonVariants.default.hover}  ${size === 'lg' && 'text-lg sm:text-base'}`
 
   if (type === 'link') {
     return (
-      <Link href={href} target={blank && '_blank'} className={`block text-center ${buttonStyles}`} {...props}>
+      <Link href={href} target={blank && '_blank'} className={cn(`block text-center ${buttonStyles}`, className)} {...props}>
         {text}
       </Link>
     )
