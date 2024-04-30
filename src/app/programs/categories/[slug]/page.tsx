@@ -81,7 +81,7 @@ const ProgramPage = async ({params}) => {
                 ) : (
                   program.images.map((image, index) => (
                     <div className={`relative ${imagesStyles}`} key={index}>
-                      <Image className="object-cover" src={urlForImage(image.asset).url()} fill={true} sizes="25vw" alt={`${program.name}`} />
+                      <Image quality={100} className="object-cover" src={urlForImage(image.asset).url()} fill={true} sizes="25vw" alt={`${program.name}`} />
                     </div>
                   ))
                 )}

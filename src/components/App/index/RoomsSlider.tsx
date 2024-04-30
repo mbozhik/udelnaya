@@ -43,7 +43,7 @@ const RoomsSlider: React.FC<SliderProps> = ({sliderData, className}) => {
         ) : (
           slide.imageUrls.map((imageUrl, index) => (
             <div className={imagesStyles} key={index}>
-              <Image className="object-cover" src={imageUrl} fill={true} sizes="25vw" alt={`${slide.name}`} />
+              <Image quality={100} className="object-cover" src={imageUrl} fill={true} sizes="25vw" alt={`${slide.name}`} />
             </div>
           ))
         )}

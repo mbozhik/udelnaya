@@ -61,7 +61,7 @@ const MedicinePage = async ({params}) => {
           <div className="p-5 space-y-7 sm:space-y-3 shadow-card rounded-md group sm:p-3">
             <div className="grid grid-cols-6 sm:flex sm:flex-col items-center gap-10 sm:gap-5">
               <div className={`relative ${imagesStyles}`}>
-                <Image className="object-cover" src={urlForImage(medicine.image).url()} fill={true} sizes="25vw" alt={`${medicine.name}`} />
+                <Image quality={100} className="object-cover" src={urlForImage(medicine.image).url()} fill={true} sizes="25vw" alt={`${medicine.name}`} />
               </div>
 
               <div className="col-span-4 space-y-2 pr-10 sm:pr-2">
