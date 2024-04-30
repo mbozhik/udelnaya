@@ -16,6 +16,12 @@ const promo: SchemaTypeDefinition = {
       type: 'string',
     },
     {
+      name: 'id',
+      title: 'ID акции',
+      type: 'number',
+      validation: (rule: Rule) => rule.required(),
+    },
+    {
       name: 'image',
       title: 'Изображение',
       type: 'image',
@@ -31,7 +37,7 @@ const promo: SchemaTypeDefinition = {
   preview: {
     select: {
       title: 'title',
-      subtitle: 'caption',
+      subtitle: 'id',
       media: 'image',
     },
   },

@@ -20,7 +20,6 @@ const programs: SchemaTypeDefinition = {
     {
       name: 'id',
       title: 'ID категории',
-      description: 'От 1 до 3',
       type: 'number',
       validation: (rule: Rule) => rule.required(),
     },
