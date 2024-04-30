@@ -109,8 +109,8 @@ export default function Header() {
             </Link>
 
             <div className="sm:hidden">
-              <Text type="title" text="Санаторий «Удельная»" className="text-xl xl:text-lg" />
-              <Text text="Медицинский центр, реабилитация, оздоровительные программы в Подмосковье" className="text-base xl:text-sm leading-[1.15] xl:leading-none" />
+              <Text type="title" className="" text="Санаторий «Удельная»" />
+              <Text className="text-lg leading-[1.20]" text="Медицинский центр, реабилитация, оздоровительные программы в Подмосковье" />
             </div>
           </div>
 
