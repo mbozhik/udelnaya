@@ -58,8 +58,8 @@ const MedicinePage = async ({params}) => {
         <Heading type="title" text={pageTitle} />
 
         <section data-index={medicine.slug.current} className="mt-14 mb-20">
-          <div className="p-5 space-y-7 shadow-card rounded-md group sm:p-3">
-            <div className="grid grid-cols-6 items-center gap-10 sm:gap-5 sm:flex-col">
+          <div className="p-5 space-y-7 sm:space-y-3 shadow-card rounded-md group sm:p-3">
+            <div className="grid grid-cols-6 sm:flex sm:flex-col items-center gap-10 sm:gap-5">
               <div className={`relative ${imagesStyles}`}>
                 <Image className="object-cover" src={urlForImage(medicine.image).url()} fill={true} sizes="25vw" alt={`${medicine.name}`} />
               </div>

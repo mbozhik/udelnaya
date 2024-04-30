@@ -14,8 +14,10 @@ interface Promo {
   title: string
   caption: string
   id: number
+  description?: any
   image: Array<{asset: {url: string}}>
   mobile_image: Array<{asset: {url: string}}>
+  slug: {current: string}
 }
 
 async function getData(): Promise<Promo[]> {
@@ -24,8 +26,10 @@ async function getData(): Promise<Promo[]> {
       title,
       caption,
       id,
+      description,
       image,
       mobile_image,
+      slug,
     }`,
     {},
     {
@@ -48,8 +52,10 @@ const Promo = async () => {
     title: promo.title,
     caption: promo.caption,
     id: promo.id,
+    description: promo.description,
     imageUrl: urlForImage(promo.image).url(),
     mobileImageUrl: urlForImage(promo.mobile_image).url(),
+    slug: promo.slug,
   }))
 
   const mobileScreenHeight = 'sm:!h-[100svh] sm:h-[100vh]'

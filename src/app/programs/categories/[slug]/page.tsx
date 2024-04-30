@@ -18,6 +18,7 @@ interface ProgramPage {
   type: Array<{name: string; slug: {current: string}}>
   images: Array<{asset: {url: string}}>
   pdf: {asset: {_ref: string}}
+  slug: {current: string}
   [x: string]: any
 }
 
@@ -73,7 +74,7 @@ const ProgramPage = async ({params}) => {
         <Heading type="title" text={pageTitle} />
         <section data-index={params.slug} className="space-y-5">
           {categorizedPrograms.map((program, index) => (
-            <Link className="grid grid-cols-6 items-center gap-10 px-3 py-5 rounded-md sm:gap-5 sm:flex-col shadow-card group" href={`/programs/${program.slug.current}`} key={index}>
+            <Link className="grid grid-cols-6 sm:flex sm:flex-col items-center gap-10 px-3 py-5 rounded-md sm:gap-5 shadow-card group" href={`/programs/${program.slug.current}`} key={index}>
               <>
                 {program.images.length > 1 ? (
                   <ImageSlider className={imagesStyles} sliderData={generateSliderData(program.images)} />
