@@ -36,7 +36,7 @@ const Button: React.FC<Props> = ({type, text, variant = 'primary', size, adavanc
   const buttonStyles = `
   ${buttonVariants.default.styles} ${buttonVariants[variant].default} 
   ${adavanced_hover ? (!isMobile ? buttonVariants[variant].hover : buttonVariants[variant].hover_mobile) : buttonVariants.default.hover} 
-  ${size === 'lg' && 'text-lg sm:text-base'} ${cn(className)}
+  ${size === 'lg' && 'text-lg sm:text-base'}}
   `
 
   if (type === 'link') {
@@ -47,7 +47,7 @@ const Button: React.FC<Props> = ({type, text, variant = 'primary', size, adavanc
     )
   } else if (type === 'button' || type === 'submit') {
     return (
-      <button className={buttonStyles} onClick={onClick} {...props}>
+      <button className={cn(buttonStyles, className)} onClick={onClick} {...props}>
         {text}
       </button>
     )

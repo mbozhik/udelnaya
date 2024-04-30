@@ -8,9 +8,9 @@ interface Props {
 
 const Text: React.FC<Props> = ({type = 'caption', text, className}) => {
   if (type === 'title') {
-    return <h1 className={`text-2xl xl:text-xl font-medium tracking-tight ${cn(className)}`} dangerouslySetInnerHTML={{__html: text || ''}} />
+    return <h1 className={cn('text-2xl xl:text-xl font-medium tracking-tight', className)} dangerouslySetInnerHTML={{__html: text || ''}} />
   } else if (type === 'caption') {
-    return <p className={`tracking-tight sm:text-sm ${cn(className)}`} dangerouslySetInnerHTML={{__html: text || ''}} />
+    return <p className={cn('tracking-tight sm:text-sm', className)} dangerouslySetInnerHTML={{__html: text || ''}} />
   }
 }
 
