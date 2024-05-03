@@ -28,6 +28,16 @@ const promo: SchemaTypeDefinition = {
       of: [{type: 'block'}],
     },
     {
+      name: 'selection',
+      title: 'Выделение текста',
+      type: 'boolean',
+    },
+    {
+      name: 'shadow',
+      title: 'Тень для текста',
+      type: 'boolean',
+    },
+    {
       name: 'image',
       title: 'Изображение',
       type: 'image',
