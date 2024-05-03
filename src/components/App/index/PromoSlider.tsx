@@ -41,8 +41,9 @@ const Slider: React.FC<SliderProps> = ({sliderData, className}) => {
               <div className="pl-[7%] sm:pl-0 sm:w-full mt-5 space-y-3 sm:-space-y-1 text-white sm:text-center">
                 <div className={`space-y-2 xl:space-y-1 w-[43vw] xl:w-[50vw] sm:w-full ${slide.selection && 'p-5 bg-custom-gray/40 rounded-md'}`}>
                   <h1 className={`text-6xl font-medium uppercase xl:text-5xl sm:text-3xl max-w-[20ch] sm:w-full sm:mx-auto ${slide.shadow && 'text-shadow-title'}`}>{slide.title}</h1>
-                  <Heading type="caption" className={`text-lg sm:w-full sm:mx-auto xl:text-base ${slide.shadow && 'text-shadow-text'}`} text={slide.caption} />
+                  <Heading type="caption" className={`text-lg sm:w-full sm:mx-auto xl:text-base uppercase ${slide.shadow && 'text-shadow-text'}`} text={slide.caption} />
                 </div>
+
                 {slide.description && <Button type="link" className="w-fit sm:mx-auto" href={`/sanatorium/promo/${slide.slug.current}`} text="Узнать детали" size="lg" />}
               </div>
             </div>

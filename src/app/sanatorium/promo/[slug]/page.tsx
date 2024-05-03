@@ -1,4 +1,4 @@
-import {client, urlForImage, urlForFile} from '@/lib/sanity'
+import {client, urlForImage} from '@/lib/sanity'
 import {revalidateOnTime} from '@/lib/utils'
 
 import Image from 'next/image'
