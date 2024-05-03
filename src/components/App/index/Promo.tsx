@@ -15,6 +15,8 @@ interface Promo {
   caption: string
   id: number
   description?: any
+  selection?: boolean
+  shadow?: boolean
   image: Array<{asset: {url: string}}>
   mobile_image: Array<{asset: {url: string}}>
   slug: {current: string}
@@ -27,6 +29,8 @@ async function getData(): Promise<Promo[]> {
       caption,
       id,
       description,
+      selection,
+      shadow,
       image,
       mobile_image,
       slug,
@@ -53,6 +57,8 @@ const Promo = async () => {
     caption: promo.caption,
     id: promo.id,
     description: promo.description,
+    selection: promo.selection,
+    shadow: promo.shadow,
     imageUrl: urlForImage(promo.image).url(),
     mobileImageUrl: urlForImage(promo.mobile_image).url(),
     slug: promo.slug,

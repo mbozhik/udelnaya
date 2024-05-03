@@ -19,6 +19,8 @@ interface SliderProps {
     caption: string
     id: number
     description: any
+    selection?: boolean
+    shadow?: boolean
     imageUrl: string
     mobileImageUrl: string
     slug: {current: string}
@@ -36,13 +38,12 @@ const Slider: React.FC<SliderProps> = ({sliderData, className}) => {
             <Image quality={100} priority={true} className="absolute inset-0 block object-cover s-full" width={isMobile ? 450 : 1920} height={isMobile ? 900 : 700} alt={`акция ${index + 1}`} src={isMobile ? slide.mobileImageUrl : slide.imageUrl} />
 
             <div className="absolute inset-0 flex flex-col justify-center bg-black bg-opacity-10">
-              <div className="w-[75%] xl:w-[85%] mx-auto mt-5 space-y-3 text-white sm:text-center">
-                <div className="space-y-2 xl:space-y-1">
-                  <h1 className="text-6xl xl:text-5xl sm:text-3xl font-medium uppercase max-w-[20ch] sm:w-full sm:mx-auto">{slide.title}</h1>
-                  <Heading type="caption" className="sm:w-full sm:mx-auto text-lg xl:text-base" text={slide.caption} />
+              <div className="pl-[7%] sm:pl-0 sm:w-full mt-5 space-y-3 sm:-space-y-1 text-white sm:text-center">
+                <div className={`space-y-2 xl:space-y-1 w-[43vw] xl:w-[50vw] sm:w-full ${slide.selection && 'p-5 bg-custom-gray/40 rounded-md'}`}>
+                  <h1 className={`text-6xl font-medium uppercase xl:text-5xl sm:text-3xl max-w-[20ch] sm:w-full sm:mx-auto ${slide.shadow && 'text-shadow-title'}`}>{slide.title}</h1>
+                  <Heading type="caption" className={`text-lg sm:w-full sm:mx-auto xl:text-base ${slide.shadow && 'text-shadow-text'}`} text={slide.caption} />
                 </div>
-
-                {slide.description && <Button type="link" className="w-fit" href={`/sanatorium/promo/${slide.slug.current}`} text="Узнать детали" size="lg" />}
+                {slide.description && <Button type="link" className="w-fit sm:mx-auto" href={`/sanatorium/promo/${slide.slug.current}`} text="Узнать детали" size="lg" />}
               </div>
             </div>
           </SwiperSlide>

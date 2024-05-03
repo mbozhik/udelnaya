@@ -31,6 +31,10 @@ const config = {
         nav: '0px 13px 32px -19px #00000070',
         nav_mobile: '0px 3px 12px 2px #00000050;',
       },
+      textShadow: {
+        title: '0 1px 7px #00000070',
+        text: '0 1px 10px #00000080',
+      },
       keyframes: {
         'accordion-down': {
           from: {height: '0'},
@@ -56,6 +60,16 @@ const config = {
   plugins: [
     plugin(function sizePlugin(api) {
       api.matchUtilities({s: (value: string) => ({width: value, height: value})}, {values: api.theme('width')})
+    }),
+    plugin(function ({matchUtilities, theme}) {
+      matchUtilities(
+        {
+          'text-shadow': (value) => ({
+            textShadow: value,
+          }),
+        },
+        {values: theme('textShadow')},
+      )
     }),
     require('tailwindcss-animate'),
   ],
