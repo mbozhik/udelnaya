@@ -24,10 +24,10 @@ export default function Nav() {
         if (item.type === 'dropdown') {
           return (
             <div className="overflow-hidden group" key={index}>
-              <h1 className={`flex items-center group group-hover:bg-custom-dirty-white ${linkClasses.default} ${linkClasses.style}`}>{item.config.name}</h1>
+              <h1 className={`group group-hover:bg-custom-dirty-white ${linkClasses.default} ${linkClasses.style}`}>{item.config.name}</h1>
               <div className="hidden group-hover:block absolute bg-white shadow-md z-10 ml-[1px] peer">
                 {item.config.content.map((elem, subIndex) => (
-                  <Link href={elem.href} className={`block text-left border-t-[1.5px] border-custom-gray/40 ${linkClasses.default}`} key={subIndex}>
+                  <Link href={elem.href} className={`block text-left border-t-[1.5px] sm:!text-left border-custom-gray/40 ${linkClasses.default}`} key={subIndex}>
                     {elem.title}
                   </Link>
                 ))}
