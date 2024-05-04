@@ -102,7 +102,7 @@ export default function Header() {
   return (
     <>
       <header className="fixed inset-0 z-50 w-full flex flex-col tracking-tight bg-white h-fit backdrop-filter backdrop-blur-[2px] shadow-nav sm:shadow-nav_mobile">
-        <section className="flex justify-between w-full p-5 sm:px-3 sm:py-2">
+        <section className="flex justify-between w-full p-5 sm:px-3 sm:py-1.5">
           <div className="flex items-center gap-5">
             <Link href="/">
               <Image className="object-contain duration-300 s-14 xl:s-12 hover:scale-110" src={LogoImage} alt="Logo" />
@@ -119,7 +119,7 @@ export default function Header() {
               {headerData.tel.name}
             </Link>
 
-            <Button onClick={toggleFormVisibility} type="button" size="lg" adavanced_hover={true} text="Забронировать" />
+            <Button onClick={toggleFormVisibility} className="sm:px-2.5 py-1.5 sm:text-sm" type="button" size="lg" adavanced_hover={true} text="Забронировать" />
           </div>
         </section>
 
