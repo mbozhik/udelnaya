@@ -56,14 +56,14 @@ const MedicinePage = async ({params}) => {
       <div className="space-y-5">
         <Heading type="title" text={pageTitle} />
 
-        <section data-index={medicine.slug.current} className="mt-14 mb-20">
-          <div className="p-5 space-y-7 sm:space-y-3 shadow-card rounded-md group sm:p-3">
-            <div className="grid grid-cols-6 sm:flex sm:flex-col items-center gap-10 sm:gap-5">
+        <section data-index={medicine.slug.current} className="mb-20 mt-14">
+          <div className="p-5 rounded-md space-y-7 sm:space-y-3 shadow-card group sm:p-3">
+            <div className="grid items-center grid-cols-6 gap-10 sm:flex sm:flex-col sm:gap-5">
               <div className={`relative ${imagesStyles}`}>
                 <Image quality={100} className="object-cover" src={urlForImage(medicine.image).url()} fill={true} sizes="25vw" alt={`${medicine.name}`} />
               </div>
 
-              <div className="col-span-4 space-y-2 pr-10 sm:pr-2">
+              <div className="col-span-4 pr-10 space-y-2 sm:pr-2">
                 <Text type="title" text={medicine.name} />
 
                 <PortableText value={medicine.short_description} />
@@ -71,7 +71,7 @@ const MedicinePage = async ({params}) => {
             </div>
 
             <hr className="hidden sm:block" />
-            <div className="pr-10 sm:pr-2 grid grid-cols-2 items-center justify-center">
+            <div className="w-full tracking-tight prose sm:pr-2 sm:text-sm prose-li:marker:text-custom-primary">
               <PortableText
                 value={medicine.description}
                 components={{
