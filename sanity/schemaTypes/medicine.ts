@@ -22,7 +22,7 @@ const medicine: SchemaTypeDefinition = {
       name: 'description',
       title: 'Описание программы',
       type: 'array',
-      of: [{type: 'block'}],
+      of: [{type: 'block'}, {type: 'image'}],
       validation: (rule: Rule) => rule.required(),
     },
     {

@@ -3,12 +3,11 @@ import {revalidateOnTime} from '@/lib/utils'
 
 import Image from 'next/image'
 import {PortableText} from '@portabletext/react'
+import {PortableImage} from '#/UI/PortableImage'
 
 import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
 import Text from '#/UI/Text'
-import ImageSlider from '#/UI/ImageSlider'
-import Button from '#/UI/Button'
 import Questions from '##/index/Questions'
 
 interface MedicinePage {
@@ -72,8 +71,15 @@ const MedicinePage = async ({params}) => {
             </div>
 
             <hr className="hidden sm:block" />
-            <div className="pr-10 sm:pr-2">
-              <PortableText value={medicine.description} />
+            <div className="pr-10 sm:pr-2 grid grid-cols-2 items-center justify-center">
+              <PortableText
+                value={medicine.description}
+                components={{
+                  types: {
+                    image: PortableImage,
+                  },
+                }}
+              />
             </div>
           </div>
         </section>
