@@ -12,6 +12,13 @@ const medicine: SchemaTypeDefinition = {
       validation: (rule: Rule) => rule.required(),
     },
     {
+      name: 'procedures',
+      title: 'Список процедур',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'medicine_procedures'}}],
+      hidden: ({document}) => document?.name !== 'Процедуры',
+    },
+    {
       name: 'short_description',
       title: 'Короткое описание программы',
       type: 'array',
