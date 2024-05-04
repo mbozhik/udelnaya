@@ -72,6 +72,7 @@ const config = {
       )
     }),
     require('tailwindcss-animate'),
+    require('@tailwindcss/typography'),
   ],
 } satisfies Config
 

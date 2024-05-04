@@ -69,7 +69,9 @@ const ProgramPage = async ({params}) => {
 
           <div className="flex flex-col gap-3 pr-[25%] sm:pr-2">
             <Text type="title" className="text-2xl" text={promo.title} />
-            <PortableText value={promo.description} />
+            <div className="prose prose-li:marker:text-custom-primary">
+              <PortableText value={promo.description} />
+            </div>
           </div>
         </div>
       </section>

@@ -93,7 +93,7 @@ const ProgramPage = async ({params}) => {
 
           <div className="space-y-7 sm:space-y-5">
             <hr className="hidden sm:block" />
-            <div className="pr-10 sm:pr-2 tracking-tight sm:text-sm">
+            <div className="sm:pr-2 tracking-tight sm:text-sm prose prose-li:marker:text-custom-primary">
               <PortableText value={program.description} />
             </div>
 
