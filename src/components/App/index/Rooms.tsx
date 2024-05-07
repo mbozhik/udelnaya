@@ -47,7 +47,7 @@ const Rooms = async () => {
   }))
 
   return (
-    <section id="rooms" data-section="rooms-index" className="space-y-7 sm:space-y-5 scroll-m-[10rem]">
+    <section id="rooms" data-section="rooms-index" className="space-y-7 sm:space-y-5 scroll-m-[10rem] sm:scroll-m-[7rem]">
       <Heading type="title" className="text-center" text="Номера" />
 
       <RoomsSlider sliderData={sliderData} className="w-full rounded-md" />

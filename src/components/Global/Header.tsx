@@ -1,13 +1,17 @@
 'use client'
 
+import {isMobile} from '@bozzhik/is-mobile'
+import {cn} from '@/lib/utils'
+
 import {useState} from 'react'
 
 import Link from 'next/link'
 import Image from 'next/image'
 import LogoImage from '%/logo.svg'
+import FormImage from '%/form.svg'
 
 import Text from '#/UI/Text'
-import Button from '#/UI/Button'
+import Button, {buttonVariants} from '#/UI/Button'
 import BoockingForm from '#/UI/BookingForm'
 import Nav from '#/Global/Nav'
 
@@ -119,7 +123,18 @@ export default function Header() {
               {headerData.tel.name}
             </Link>
 
-            <Button onClick={toggleFormVisibility} className="sm:px-2.5 py-1.5 sm:text-sm" type="button" size="lg" adavanced_hover={true} text="Забронировать" />
+            {!isMobile ? (
+              <Button onClick={toggleFormVisibility} className="sm:px-2.5 py-1.5 sm:text-sm" type="button" size="lg" adavanced_hover={true} text="Забронировать" />
+            ) : (
+              <div className="flex gap-2">
+                <Link href={headerData.tel.href} className={cn([buttonVariants.default.styles, buttonVariants.primary.default, buttonVariants.primary.hover], 'block text-center sm:px-2.5 sm:py-1.5 sm:text-sm')}>
+                  {headerData.tel.name}
+                </Link>
+                <button onClick={toggleFormVisibility} className={cn([buttonVariants.default.styles, buttonVariants.primary.default, buttonVariants.primary.hover], 'block text-center sm:p-1.5 sm:text-sm')}>
+                  <Image className="object-contain s-5" src={FormImage} alt="Logo" />
+                </button>
+              </div>
+            )}
           </div>
         </section>
 
