@@ -41,7 +41,6 @@ async function getData(slug): Promise<MedicinePage | null> {
 
 const MedicinePage = async ({params}) => {
   const medicine: MedicinePage | null = await getData(params.slug)
-  console.log('🚀 ~ MedicinePage ~ medicine:', medicine)
 
   if (!medicine) {
     return <mark>Произошла ошибка при получении данных!</mark>
