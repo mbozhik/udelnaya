@@ -15,6 +15,8 @@ import Button, {buttonVariants} from '#/UI/Button'
 import BoockingForm from '#/UI/BookingForm'
 import Nav from '#/Global/Nav'
 
+import {motion, useScroll, useMotionValueEvent} from 'framer-motion'
+
 export const headerData = {
   nav: {
     1: {
@@ -103,9 +105,23 @@ export default function Header() {
   const [isFormVisible, setIsFormVisible] = useState(false)
   const toggleFormVisibility = () => setIsFormVisible(!isFormVisible)
 
+  const [headerHidden, setHeaderHidden] = useState(false)
+  const {scrollY} = useScroll()
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    setHeaderHidden(latest > scrollY.getPrevious() && latest > 150)
+  })
+
   return (
     <>
-      <header className="fixed inset-0 z-50 w-full flex flex-col tracking-tight bg-white h-fit backdrop-filter backdrop-blur-[2px] shadow-nav sm:shadow-nav_mobile">
+      <motion.header
+        variants={{
+          visible: {y: 0},
+          hidden: {y: '-100%'},
+        }}
+        animate={isMobile && headerHidden ? 'hidden' : 'visible'}
+        transition={{duration: 0.35, ease: 'easeInOut'}}
+        className="fixed inset-0 z-50 w-full flex flex-col tracking-tight bg-white h-fit backdrop-filter backdrop-blur-[2px] shadow-nav sm:shadow-nav_mobile"
+      >
         <section className="flex justify-between w-full p-5 sm:px-3 sm:py-1.5">
           <div className="flex items-center gap-5">
             <Link href="/">
@@ -139,7 +155,7 @@ export default function Header() {
         </section>
 
         <Nav />
-      </header>
+      </motion.header>
 
       {isFormVisible && <BoockingForm closeForm={toggleFormVisibility} />}
     </>
