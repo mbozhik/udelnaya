@@ -19,6 +19,13 @@ const medicine: SchemaTypeDefinition = {
       hidden: ({document}) => document?.name !== 'Специалисты',
     },
     {
+      name: 'diagnostics',
+      title: 'Список диагностических процедур',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'medicine_diagnostics'}}],
+      hidden: ({document}) => document?.name !== 'Диагностика',
+    },
+    {
       name: 'procedures',
       title: 'Список процедур',
       type: 'array',
