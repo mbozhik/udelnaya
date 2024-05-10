@@ -12,6 +12,13 @@ const medicine: SchemaTypeDefinition = {
       validation: (rule: Rule) => rule.required(),
     },
     {
+      name: 'specialists',
+      title: 'Список специалистов',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'medicine_specialists'}}],
+      hidden: ({document}) => document?.name !== 'Специалисты',
+    },
+    {
       name: 'procedures',
       title: 'Список процедур',
       type: 'array',
@@ -51,7 +58,7 @@ const medicine: SchemaTypeDefinition = {
   preview: {
     select: {
       title: 'name',
-      subtitle: 'description',
+      subtitle: 'short_description',
       media: 'image',
     },
   },
