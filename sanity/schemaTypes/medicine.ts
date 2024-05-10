@@ -39,11 +39,6 @@ const medicine: SchemaTypeDefinition = {
       validation: (rule: Rule) => rule.required(),
     },
     {
-      name: 'special_offer',
-      title: 'Есть ли акция на процедуру?',
-      type: 'boolean',
-    },
-    {
       name: 'slug',
       title: 'Ссылка',
       type: 'slug',
