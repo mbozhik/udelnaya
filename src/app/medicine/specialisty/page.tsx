@@ -41,19 +41,30 @@ async function getData(): Promise<SpecialistyPageProps | null> {
 }
 
 const SpecialistCard = ({specialist, className = ''}) => {
+  const CardField = ({title, text}) => {
+    return (
+      <div>
+        <Text type="caption" className="font-semibold" text={title} />
+        <Text type="caption" text={text} />
+      </div>
+    )
+  }
   return (
-    <article className={cn('p-5 space-y-5 duration-300 rounded-md shadow-mini-card h-fit', className)}>
+    <article className={cn('p-5 xl:p-3 sm:p-4 space-y-5 duration-300 rounded-md shadow-mini-card h-fit', className)}>
       <div className="w-full aspect-[7/5] relative rounded-[4px] overflow-hidden">
-        <Image quality={100} className="object-cover" src={urlForImage(specialist.image).url()} fill={true} alt={`${specialist.name}`} />
+        <Image quality={100} className="object-cover" src={urlForImage(specialist.image).url()} fill={true} alt={specialist.name} />
       </div>
       <div className="space-y-3">
         <Text type="subtitle" text={specialist.name} />
-        <div className="space-y-1.5">
+        <div className="space-y-2">
           <mark>{specialist.position}</mark>
-          <Text type="caption" text={specialist.education} />
-          <Text type="caption" text={specialist.accreditation} />
-          <Text type="caption" text={specialist.work_days} />
-          <Text type="caption" text={specialist.work_time} />
+
+          <div className="space-y-1.5">
+            <CardField title="Образование:" text={specialist.education} />
+            <CardField title="Сертификация и аккредитация:" text={specialist.accreditation} />
+            <CardField title="График работы:" text={specialist.work_days} />
+            <CardField title="Часты приема:" text={specialist.work_time} />
+          </div>
         </div>
       </div>
     </article>
@@ -92,13 +103,13 @@ const SpecialistyPage = async () => {
 
             <PortableBlock className="pr-10" value={medicine.description} />
 
-            <section className="grid grid-cols-3 gap-5 sm:grid-cols-1">
+            <section className="grid grid-cols-3 gap-5 xl:gap-3 sm:gap-5 sm:grid-cols-1">
               {medicine.specialists
                 .filter((specialist) => specialist.position === 'Главный Врач')
                 .map((chiefDoctor, index) => (
                   <Fragment key={index}>
                     {[0, 1, 2].map((cardIndex) => (
-                      <SpecialistCard specialist={chiefDoctor} className={`${cardIndex > 0 ? 'opacity-0' : ''}`} key={cardIndex} />
+                      <SpecialistCard specialist={chiefDoctor} className={`${cardIndex > 0 ? 'opacity-0 sm:hidden' : ''}`} key={cardIndex} />
                     ))}
                   </Fragment>
                 ))}
