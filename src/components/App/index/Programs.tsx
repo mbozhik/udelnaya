@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 import Heading from '#/UI/Heading'
 import Text from '#/UI/Text'
-import Button from '#/UI/Button'
+import Error from '#/UI/Error'
 
 interface ProgramCategories {
   name: string
@@ -39,7 +39,7 @@ const ProgramCategories = async () => {
   const programCategories: ProgramCategories[] = await getData()
 
   if (!programCategories) {
-    return <mark>Произошла ошибка при получении данных!</mark>
+    return <Error />
   }
 
   const slides = programCategories

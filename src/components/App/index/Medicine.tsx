@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Heading from '#/UI/Heading'
 import Text from '#/UI/Text'
+import Error from '#/UI/Error'
 
 interface Medicine {
   name: string
@@ -37,7 +38,7 @@ const Medicine = async () => {
   const medicine: Medicine[] = await getData()
 
   if (!medicine) {
-    return <mark>Произошла ошибка при получении данных!</mark>
+    return <Error />
   }
 
   const blockData = medicine.map((section) => ({

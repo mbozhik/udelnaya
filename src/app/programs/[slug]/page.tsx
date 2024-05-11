@@ -9,6 +9,7 @@ import ImageSlider from '#/UI/ImageSlider'
 import Text from '#/UI/Text'
 import Button from '#/UI/Button'
 import Questions from '##/index/Questions'
+import Error from '#/UI/Error'
 
 interface ProgramPage {
   name: string
@@ -47,7 +48,7 @@ const ProgramPage = async ({params}) => {
   const program: ProgramPage | null = await getData(params.slug)
 
   if (!program) {
-    return <mark>Произошла ошибка при получении данных!</mark>
+    return <Error />
   }
 
   const generateSliderData = (images: Array<{asset: {url: string}}>) => {

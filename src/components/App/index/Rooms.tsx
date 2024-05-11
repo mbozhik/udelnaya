@@ -3,6 +3,7 @@ import {client, urlForImage} from '@/lib/sanity'
 import Heading from '#/UI/Heading'
 import RoomsSlider from '##/index/RoomsSlider'
 import {revalidateOnTime} from '@/lib/utils'
+import Error from '#/UI/Error'
 
 interface Room {
   name: string
@@ -35,7 +36,7 @@ const Rooms = async () => {
   const rooms: Room[] = await getData()
 
   if (!rooms) {
-    return <mark>Произошла ошибка при получении данных!</mark>
+    return <Error />
   }
 
   const sliderData = rooms.map((room) => ({

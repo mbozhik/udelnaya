@@ -2,6 +2,7 @@ import {client, urlForImage} from '@/lib/sanity'
 import {revalidateOnTime} from '@/lib/utils'
 
 import dynamic from 'next/dynamic'
+import Error from '#/UI/Error'
 
 const PromoSlider = dynamic(
   () => {
@@ -49,7 +50,7 @@ const Promo = async () => {
   const promo: Promo[] = await getData()
 
   if (!promo) {
-    return <mark>Произошла ошибка при получении данных!</mark>
+    return <Error />
   }
 
   const sliderData = promo.map((promo) => ({
