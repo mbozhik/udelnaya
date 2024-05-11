@@ -28,8 +28,9 @@ const config = {
       },
       boxShadow: {
         card: '0px 5px 15px -3px #00000040',
+        'mini-card': '0px 5px 15px -3px #00000030',
         nav: '0px 13px 32px -19px #00000070',
-        nav_mobile: '0px 3px 12px 2px #00000050;',
+        'nav-mobile': '0px 3px 12px 2px #00000050;',
       },
       textShadow: {
         title: '0 1px 7px #00000070',

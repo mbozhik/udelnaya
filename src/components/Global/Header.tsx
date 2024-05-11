@@ -120,7 +120,7 @@ export default function Header() {
         }}
         animate={isMobile && headerHidden ? 'hidden' : 'visible'}
         transition={{duration: 0.35, ease: 'easeInOut'}}
-        className="fixed inset-0 z-50 w-full flex flex-col tracking-tight bg-white h-fit backdrop-filter backdrop-blur-[2px] shadow-nav sm:shadow-nav_mobile"
+        className="fixed inset-0 z-50 w-full flex flex-col tracking-tight bg-white h-fit backdrop-filter backdrop-blur-[2px] shadow-nav sm:shadow-nav-mobile"
       >
         <section className="flex justify-between w-full p-5 sm:px-3 sm:py-1.5">
           <div className="flex items-center gap-5">
