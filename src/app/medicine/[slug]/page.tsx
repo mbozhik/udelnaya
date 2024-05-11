@@ -1,14 +1,12 @@
 import {client, urlForImage} from '@/lib/sanity'
-import {cn, revalidateOnTime} from '@/lib/utils'
+import {revalidateOnTime} from '@/lib/utils'
 
-import Link from 'next/link'
 import Image from 'next/image'
 import {Fragment} from 'react'
 import PortableBlock from '#/UI/PortableBlock'
 
 import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
-import Text from '#/UI/Text'
 import Questions from '##/index/Questions'
 
 import SpecialistCard from '##/medicine/SpecialistCard'
@@ -107,6 +105,7 @@ const MedicinePage = async ({params}) => {
           </div>
         </section>
       </div>
+
       <Questions />
     </Container>
   )
