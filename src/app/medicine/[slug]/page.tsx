@@ -2,8 +2,7 @@ import {client, urlForImage} from '@/lib/sanity'
 import {revalidateOnTime} from '@/lib/utils'
 
 import Image from 'next/image'
-import {PortableText} from '@portabletext/react'
-import {PortableImage} from '#/UI/PortableImage'
+import PortableBlock from '#/UI/PortableBlock'
 
 import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
@@ -65,21 +64,13 @@ const MedicinePage = async ({params}) => {
               <div className="col-span-4 pr-10 space-y-2 sm:pr-2">
                 <Text type="title" text={medicine.name} />
 
-                <PortableText value={medicine.short_description} />
+                <PortableBlock value={medicine.short_description} />
               </div>
             </div>
 
             <hr className="hidden sm:block" />
-            <div className="w-full tracking-tight prose sm:pr-2 sm:text-sm prose-li:marker:text-custom-primary">
-              <PortableText
-                value={medicine.description}
-                components={{
-                  types: {
-                    image: PortableImage,
-                  },
-                }}
-              />
-            </div>
+
+            <PortableBlock prose={true} className="w-full" value={medicine.description} />
           </div>
         </section>
       </div>

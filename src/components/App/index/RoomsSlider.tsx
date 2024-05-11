@@ -3,7 +3,7 @@
 import {isMobile} from '@bozzhik/is-mobile'
 
 import Image from 'next/image'
-import {PortableText} from '@portabletext/react'
+import PortableBlock from '#/UI/PortableBlock'
 
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Navigation, Autoplay} from 'swiper/modules'
@@ -51,9 +51,7 @@ const RoomsSlider: React.FC<SliderProps> = ({sliderData, className}) => {
         <div className="flex flex-col self-center gap-5 sm:gap-2">
           <Heading type="subtitle" className="" text={slide.name} />
 
-          <div className="w-fit xl:text-sm sm:mb-4">
-            <PortableText value={slide.specification} />
-          </div>
+          <PortableBlock className="w-fit xl:text-sm sm:mb-4" value={slide.specification} />
         </div>
       </div>
     </SwiperSlide>

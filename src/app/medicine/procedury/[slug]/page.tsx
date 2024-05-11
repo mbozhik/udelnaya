@@ -1,8 +1,7 @@
 import {client} from '@/lib/sanity'
 import {revalidateOnTime} from '@/lib/utils'
 
-import {PortableText} from '@portabletext/react'
-import {PortableImage} from '#/UI/PortableImage'
+import PortableBlock from '#/UI/PortableBlock'
 
 import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
@@ -43,16 +42,7 @@ const ProgramPage = async ({params}) => {
       <section data-index={medicine.slug} className="space-y-7">
         <Heading type="title" text={medicine.name} />
 
-        <div className="tracking-tight prose sm:pr-2 sm:text-sm prose-li:marker:text-custom-primary">
-          <PortableText
-            value={medicine.description}
-            components={{
-              types: {
-                image: PortableImage,
-              },
-            }}
-          />
-        </div>
+        <PortableBlock prose={true} value={medicine.description} />
       </section>
       <Questions />
     </Container>

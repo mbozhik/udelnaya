@@ -2,7 +2,7 @@ import {client, urlForImage, urlForFile} from '@/lib/sanity'
 import {revalidateOnTime} from '@/lib/utils'
 
 import Image from 'next/image'
-import {PortableText} from '@portabletext/react'
+import PortableBlock from '#/UI/PortableBlock'
 
 import Container from '#/Global/Container'
 import ImageSlider from '#/UI/ImageSlider'
@@ -85,17 +85,14 @@ const ProgramPage = async ({params}) => {
                 <mark className="bg-custom-gray">{program.duration}</mark>
               </div>
 
-              <div className="tracking-tight sm:text-sm">
-                <PortableText value={program.short_description} />
-              </div>
+              <PortableBlock value={program.short_description} />
             </div>
           </div>
 
           <div className="space-y-7 sm:space-y-5">
             <hr className="hidden sm:block" />
-            <div className="sm:pr-2 tracking-tight sm:text-sm prose prose-li:marker:text-custom-primary">
-              <PortableText value={program.description} />
-            </div>
+
+            <PortableBlock prose={true} value={program.description} />
 
             {program.pdf && <Button type="link" text="Узнать детали" size="lg" variant="secondary" className="sm:w-full sm:py-3" adavanced_hover={true} blank={true} href={urlForFile(program.pdf.asset._ref)} />}
           </div>

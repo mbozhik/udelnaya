@@ -3,7 +3,7 @@ import {revalidateOnTime} from '@/lib/utils'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import {PortableText} from '@portabletext/react'
+import PortableBlock from '#/UI/PortableBlock'
 
 import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
@@ -65,14 +65,10 @@ const ProceduryPage = async () => {
                 <Image quality={100} className="object-cover" src={urlForImage(medicine.image).url()} fill={true} sizes="25vw" alt={`${medicine.name}`} />
               </div>
 
-              <div className={`${gridConfig.text} pr-10 space-y-2 sm:pr-2`}>
-                <PortableText value={medicine.short_description} />
-              </div>
+              <PortableBlock className={`${gridConfig.text} pr-10`} value={medicine.short_description} />
             </div>
 
-            <div className="pr-10 space-y-2">
-              <PortableText value={medicine.description} />
-            </div>
+            <PortableBlock className="pr-10" value={medicine.description} />
 
             <div className="grid grid-cols-3 gap-3 sm:grid-cols-1">
               {medicine.procedures.map((procedure, index) => (

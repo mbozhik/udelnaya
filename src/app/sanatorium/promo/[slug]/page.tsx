@@ -2,7 +2,7 @@ import {client, urlForImage} from '@/lib/sanity'
 import {revalidateOnTime} from '@/lib/utils'
 
 import Image from 'next/image'
-import {PortableText} from '@portabletext/react'
+import PortableBlock from '#/UI/PortableBlock'
 
 import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
@@ -69,9 +69,8 @@ const ProgramPage = async ({params}) => {
 
           <div className="flex flex-col gap-3 pr-[25%] sm:pr-2">
             <Text type="title" className="text-2xl" text={promo.title} />
-            <div className="prose prose-li:marker:text-custom-primary">
-              <PortableText value={promo.description} />
-            </div>
+
+            <PortableBlock prose={true} value={promo.description} />
           </div>
         </div>
       </section>

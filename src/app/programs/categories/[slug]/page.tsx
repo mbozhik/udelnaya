@@ -3,7 +3,7 @@ import {revalidateOnTime} from '@/lib/utils'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import {PortableText} from '@portabletext/react'
+import PortableBlock from '#/UI/PortableBlock'
 
 import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
@@ -93,9 +93,7 @@ const ProgramPage = async ({params}) => {
                   <mark className="bg-custom-gray">{program.duration}</mark>
                 </div>
 
-                <div className="tracking-tight sm:text-sm">
-                  <PortableText value={program.short_description} />
-                </div>
+                <PortableBlock value={program.short_description} />
               </div>
             </Link>
           ))}
