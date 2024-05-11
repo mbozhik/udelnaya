@@ -5,6 +5,7 @@ import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
 import Questions from '##/index/Questions'
 import PortableBlock from '#/UI/PortableBlock'
+import Error from '#/UI/Error'
 
 interface MedicineSubPageProps {
   name: string
@@ -40,7 +41,7 @@ const MedicineSubPage = async ({params}) => {
   const data: MedicineSubPageProps | null = await getData(params)
 
   if (!data) {
-    return <mark>Произошла ошибка при получении данных!</mark>
+    return <Error />
   }
 
   return (

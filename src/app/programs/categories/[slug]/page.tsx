@@ -10,6 +10,7 @@ import Heading from '#/UI/Heading'
 import Text from '#/UI/Text'
 import ImageSlider from '#/UI/ImageSlider'
 import Questions from '##/index/Questions'
+import Error from '#/UI/Error'
 
 interface ProgramPage {
   name: string
@@ -47,7 +48,7 @@ const ProgramPage = async ({params}) => {
   const programs: ProgramPage = await getData()
 
   if (!programs) {
-    return <mark>Произошла ошибка при получении данных!</mark>
+    return <Error />
   }
 
   const categorizedPrograms: ProgramPage[] = programs.filter((program) => {

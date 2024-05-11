@@ -8,6 +8,7 @@ import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
 import Text from '#/UI/Text'
 import Questions from '##/index/Questions'
+import Error from '#/UI/Error'
 
 interface Promo {
   title: string
@@ -45,7 +46,7 @@ const ProgramPage = async ({params}) => {
   const promo: Promo = await getData(params.slug)
 
   if (!promo) {
-    return <mark>Произошла ошибка при получении данных!</mark>
+    return <Error />
   }
 
   return (

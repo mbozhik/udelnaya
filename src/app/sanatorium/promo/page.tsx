@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Container from '#/Global/Container'
 import Text from '#/UI/Text'
 import Button from '#/UI/Button'
+import Error from '#/UI/Error'
 
 interface Promo {
   title: string
@@ -45,7 +46,7 @@ const ProgramPage = async () => {
   const promos: Promo[] = await getData()
 
   if (!promos) {
-    return <mark>Произошла ошибка при получении данных!</mark>
+    return <Error />
   }
 
   return (

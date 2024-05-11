@@ -8,6 +8,7 @@ import PortableBlock from '#/UI/PortableBlock'
 import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
 import Questions from '##/index/Questions'
+import Error from '#/UI/Error'
 
 import SpecialistCard from '##/medicine/SpecialistCard'
 import MedicineGrid from '@/components/App/medicine/MedicineGrid'
@@ -52,7 +53,7 @@ const MedicinePage = async ({params}) => {
   const data: MedicinePage | null = await getData(params.slug)
 
   if (!data) {
-    return <mark>Произошла ошибка при получении данных!</mark>
+    return <Error />
   }
 
   const gridConfig = {
