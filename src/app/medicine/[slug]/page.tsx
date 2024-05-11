@@ -1,7 +1,9 @@
 import {client, urlForImage} from '@/lib/sanity'
-import {revalidateOnTime} from '@/lib/utils'
+import {cn, revalidateOnTime} from '@/lib/utils'
 
+import Link from 'next/link'
 import Image from 'next/image'
+import {Fragment} from 'react'
 import PortableBlock from '#/UI/PortableBlock'
 
 import Container from '#/Global/Container'
@@ -9,13 +11,19 @@ import Heading from '#/UI/Heading'
 import Text from '#/UI/Text'
 import Questions from '##/index/Questions'
 
+import SpecialistCard from '##/medicine/SpecialistCard'
+import MedicineGrid from '@/components/App/medicine/MedicineGrid'
+
 interface MedicinePage {
   name: string
   short_description: any
   description: any
   image: Array<{asset: {url: string}}>
-  special_offer: boolean
   slug: {current: string}
+
+  specialists?: Array<{name: string; position: string; education: string; accreditation: string; work_days: string; work_time: string; image: Array<{asset: {url: string}}>}>
+  procedures?: Array<{name: string; description: any; slug: {current: string}}>
+  diagnostics?: Array<{name: string; description: any; slug: {current: string}}>
 }
 
 async function getData(slug): Promise<MedicinePage | null> {
@@ -26,7 +34,11 @@ async function getData(slug): Promise<MedicinePage | null> {
         description,
         image,
         special_offer,
-        slug
+        slug,
+        specialists[] -> { name, position, education, accreditation, work_days, work_time, image },
+        procedures[] -> { name, description, slug },
+        diagnostics[] -> { name, description, slug },
+
     }`,
     {},
     {
@@ -39,38 +51,59 @@ async function getData(slug): Promise<MedicinePage | null> {
 }
 
 const MedicinePage = async ({params}) => {
-  const medicine: MedicinePage | null = await getData(params.slug)
+  const data: MedicinePage | null = await getData(params.slug)
 
-  if (!medicine) {
+  if (!data) {
     return <mark>Произошла ошибка при получении данных!</mark>
   }
 
-  const pageTitle = medicine.name || 'Категория не найдена'
+  const gridConfig = {
+    global: 'grid-cols-7',
+    image: 'col-span-3',
+    text: 'col-span-4',
+  }
 
-  const imagesStyles = 'relative col-span-2 w-full aspect-[3/2] rounded-[4px]'
+  const imagesStyles = `relative w-full h-full aspect-[3/2] rounded-[4px] ${gridConfig.image}`
 
   return (
     <Container width="2/3" className="space-y-20 mt-7">
       <div className="space-y-5">
-        <Heading type="title" text={pageTitle} />
+        <Heading type="title" text={data.name} />
 
-        <section data-index={medicine.slug.current} className="mb-20 mt-14">
-          <div className="p-5 rounded-md space-y-7 sm:space-y-3 shadow-card group sm:p-3">
-            <div className="grid items-center grid-cols-6 gap-10 sm:flex sm:flex-col sm:gap-5">
+        <section data-index={data.slug.current} className="mb-20 mt-14">
+          <div className="p-5 space-y-12 rounded-md sm:space-y-7 shadow-card group sm:p-3">
+            <div className={`grid items-center ${gridConfig.global} gap-10 sm:flex sm:flex-col sm:gap-5`}>
               <div className={`relative ${imagesStyles}`}>
-                <Image quality={100} className="object-cover" src={urlForImage(medicine.image).url()} fill={true} sizes="25vw" alt={`${medicine.name}`} />
+                <Image quality={100} className="object-cover" src={urlForImage(data.image).url()} fill={true} sizes="25vw" alt={`${data.name}`} />
               </div>
 
-              <div className="col-span-4 pr-10 space-y-2 sm:pr-2">
-                <Text type="title" text={medicine.name} />
-
-                <PortableBlock value={medicine.short_description} />
-              </div>
+              <PortableBlock className={`${gridConfig.text} pr-10`} value={data.short_description} />
             </div>
 
-            <hr className="hidden sm:block" />
+            <PortableBlock className="pr-10" value={data.description} />
 
-            <PortableBlock prose={true} className="w-full" value={medicine.description} />
+            {params.slug == 'specialisty' && (
+              <section className="grid grid-cols-3 gap-5 xl:gap-3 sm:gap-5 sm:grid-cols-1">
+                {data.specialists
+                  .filter((specialist) => specialist.position === 'Главный Врач')
+                  .map((chiefDoctor, index) => (
+                    <Fragment key={index}>
+                      {[0, 1, 2].map((cardIndex) => (
+                        <SpecialistCard specialist={chiefDoctor} className={`${cardIndex > 0 ? 'opacity-0 sm:hidden' : ''}`} key={cardIndex} />
+                      ))}
+                    </Fragment>
+                  ))}
+
+                {data.specialists
+                  .filter((specialist) => specialist.position !== 'Главный Врач')
+                  .map((specialist, index) => (
+                    <SpecialistCard specialist={specialist} key={index} />
+                  ))}
+              </section>
+            )}
+
+            {params.slug == 'diagnostika' && <MedicineGrid sub_entity={data.diagnostics} link={params.slug} />}
+            {params.slug == 'procedury' && <MedicineGrid sub_entity={data.procedures} link={params.slug} />}
           </div>
         </section>
       </div>
