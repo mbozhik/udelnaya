@@ -6,6 +6,7 @@ import medicine_diagnostics from './medicine_diagnostics'
 import programs from './programs'
 import programs_category from './programs_category'
 import rooms from './rooms'
+import footer from './footer'
 
 export const schemaTypes = [
   promo,
@@ -16,4 +17,5 @@ export const schemaTypes = [
   programs,
   programs_category,
   rooms,
+  footer,
 ]
