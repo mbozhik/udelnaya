@@ -15,7 +15,7 @@ export default function Nav() {
                     sm:text-xs sm:text-center cursor-pointer
                     hover:bg-custom-dirty-white duration-300
                     ${index === navLinks.length - 1 && 'border-r-[1.5px]'}
-                    ${index === 4 && 'sm:hidden'}
+                    ${index === 3 && 'sm:hidden'}
                     `,
           style: ' border-l-[1.5px] border-custom-gray/70 ',
         }
