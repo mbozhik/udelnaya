@@ -29,12 +29,12 @@ export const headerData = {
             href: '/sanatorium/about',
           },
           {
-            title: 'Акции',
-            href: '/sanatorium/promo',
-          },
-          {
             title: 'Важная информация',
             href: '/sanatorium/info',
+          },
+          {
+            title: 'Акции',
+            href: '/sanatorium/promo',
           },
         ],
       },

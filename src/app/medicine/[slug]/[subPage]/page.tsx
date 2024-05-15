@@ -14,7 +14,7 @@ interface MedicineSubPageProps {
 }
 
 async function getData(params): Promise<MedicineSubPageProps | null> {
-  const getEntityType =
+  const getSanitySlug =
     params.slug === 'procedury'
       ? 'medicine_procedures' // procedury
       : params.slug === 'diagnostika'
@@ -22,7 +22,7 @@ async function getData(params): Promise<MedicineSubPageProps | null> {
       : null
 
   const data = await client.fetch<MedicineSubPageProps>(
-    `*[_type == '${getEntityType}' && slug.current == '${params.subPage}'][0] {
+    `*[_type == '${getSanitySlug}' && slug.current == '${params.subPage}'][0] {
         name,
         description,
         slug,
