@@ -1,3 +1,4 @@
+import sanatorium from './sanatorium'
 import promo from './promo'
 import medicine from './medicine'
 import medicine_procedures from './medicine_procedures'
@@ -9,6 +10,7 @@ import rooms from './rooms'
 import footer from './footer'
 
 export const schemaTypes = [
+  sanatorium,
   promo,
   medicine,
   medicine_procedures,
