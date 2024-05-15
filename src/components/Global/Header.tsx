@@ -135,7 +135,7 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-7">
-            <Link className="text-lg duration-200 xl:text-base font-book sm:hidden text-custom-primary hover:text-custom-gray" href={headerData.tel.href}>
+            <Link className="text-xl duration-200 xl:text-lg font-book sm:hidden text-custom-primary hover:text-custom-gray" href={headerData.tel.href}>
               {headerData.tel.name}
             </Link>
 

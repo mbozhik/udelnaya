@@ -49,18 +49,20 @@ const SanatoriumPage = async ({params}) => {
   }
 
   return (
-    <Container width="2/3" className="space-y-16 sm:pt-16">
-      <section data-index={page.slug.current} className="mt-16">
-        <div className="p-5 rounded-md space-y-7 sm:space-y-5 shadow-card group sm:p-3">
-          <div className="flex flex-col items-center gap-10 sm:gap-5">
-            <div className="relative grid place-items-center w-full h-[45vh] rounded-md overflow-hidden">
-              <Image quality={100} priority={true} className="absolute inset-0 block object-cover s-full" width={1920} height={700} alt={`акция`} src={urlForImage(page.image).url()} />
-            </div>
+    <Container width="2/3" className="space-y-20 sm:space-y-14 mt-7">
+      <div data-index={page.slug.current} className="p-5 rounded-md space-y-7 sm:space-y-5 shadow-card group sm:p-3">
+        <div className="flex flex-col items-center gap-10 sm:gap-5">
+          <div className="relative grid place-items-center w-full h-[45vh] rounded-md overflow-hidden">
+            <Image quality={100} priority={true} className="absolute inset-0 block object-cover s-full" width={1920} height={700} alt={`акция`} src={urlForImage(page.image).url()} />
           </div>
+        </div>
+
+        <div className="space-y-3">
+          <Heading type="title" text={page.title} />
 
           <PortableBlock prose={true} value={page.description} />
         </div>
-      </section>
+      </div>
 
       <Questions />
     </Container>
