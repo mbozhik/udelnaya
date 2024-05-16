@@ -23,6 +23,15 @@ const sanatorium: SchemaTypeDefinition = {
       validation: (rule: Rule) => rule.required(),
     },
     {
+      name: 'about_slider',
+      title: 'Слайдер',
+      description: 'Для страницы «О Санатории»',
+      type: 'array',
+      of: [{type: 'image'}],
+      hidden: ({document}) => document?.title !== 'О санатории',
+      validation: (rule: Rule) => rule.required(),
+    },
+    {
       name: 'slug',
       title: 'Ссылка',
       type: 'slug',
