@@ -26,6 +26,13 @@ const contacts: SchemaTypeDefinition = {
       validation: (rule: Rule) => rule.required(),
     },
     {
+      name: 'socials',
+      title: 'Социальные сети',
+      type: 'array',
+      of: [{type: 'block'}],
+      validation: (rule: Rule) => rule.required(),
+    },
+    {
       name: 'requisites',
       title: 'Реквизиты',
       type: 'array',
