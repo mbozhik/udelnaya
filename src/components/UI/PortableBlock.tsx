@@ -37,6 +37,16 @@ const PortableBlock: React.FC<Props> = ({value, prose = false, className}) => {
           types: {
             image: PortableImage,
           },
+          marks: {
+            link: ({value, children}) => {
+              const {blank, href} = value
+              return (
+                <a className="duration-200 text-custom-primary hover:text-custom-gray" href={href} target="_blank" rel="noopener">
+                  {children}
+                </a>
+              )
+            },
+          },
         }}
       />
     </div>
