@@ -14,12 +14,12 @@ interface MedicineSubPageProps {
 }
 
 async function getData(params): Promise<MedicineSubPageProps | null> {
-  const getSanitySlug =
-    params.slug === 'procedury'
-      ? 'medicine_procedures' // procedury
-      : params.slug === 'diagnostika'
-      ? 'medicine_diagnostics' // diagnostika
-      : null
+  const slugMapping = {
+    procedury: 'medicine_procedures',
+    diagnostika: 'medicine_diagnostics',
+  }
+
+  const getSanitySlug = slugMapping[params.slug] || null
 
   const data = await client.fetch<MedicineSubPageProps>(
     `*[_type == '${getSanitySlug}' && slug.current == '${params.subPage}'][0] {
