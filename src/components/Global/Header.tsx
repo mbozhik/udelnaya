@@ -94,7 +94,7 @@ export const headerData = {
       type: 'link',
       config: {
         name: 'Контакты',
-        href: '#',
+        href: '/contacts',
       },
     },
   },
