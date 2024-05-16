@@ -1,10 +1,12 @@
+import Link from 'next/link'
 import Image from 'next/image'
-import GroupVisits from '%/corporate/group-visits.jpg'
-import Weddings from '%/corporate/weddings.jpg'
-import CorporateEvents from '%/corporate/corporate-events.jpg'
 
 import Heading from '#/UI/Heading'
 import Text from '#/UI/Text'
+
+import GroupVisits from '%/corporate/group-visits.jpg'
+import Weddings from '%/corporate/weddings.jpg'
+import CorporateEvents from '%/corporate/corporate-events.jpg'
 
 const corporateData = {
   1: {
@@ -28,10 +30,10 @@ export default function Corporate() {
 
       <div className="grid grid-cols-3 gap-3 sm:grid-cols-1">
         {Object.entries(corporateData).map(([key, value]) => (
-          <div key={key} className="flex flex-col items-center gap-3 p-3 pb-3 rounded-md sm:p-3 sm:gap-2 shadow-card">
+          <Link href="/sanatorium/corporate-clients" key={key} className="flex flex-col items-center gap-3 p-3 pb-3 rounded-md sm:p-3 sm:gap-2 shadow-card">
             <Image className="object-cover w-full h-full rounded-[4px]" src={value.image} alt={value.title} />
             <Text type="title" className="text-xl xl:text-lg !font-book" text={value.title} />
-          </div>
+          </Link>
         ))}
       </div>
     </section>

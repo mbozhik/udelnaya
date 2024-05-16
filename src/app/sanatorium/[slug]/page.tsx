@@ -18,12 +18,13 @@ interface SanatoriumPageProps {
 }
 
 async function getData(params): Promise<SanatoriumPageProps> {
-  const getSanitySlug =
-    params.slug === 'about'
-      ? 'o-sanatorii' // about
-      : params.slug === 'info'
-      ? 'vazhnaya-informaciya' // info
-      : null
+  const slugMapping = {
+    about: 'o-sanatorii',
+    info: 'vazhnaya-informaciya',
+    'corporate-clients': 'korporativnym-klientam',
+  }
+
+  const getSanitySlug = slugMapping[params.slug] || null
 
   const data = await client.fetch<SanatoriumPageProps>(
     `*[_type == 'sanatorium' && slug.current == '${getSanitySlug}'][0] {
