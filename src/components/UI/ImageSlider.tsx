@@ -16,7 +16,7 @@ interface SliderProps {
   enable_autoplay?: boolean
 }
 
-const Slider: React.FC<SliderProps> = ({sliderData, className, enable_autoplay = true}) => {
+const ImageSlider: React.FC<SliderProps> = ({sliderData, className, enable_autoplay = true}) => {
   return (
     <Swiper data-section="promo-index" className={className} loop={true} speed={1000} {...(enable_autoplay && {autoplay: {delay: 3000}})} pagination={{clickable: true}} grabCursor={true} modules={[Pagination, Autoplay]}>
       {sliderData.map((slide, index) => (
@@ -28,4 +28,4 @@ const Slider: React.FC<SliderProps> = ({sliderData, className, enable_autoplay =
   )
 }
 
-export default Slider
+export default ImageSlider

@@ -6,14 +6,15 @@ import PortableBlock from '#/UI/PortableBlock'
 
 import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
-import Text from '#/UI/Text'
 import Questions from '##/index/Questions'
 import Error from '#/UI/Error'
+import ImageSlider from '@/components/UI/ImageSlider'
 
 interface SanatoriumPageProps {
   title: string
   description: any
   image: {asset: {url: string}}
+  about_slider: Array<{asset: {url: string}}>
   slug: {current: string}
 }
 
@@ -31,6 +32,7 @@ async function getData(params): Promise<SanatoriumPageProps> {
       title,
       description,
       image,
+      about_slider,
       slug,
     }`,
     {},
@@ -42,6 +44,7 @@ async function getData(params): Promise<SanatoriumPageProps> {
   )
   return data
 }
+
 const SanatoriumPage = async ({params}) => {
   const page: SanatoriumPageProps = await getData(params)
 
@@ -49,20 +52,43 @@ const SanatoriumPage = async ({params}) => {
     return <Error />
   }
 
+  const isAboutPage = params.slug === 'about'
+
+  const sliderData =
+    params.slug === 'about'
+      ? page.about_slider.map((slide) => ({
+          imageUrl: urlForImage(slide).url(),
+        }))
+      : null
+
+  const imagesStyles = 'relative w-full h-[45vh] sm:h-[30vh] xl:w-full rounded-[4px]'
+
   return (
     <Container width="2/3" className="space-y-20 sm:space-y-14 mt-7">
-      <div data-index={page.slug.current} className="p-5 rounded-md space-y-7 sm:space-y-5 shadow-card group sm:p-3">
-        <div className="flex flex-col items-center gap-10 sm:gap-5">
-          <div className="relative grid place-items-center w-full h-[45vh] rounded-md overflow-hidden">
-            <Image quality={100} priority={true} className="absolute inset-0 block object-cover s-full" width={1920} height={700} alt={`акция`} src={urlForImage(page.image).url()} />
+      <div data-index={page.slug.current} className="p-5 space-y-10 rounded-md sm:space-y-7 shadow-card group sm:p-3">
+        <div className="space-y-7 sm:space-y-5">
+          <div className="flex flex-col items-center gap-10 sm:gap-5">
+            <div className="relative grid place-items-center w-full h-[45vh] rounded-md overflow-hidden">
+              <Image quality={100} priority={true} className="absolute inset-0 block object-cover s-full" width={1920} height={700} alt={`акция`} src={urlForImage(page.image).url()} />
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <Heading type="title" text={page.title} />
+
+            <PortableBlock prose={true} value={page.description} />
           </div>
         </div>
 
-        <div className="space-y-3">
-          <Heading type="title" text={page.title} />
+        {isAboutPage ? (
+          <div className="space-y-3">
+            {/* <Heading type="title" text={page.title} /> */}
 
-          <PortableBlock prose={true} value={page.description} />
-        </div>
+            <ImageSlider sliderData={sliderData} className={imagesStyles} />
+          </div>
+        ) : (
+          ''
+        )}
       </div>
 
       <Questions />
