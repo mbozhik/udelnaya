@@ -8,6 +8,7 @@ import programs from './programs'
 import programs_category from './programs_category'
 import rooms from './rooms'
 import footer from './footer'
+import contacts from './contacts'
 
 export const schemaTypes = [
   sanatorium,
@@ -20,4 +21,5 @@ export const schemaTypes = [
   programs_category,
   rooms,
   footer,
+  contacts,
 ]
