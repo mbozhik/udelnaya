@@ -101,6 +101,8 @@ export const headerData = {
   tel: {name: '8 (800) 100-35-45', href: 'tel:+78001003545'},
 }
 
+const buttonStyles = [buttonVariants.default.styles, buttonVariants.primary.default, buttonVariants.primary.hover]
+
 export default function Header() {
   const [isFormVisible, setIsFormVisible] = useState(false)
   const toggleFormVisibility = () => setIsFormVisible(!isFormVisible)
@@ -143,10 +145,10 @@ export default function Header() {
               <Button onClick={toggleFormVisibility} className="sm:px-2.5 py-1.5 sm:text-sm" type="button" size="lg" adavanced_hover={true} text="Забронировать" />
             ) : (
               <div className="flex gap-2">
-                <Link href={headerData.tel.href} className={cn([buttonVariants.default.styles, buttonVariants.primary.default, buttonVariants.primary.hover], 'block text-center sm:px-2.5 sm:py-1.5 sm:text-sm')}>
+                <Link href={headerData.tel.href} className={cn(buttonStyles, 'block text-center sm:px-2.5 sm:py-1.5 sm:text-sm')}>
                   {headerData.tel.name}
                 </Link>
-                <button onClick={toggleFormVisibility} className={cn([buttonVariants.default.styles, buttonVariants.primary.default, buttonVariants.primary.hover], 'block text-center sm:p-1.5 sm:text-sm')}>
+                <button onClick={toggleFormVisibility} className={cn(buttonStyles, 'block text-center sm:p-1.5 sm:text-sm')}>
                   <Image className="object-contain s-5" src={FormImage} alt="Logo" />
                 </button>
               </div>

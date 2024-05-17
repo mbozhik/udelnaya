@@ -1,12 +1,33 @@
 import {client, urlForFile} from '@/lib/sanity'
-import {revalidateOnTime} from '@/lib/utils'
+import {cn, revalidateOnTime} from '@/lib/utils'
 
-import {Fragment} from 'react'
-
-import Container from '#/Global/Container'
 import Link from 'next/link'
+import Image from 'next/image'
+import Container from '#/Global/Container'
 import Button from '#/UI/Button'
 import Error from '#/UI/Error'
+
+import {buttonVariants} from '#/UI/Button'
+const buttonStyles = [buttonVariants.default.styles, buttonVariants.primary.default, buttonVariants.primary.hover]
+
+import VkImage from '../../assets/images/socials/vk.svg'
+import TgImage from '../../assets/images/socials/tg.svg'
+import OkImage from '../../assets/images/socials/ok.svg'
+
+const socialsData = {
+  vk: {
+    url: 'https://vk.com/s.udelnaya',
+    icon: VkImage,
+  },
+  tg: {
+    url: 'https://t.me/sanatoriy_udelnaya',
+    icon: TgImage,
+  },
+  ok: {
+    url: 'https://ok.ru/s.udelnaya',
+    icon: OkImage,
+  },
+}
 
 interface Footer {
   prices: {asset: {_ref: string}}
@@ -45,23 +66,31 @@ const Footer = async () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-custom-light-gray pt-10 sm:pt-5 pb-5 mt-20">
+    <footer className="pt-10 pb-5 mt-20 bg-custom-light-gray sm:pt-5">
       <Container padding={false}>
         <div className="space-y-5 xl:space-y-5 sm:space-y-5">
-          <div className="gap-3 flex w-full sm:flex-col">
-            <Button type="link" blank={true} href={urlForFile(footer[0].prices.asset._ref)} size="lg" className="uppercase w-full" adavanced_hover={true} text={`Цены на услуги ${currentYear}`} />
-            <Button type="link" href="/sanatorium/info" size="lg" className="uppercase w-full" adavanced_hover={true} text="Важная информация" />
+          <div className="flex w-full gap-3 sm:flex-col">
+            <Button type="link" blank={true} href={urlForFile(footer[0].prices.asset._ref)} size="lg" className="w-full uppercase" adavanced_hover={true} text={`Цены на услуги ${currentYear}`} />
+            <Button type="link" href="/sanatorium/info" size="lg" className="w-full uppercase" adavanced_hover={true} text="Важная информация" />
+
+            <div className="flex gap-3 sm:mx-auto sm:mt-2 sm:mb-1">
+              {Object.entries(socialsData).map(([key, social]) => (
+                <Link href={social.url} className={cn(buttonStyles, 'block !p-0 w-11 h-11 aspect-square')} key={key} target="_blank" rel="noopener noreferrer">
+                  <Image className="object-cover s-full" src={social.icon} alt="" />
+                </Link>
+              ))}
+            </div>
           </div>
 
           <div className="space-y-2 sm:space-y-5">
-            <div className="flex sm:flex-col justify-between sm:gap-2">
+            <div className="flex justify-between sm:flex-col sm:gap-2">
               {footer.map((footerItem, idx) =>
                 Object.entries(footerItem)
                   .filter(([key]) => key !== 'prices')
                   .map(([key, value]) => {
                     const footerLinks = {credentials: 'Свидетельства, лицензии, сертификаты', legislation: 'Медицинское законодательство', requisites: 'Реквизиты', privacy_policy: 'Политика конфиденциальности'}
                     return (
-                      <Link href={urlForFile(value.asset._ref)} target="_blank" className="xl:text-xs sm:text-sm text-custom-primary hover:text-custom-gray duration-200" key={idx + key}>
+                      <Link href={urlForFile(value.asset._ref)} target="_blank" className="duration-200 xl:text-xs sm:text-sm text-custom-primary hover:text-custom-gray" key={idx + key}>
                         {footerLinks[key] || key}
                       </Link>
                     )
@@ -69,7 +98,7 @@ const Footer = async () => {
               )}
             </div>
 
-            <div className="xl:text-sm sm:text-sm flex sm:flex-col sm:gap-2 sm:text-left justify-between text-center">
+            <div className="flex justify-between text-center xl:text-sm sm:text-sm sm:flex-col sm:gap-2 sm:text-left">
               <span>ООО «Санаторий Удельная»</span>
               <span>© 2024 | sanatoriyudelnaya.ru</span>
             </div>
