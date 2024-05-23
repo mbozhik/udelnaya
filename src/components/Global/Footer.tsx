@@ -22,7 +22,7 @@ interface Footer {
   requisites: {asset: {_ref: string}}
 }
 
-async function fetchData(): Promise<{footer: Footer[]; contacts: any}> {
+async function getData(): Promise<{footer: Footer[]; contacts: any}> {
   const [footer, contacts] = await Promise.all([
     client.fetch<Footer[]>(
       `*[_type == 'footer'] {
@@ -59,7 +59,7 @@ async function fetchData(): Promise<{footer: Footer[]; contacts: any}> {
 }
 
 const Footer = async () => {
-  const {footer, contacts} = await fetchData()
+  const {footer, contacts} = await getData()
 
   const socialsLinks = contacts.socials.flatMap(({children}) => children.filter(({_type, text}) => _type === 'span' && text.startsWith('http'))).map(({text}) => text)
 
