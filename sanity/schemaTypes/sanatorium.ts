@@ -29,7 +29,6 @@ const sanatorium: SchemaTypeDefinition = {
       type: 'array',
       of: [{type: 'image'}],
       hidden: ({document}) => document?.title !== 'О санатории',
-      validation: (rule: Rule) => rule.required(),
     },
     {
       name: 'slug',
