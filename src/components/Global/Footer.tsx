@@ -14,21 +14,6 @@ import VkImage from '../../assets/images/socials/vk.svg'
 import TgImage from '../../assets/images/socials/tg.svg'
 import OkImage from '../../assets/images/socials/ok.svg'
 
-const socialsData = {
-  vk: {
-    url: 'https://vk.com/s.udelnaya',
-    icon: VkImage,
-  },
-  tg: {
-    url: 'https://t.me/sanatoriy_udelnaya',
-    icon: TgImage,
-  },
-  ok: {
-    url: 'https://ok.ru/s.udelnaya',
-    icon: OkImage,
-  },
-}
-
 interface Footer {
   prices: {asset: {_ref: string}}
   credentials: {asset: {_ref: string}}
@@ -37,27 +22,61 @@ interface Footer {
   requisites: {asset: {_ref: string}}
 }
 
-async function getData(): Promise<Footer[]> {
-  const data = await client.fetch<Footer>(
-    `*[_type == 'footer'] {
+async function fetchData(): Promise<{footer: Footer[]; contacts: any}> {
+  const [footer, contacts] = await Promise.all([
+    client.fetch<Footer[]>(
+      `*[_type == 'footer'] {
         prices,
         credentials,
         legislation,
         privacy_policy,
         requisites,
-    }`,
-    {},
-    {
-      next: {
-        revalidate: revalidateOnTime,
+      }`,
+      {},
+      {
+        next: {
+          revalidate: revalidateOnTime,
+        },
       },
-    },
-  )
-  return Array.isArray(data) ? data : []
+    ),
+    client.fetch(
+      `*[_type == 'contacts'][0] {
+        socials,
+      }`,
+      {},
+      {
+        next: {
+          revalidate: revalidateOnTime,
+        },
+      },
+    ),
+  ])
+
+  return {
+    footer: Array.isArray(footer) ? footer : [],
+    contacts,
+  }
 }
 
 const Footer = async () => {
-  const footer: Footer[] = await getData()
+  const {footer, contacts} = await fetchData()
+
+  const socialsLinks = contacts.socials.flatMap(({children}) => children.filter(({_type, text}) => _type === 'span' && text.startsWith('http'))).map(({text}) => text)
+
+  const socialsData = {
+    vk: {
+      url: socialsLinks.find((link) => link.includes('vk.com')),
+      icon: VkImage,
+    },
+    tg: {
+      url: socialsLinks.find((link) => link.includes('t.me')),
+      icon: TgImage,
+    },
+    ok: {
+      url: socialsLinks.find((link) => link.includes('ok.ru')),
+      icon: OkImage,
+    },
+  }
 
   if (!footer) {
     return <Error />
