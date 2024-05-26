@@ -42,6 +42,7 @@ async function getData(slug): Promise<Promo> {
   )
   return data
 }
+
 const ProgramPage = async ({params}) => {
   const promo: Promo = await getData(params.slug)
 
