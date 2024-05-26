@@ -84,6 +84,19 @@ const Footer = async () => {
 
   const currentYear = new Date().getFullYear()
 
+  const footerDocLinks = {
+    credentials: 'Свидетельства, лицензии, сертификаты',
+    legislation: 'Медицинское законодательство',
+    requisites: 'Реквизиты',
+    privacy_policy: 'Политика конфиденциальности',
+  }
+
+  const getCustomAttributes = (key: string, value: any) => {
+    const href = key === 'legislation' ? '/sanatorium/legislation/' : urlForFile(value.asset._ref)
+    const target = key === 'legislation' ? '_self' : '_blank'
+    return {href, target}
+  }
+
   return (
     <footer className="pt-10 pb-5 mt-20 bg-custom-light-gray sm:pt-5">
       <Container padding={false}>
@@ -103,18 +116,16 @@ const Footer = async () => {
 
           <div className="space-y-2 sm:space-y-5">
             <div className="flex justify-between sm:flex-col sm:gap-2">
-              {footer.map((footerItem, idx) =>
-                Object.entries(footerItem)
-                  .filter(([key]) => key !== 'prices')
-                  .map(([key, value]) => {
-                    const footerLinks = {credentials: 'Свидетельства, лицензии, сертификаты', legislation: 'Медицинское законодательство', requisites: 'Реквизиты', privacy_policy: 'Политика конфиденциальности'}
-                    return (
-                      <Link href={urlForFile(value.asset._ref)} target="_blank" className="duration-200 xl:text-xs sm:text-sm text-custom-primary hover:text-custom-gray" key={idx + key}>
-                        {footerLinks[key] || key}
-                      </Link>
-                    )
-                  }),
-              )}
+              {Object.entries(footerDocLinks).map(([key, label], idx) => {
+                const value = footer[0][key]
+                const {href, target} = getCustomAttributes(key, value)
+
+                return (
+                  <Link href={href} target={target} className="duration-200 xl:text-xs sm:text-sm text-custom-primary hover:text-custom-gray" key={idx + key}>
+                    {label}
+                  </Link>
+                )
+              })}
             </div>
 
             <div className="flex justify-between text-center xl:text-sm sm:text-sm sm:flex-col sm:gap-2 sm:text-left">
