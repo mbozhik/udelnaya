@@ -1,4 +1,4 @@
-import {Rule, SchemaTypeDefinition} from 'sanity'
+import {Rule, SchemaTypeDefinition, defineField, defineArrayMember} from 'sanity'
 
 const footer: SchemaTypeDefinition = {
   name: 'footer',
@@ -17,12 +17,31 @@ const footer: SchemaTypeDefinition = {
       type: 'file',
       validation: (rule: Rule) => rule.required(),
     },
-    {
+    defineField({
       name: 'legislation',
+      type: 'array',
       title: 'Медицинское законодательство',
-      type: 'file',
-      validation: (rule: Rule) => rule.required(),
-    },
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'doc',
+          fields: [
+            {
+              title: 'Название документа',
+              type: 'string',
+              name: 'label',
+              validation: (rule: Rule) => rule.required(),
+            },
+            {
+              title: 'PDF документ',
+              type: 'file',
+              name: 'file',
+              validation: (rule: Rule) => rule.required(),
+            },
+          ],
+        }),
+      ],
+    }),
     {
       name: 'privacy_policy',
       title: 'Политика конфиденциальности',
@@ -41,8 +60,7 @@ const footer: SchemaTypeDefinition = {
       title: 'prices',
       subtitle: 'prices',
     },
-    prepare(selection) {
-      const {title, subtitle} = selection
+    prepare() {
       return {
         title: `PDF документы`,
         subtitle: `Все поля обязательны к заполнению`,
