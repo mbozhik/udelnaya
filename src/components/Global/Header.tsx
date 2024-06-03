@@ -124,8 +124,8 @@ export default function Header() {
         transition={{duration: 0.35, ease: 'easeInOut'}}
         className="fixed inset-0 z-50 w-full flex flex-col tracking-tight bg-white h-fit backdrop-filter backdrop-blur-[2px] shadow-nav sm:shadow-nav-mobile"
       >
-        <section className="flex justify-between w-full p-5 sm:px-3 sm:py-1.5">
-          <div className="flex items-center gap-5">
+        <div className="flex justify-between w-full p-5 sm:px-3 sm:py-1.5">
+          <section className="flex items-center gap-5">
             <Link href="/">
               <Image className="object-contain duration-300 s-14 xl:s-12 hover:scale-110" src={LogoImage} alt="Logo" />
             </Link>
@@ -134,9 +134,9 @@ export default function Header() {
               <Text type="title" className="" text="Санаторий «Удельная»" />
               <Text className="text-lg leading-[1.20]" text="Медицинский центр, реабилитация, оздоровительные программы в Подмосковье" />
             </div>
-          </div>
+          </section>
 
-          <div className="flex items-center gap-7">
+          <section className="flex items-center gap-7">
             <Link className="text-xl duration-200 xl:text-lg font-book sm:hidden text-custom-primary hover:text-custom-gray" href={headerData.tel.href}>
               {headerData.tel.name}
             </Link>
@@ -153,8 +153,8 @@ export default function Header() {
                 </button>
               </div>
             )}
-          </div>
-        </section>
+          </section>
+        </div>
 
         <Nav />
       </motion.header>
