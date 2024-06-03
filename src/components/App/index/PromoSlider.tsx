@@ -39,12 +39,14 @@ const Slider: React.FC<SliderProps> = ({sliderData, className}) => {
 
             <div className="absolute inset-0 flex flex-col justify-center bg-black bg-opacity-10">
               <div className="pl-[7%] sm:pl-0 sm:w-full mt-5 space-y-3 sm:-space-y-1 text-white sm:text-center">
-                <div className={`space-y-2 xl:space-y-1 w-[43vw] xl:w-[50vw] sm:mx-5 sm:w-auto  ${slide.selection && 'p-5 bg-custom-gray/40 rounded-md'}`}>
-                  <h1 className={`text-6xl font-medium uppercase xl:text-5xl sm:text-3xl max-w-[20ch] sm:w-full sm:mx-auto ${slide.shadow && 'text-shadow-title'}`}>{slide.title}</h1>
-                  <Heading type="caption" className={`text-lg sm:w-full sm:mx-auto xl:text-base uppercase ${slide.shadow && 'text-shadow-text'}`} text={slide.caption} />
-                </div>
+                <div className={`space-y-4 sm:space-y-3 w-[43vw] xl:w-[50vw] sm:mx-5 sm:w-auto  ${slide.selection && 'p-5 bg-custom-gray/40 rounded-md'}`}>
+                  <div className="space-y-2 xl:space-y-1">
+                    <h1 className={`text-6xl font-medium uppercase xl:text-5xl sm:text-3xl max-w-[20ch] sm:w-full sm:mx-auto ${slide.shadow && 'text-shadow-title'}`}>{slide.title}</h1>
+                    <Heading type="caption" className={`text-lg sm:w-full sm:mx-auto xl:text-base uppercase ${slide.shadow && 'text-shadow-text'}`} text={slide.caption} />
+                  </div>
 
-                {slide.description && <Button type="link" className="w-fit sm:mx-auto" href={`/sanatorium/promo/${slide.slug.current}`} text="Узнать детали" size="lg" />}
+                  {slide.description && <Button type="link" className="w-fit sm:mx-auto" href={`/sanatorium/promo/${slide.slug.current}`} text="Узнать детали" size="lg" />}
+                </div>
               </div>
             </div>
           </SwiperSlide>
