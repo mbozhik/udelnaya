@@ -28,14 +28,14 @@ export default function Corporate() {
     <section data-section="corporate-index" className="mb-20 space-y-7 sm:space-y-5">
       <Heading type="title" className="text-center" text="Корпоративным клиентам" />
 
-      <div className="grid grid-cols-3 gap-3 sm:grid-cols-1">
+      <Link href="/sanatorium/corporate-clients" className="grid grid-cols-3 rounded-md sm:grid-cols-1 shadow-card">
         {Object.entries(corporateData).map(([key, value]) => (
-          <Link href="/sanatorium/corporate-clients" key={key} className="flex flex-col items-center gap-3 p-3 pb-3 rounded-md sm:p-3 sm:gap-2 shadow-card">
+          <div className="flex flex-col items-center gap-3 p-3 pb-4 sm:pb-1 sm:p-3 sm:gap-2" key={key}>
             <Image className="object-cover w-full h-full rounded-[4px]" src={value.image} alt={value.title} />
             <Text type="title" className="text-xl xl:text-lg !font-book" text={value.title} />
-          </Link>
+          </div>
         ))}
-      </div>
+      </Link>
     </section>
   )
 }
