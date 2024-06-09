@@ -42,9 +42,25 @@ const medicine_specialists: SchemaTypeDefinition = {
       validation: (rule: Rule) => rule.required(),
     },
     {
+      name: 'caption',
+      title: 'Дополнительная информация',
+      type: 'array',
+      of: [{type: 'block'}],
+      description: 'Не обязательно для заполнения',
+    },
+    {
       name: 'image',
       title: 'Изображение',
       type: 'image',
+      validation: (rule: Rule) => rule.required(),
+    },
+    {
+      name: 'slug',
+      title: 'Ссылка',
+      type: 'slug',
+      options: {
+        source: 'name',
+      },
       validation: (rule: Rule) => rule.required(),
     },
   ],
