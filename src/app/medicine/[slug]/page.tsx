@@ -34,7 +34,7 @@ async function getData(slug): Promise<MedicinePage | null> {
         image,
         special_offer,
         slug,
-        specialists[] -> { name, position, education, accreditation, work_days, work_time, image },
+        specialists[] -> { name, position, education, accreditation, work_days, work_time, image, slug },
         procedures[] -> { name, description, slug },
         diagnostics[] -> { name, description, slug },
 

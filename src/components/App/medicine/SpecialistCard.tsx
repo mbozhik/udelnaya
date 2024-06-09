@@ -2,6 +2,8 @@ import {memo} from 'react'
 
 import {urlForImage} from '@/lib/sanity'
 import {cn} from '@/lib/utils'
+
+import Link from 'next/link'
 import Image from 'next/image'
 import Text from '#/UI/Text'
 
@@ -10,7 +12,7 @@ interface CardFieldProps {
   text: string
 }
 
-const CardField = memo(({title, text}: CardFieldProps) => (
+export const CardField = memo(({title, text}: CardFieldProps) => (
   <div>
     <Text type="caption" className="font-semibold" text={title} />
     <Text type="caption" text={text} />
@@ -22,7 +24,7 @@ const SpecialistCard = ({specialist, className = ''}) => {
   const imageUrl = urlForImage(specialist.image).url()
 
   return (
-    <article className={cn('p-5 xl:p-3 sm:p-4 space-y-5 duration-300 rounded-md shadow-mini-card h-fit', className)}>
+    <Link href={`/medicine/specialisty/${specialist.slug.current}`} className={cn('p-5 xl:p-3 sm:p-4 space-y-5 duration-300 rounded-md shadow-mini-card h-fit', className)}>
       <div className="w-full aspect-[7/5] relative rounded-[4px] overflow-hidden">
         <Image quality={100} className="object-cover" src={imageUrl} alt={specialist.name} fill={true} />
       </div>
@@ -39,7 +41,7 @@ const SpecialistCard = ({specialist, className = ''}) => {
           </div>
         </div>
       </div>
-    </article>
+    </Link>
   )
 }
 
