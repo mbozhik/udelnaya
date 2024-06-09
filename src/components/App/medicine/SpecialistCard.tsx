@@ -24,10 +24,11 @@ const SpecialistCard = ({specialist, className = ''}) => {
   const imageUrl = urlForImage(specialist.image).url()
 
   return (
-    <Link href={`/medicine/specialisty/${specialist.slug.current}`} className={cn('p-5 xl:p-3 sm:p-4 space-y-5 duration-300 rounded-md shadow-mini-card h-fit', className)}>
+    <Link href={`/medicine/specialisty/${specialist.slug.current}`} className={cn('p-5 xl:p-3 sm:p-4 space-y-5 h-full duration-300 rounded-md shadow-mini-card', className)}>
       <div className="w-full aspect-[7/5] relative rounded-[4px] overflow-hidden">
         <Image quality={100} className="object-cover" src={imageUrl} alt={specialist.name} fill={true} />
       </div>
+
       <div className="space-y-3">
         <Text type="subtitle" text={specialist.name} />
         <div className="space-y-2">

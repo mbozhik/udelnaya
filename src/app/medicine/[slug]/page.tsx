@@ -82,7 +82,7 @@ const MedicinePage = async ({params}) => {
             <PortableBlock className="pr-10" value={data.description} />
 
             {params.slug == 'specialisty' && (
-              <section className="grid grid-cols-3 gap-5 xl:gap-3 sm:gap-5 sm:grid-cols-1">
+              <section className="grid grid-cols-3 auto-rows-min gap-5 xl:gap-3 sm:gap-5 sm:grid-cols-1">
                 {data.specialists
                   .filter((specialist) => specialist.position === 'Главный Врач')
                   .map((chiefDoctor, index) => (
