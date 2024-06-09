@@ -65,7 +65,7 @@ const MedicineSubPage = async ({params}) => {
   return (
     <Container width={params.slug == 'diagnostika' || params.slug == 'procedury' ? '1/2' : '2/3'} className="space-y-20 mt-7">
       {(params.slug == 'diagnostika' || params.slug == 'procedury') && (
-        <section data-index={data.slug} className="space-y-7">
+        <section data-index={data.slug.current} className="space-y-7">
           <Heading type="title" text={data.name} />
           <PortableBlock prose={true} value={data.description} />
         </section>
@@ -73,7 +73,7 @@ const MedicineSubPage = async ({params}) => {
 
       {params.slug == 'specialisty' && (
         <section data-index={data.slug}>
-          <SpecialistCard extend={true} specialist={data} />
+          <SpecialistCard extend={true} subPage={true} specialist={data} />
         </section>
       )}
 
