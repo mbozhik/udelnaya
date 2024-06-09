@@ -84,22 +84,20 @@ const MedicinePage = async ({params}) => {
             <PortableBlock className="pr-10" value={data.description} />
 
             {params.slug == 'specialisty' && (
-              <section className="grid grid-cols-3 auto-rows-min gap-5 xl:gap-3 sm:gap-5 sm:grid-cols-1">
+              <section className="flex flex-col gap-5 xl:gap-3 sm:gap-5">
                 {data.specialists
                   .filter((specialist) => isChiefDoctor(specialist))
                   .map((chiefDoctor, index) => (
-                    <Fragment key={index}>
-                      {[0, 1, 2].map((cardIndex) => (
-                        <SpecialistCard specialist={chiefDoctor} className={`${cardIndex > 0 ? 'opacity-0 sm:hidden' : ''}`} key={cardIndex} />
-                      ))}
-                    </Fragment>
+                    <SpecialistCard extend={true} specialist={chiefDoctor} key={index} />
                   ))}
 
-                {data.specialists
-                  .filter((specialist) => !isChiefDoctor(specialist))
-                  .map((specialist, index) => (
-                    <SpecialistCard specialist={specialist} key={index} />
-                  ))}
+                <div className="grid grid-cols-3 gap-5 auto-rows-min xl:gap-3 sm:gap-5 sm:grid-cols-1">
+                  {data.specialists
+                    .filter((specialist) => !isChiefDoctor(specialist))
+                    .map((specialist, index) => (
+                      <SpecialistCard specialist={specialist} key={index} />
+                    ))}
+                </div>
               </section>
             )}
 

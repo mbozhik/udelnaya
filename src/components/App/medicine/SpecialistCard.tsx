@@ -20,12 +20,18 @@ export const CardField = memo(({title, text}: CardFieldProps) => (
 ))
 CardField.displayName = 'CardField'
 
-const SpecialistCard = ({specialist, className = ''}) => {
+interface SpecialistCardProps {
+  specialist: any
+  extend?: boolean
+  className?: string
+}
+
+const SpecialistCard = ({specialist, extend, className}: SpecialistCardProps) => {
   const imageUrl = urlForImage(specialist.image).url()
 
   return (
-    <Link href={`/medicine/specialisty/${specialist.slug.current}`} className={cn('p-5 xl:p-3 sm:p-4 space-y-5 h-full duration-300 rounded-md shadow-mini-card', className)}>
-      <div className="w-full aspect-[7/5] relative rounded-[4px] overflow-hidden">
+    <Link href={`/medicine/specialisty/${specialist.slug.current}`} className={cn('p-5 xl:p-3 sm:p-4 flex gap-5 h-full duration-300 rounded-md shadow-mini-card', extend ? ' w-full justify-between items-center' : 'flex-col', className)}>
+      <div className={cn('w-full aspect-[7/5] relative rounded-[4px] overflow-hidden', extend ? 'w-[40vw]' : '')}>
         <Image quality={100} className="object-cover" src={imageUrl} alt={specialist.name} fill={true} />
       </div>
 
