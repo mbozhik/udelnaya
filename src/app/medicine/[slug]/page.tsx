@@ -64,6 +64,8 @@ const MedicinePage = async ({params}) => {
 
   const imagesStyles = `relative w-full h-full aspect-[3/2] rounded-[4px] ${gridConfig.image}`
 
+  const isChiefDoctor = (specialist) => specialist.slug.current.includes('voskoboinikov')
+
   return (
     <Container width="2/3" className="space-y-20 mt-7">
       <div className="space-y-5">
@@ -84,7 +86,7 @@ const MedicinePage = async ({params}) => {
             {params.slug == 'specialisty' && (
               <section className="grid grid-cols-3 auto-rows-min gap-5 xl:gap-3 sm:gap-5 sm:grid-cols-1">
                 {data.specialists
-                  .filter((specialist) => specialist.position === 'Главный Врач')
+                  .filter((specialist) => isChiefDoctor(specialist))
                   .map((chiefDoctor, index) => (
                     <Fragment key={index}>
                       {[0, 1, 2].map((cardIndex) => (
@@ -94,7 +96,7 @@ const MedicinePage = async ({params}) => {
                   ))}
 
                 {data.specialists
-                  .filter((specialist) => specialist.position !== 'Главный Врач')
+                  .filter((specialist) => !isChiefDoctor(specialist))
                   .map((specialist, index) => (
                     <SpecialistCard specialist={specialist} key={index} />
                   ))}
