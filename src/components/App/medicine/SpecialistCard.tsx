@@ -29,12 +29,12 @@ interface CardContentProps {
 }
 
 const CardContent = ({specialist, extend, subPage, className}: CardContentProps) => {
-  const containerClassName = cn('flex gap-5', extend ? 'w-full justify-between items-center' : 'flex-col', className)
+  const containerClassName = cn('flex gap-5', extend ? 'w-full justify-between items-center sm:flex-col' : 'flex-col', className)
 
   return (
-    <div className="h-full p-5 space-y-5 rounded-md shadow-mini-card xl:p-3 sm:p-4">
+    <div className={`h-full p-5 space-y-5 rounded-md shadow-mini-card xl:p-3 sm:p-4 ${!subPage ? 'mb-2 sm:mb-5' : ''}`}>
       <div className={containerClassName}>
-        <div className={cn('w-full aspect-[7/5] relative rounded-[4px] overflow-hidden', extend ? 'w-[40vw]' : '')}>
+        <div className={cn('w-full aspect-[7/5] relative rounded-[4px] overflow-hidden', extend ? 'w-[40vw] sm:w-full' : '')}>
           <Image quality={100} className="object-cover" src={urlForImage(specialist.image).url()} alt={specialist.name} fill={true} />
         </div>
 
