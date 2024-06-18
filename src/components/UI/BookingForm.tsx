@@ -36,6 +36,7 @@ const BoockingForm: React.FC<BookingFormProps> = ({closeForm, pre_name, pre_emai
     defaultValues: {
       name: pre_name || '',
       email: pre_email || '',
+      time: '',
       phone: '',
       wish: '',
     },
@@ -45,14 +46,28 @@ const BoockingForm: React.FC<BookingFormProps> = ({closeForm, pre_name, pre_emai
   const [submitMessage, setSubmitMessage] = useState('')
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyv3l6YobXBZpFH5jlpJCZof-OsJ-5H5cG1-ukP0AGuCDFAh_lgpOMictIumrd7C7eDMw/exec'
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      console.log(data)
+      const response = await fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send data')
+      }
+
+      const responseData = await response.json()
+      console.log('Response Data:', responseData)
 
       setSubmitMessage('Отправлено')
       setTimeout(() => {
         closeForm()
-      }, 2000)
+      }, 1500)
     } catch (error) {
       console.warn(error)
     }
