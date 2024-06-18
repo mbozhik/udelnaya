@@ -33,6 +33,7 @@ const SuisseIntl = localFont({
 
 import Header from '#/Global/Header'
 import Footer from '#/Global/Footer'
+import LiveChat from '#/Global/LiveChat'
 
 export const metadata: Metadata = {
   title: 'Санаторий «Удельная» – оздоровление и реабилитация в Подмосковье',
@@ -53,6 +54,7 @@ export default function RootLayout({
           <Footer />
         </div>
       </body>
+      <LiveChat />
     </html>
   )
 }
