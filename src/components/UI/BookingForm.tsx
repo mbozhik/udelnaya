@@ -46,7 +46,7 @@ const BoockingForm: React.FC<BookingFormProps> = ({closeForm, pre_name, pre_emai
   const [submitMessage, setSubmitMessage] = useState('')
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyv3l6YobXBZpFH5jlpJCZof-OsJ-5H5cG1-ukP0AGuCDFAh_lgpOMictIumrd7C7eDMw/exec'
+    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwbj6gajsfpBfzkbncjcO0SPo-fiQwyk2_G8aEFZMKRLwupzTXPXqVeUc57ZLOCBaizVA/exec'
 
     try {
       const response = await fetch(GOOGLE_SHEET_URL, {
