@@ -35,6 +35,7 @@ import Header from '#/Global/Header'
 import Footer from '#/Global/Footer'
 import YandexMetrika from '#/Global/YandexMetrika'
 import LiveChat from '#/Global/LiveChat'
+import LeadBack from '@/components/Global/LeadBack'
 
 export const metadata: Metadata = {
   title: 'Санаторий «Удельная» – оздоровление и реабилитация в Подмосковье',
@@ -60,7 +61,8 @@ export default function RootLayout({
       </body>
 
       <YandexMetrika />
-      <LiveChat />
+      {/* <LiveChat /> */}
+      <LeadBack />
     </html>
   )
 }

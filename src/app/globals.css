@@ -3,3 +3,7 @@
 @tailwind utilities;
 
 @import '../assets/stylesheets/mark.css';
+
+.lb-widget-panel {
+  @apply !bottom-5 !right-7;
+}
