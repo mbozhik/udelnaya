@@ -5,4 +5,4 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const revalidateOnTime = 30
+export const revalidateOnTime = 86400
