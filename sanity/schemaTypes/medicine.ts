@@ -15,7 +15,18 @@ const medicine: SchemaTypeDefinition = {
       name: 'specialists',
       title: 'Список специалистов',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'medicine_specialists'}}],
+      of: [
+        {
+          type: 'reference',
+          to: {
+            type: 'medicine_specialists',
+          },
+          options: {
+            disableNew: true,
+          },
+        },
+      ],
+      validation: (Rule) => Rule.unique(),
       hidden: ({document}) => document?.name !== 'Специалисты',
     },
     {
