@@ -1,5 +1,5 @@
 import {client, urlForFile} from '@/lib/sanity'
-import {revalidateOnTime} from '@/lib/utils'
+import {revalidateTime} from '@/lib/utils'
 
 import Container from '#/Global/Container'
 import Text from '#/UI/Text'
@@ -14,7 +14,7 @@ async function getData() {
     {},
     {
       next: {
-        revalidate: revalidateOnTime,
+        revalidate: revalidateTime,
       },
     },
   )

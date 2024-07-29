@@ -1,5 +1,5 @@
 import {client} from '@/lib/sanity'
-import {revalidateOnTime} from '@/lib/utils'
+import {revalidateTime} from '@/lib/utils'
 
 import Container from '#/Global/Container'
 import Heading from '#/UI/Heading'
@@ -27,7 +27,7 @@ async function getData(): Promise<ContactsPageProps> {
     {},
     {
       next: {
-        revalidate: revalidateOnTime,
+        revalidate: revalidateTime,
       },
     },
   )

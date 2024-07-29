@@ -1,5 +1,5 @@
 import {client, urlForFile} from '@/lib/sanity'
-import {cn, revalidateOnTime} from '@/lib/utils'
+import {cn, revalidateTime} from '@/lib/utils'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -35,7 +35,7 @@ async function getData(): Promise<{footer: Footer[]; contacts: any}> {
       {},
       {
         next: {
-          revalidate: revalidateOnTime,
+          revalidate: revalidateTime,
         },
       },
     ),
@@ -46,7 +46,7 @@ async function getData(): Promise<{footer: Footer[]; contacts: any}> {
       {},
       {
         next: {
-          revalidate: revalidateOnTime,
+          revalidate: revalidateTime,
         },
       },
     ),

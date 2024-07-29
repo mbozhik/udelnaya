@@ -1,5 +1,5 @@
 import {client, urlForImage} from '@/lib/sanity'
-import {revalidateOnTime} from '@/lib/utils'
+import {revalidateTime} from '@/lib/utils'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -28,7 +28,7 @@ async function getData(): Promise<ProgramCategories[]> {
     {},
     {
       next: {
-        revalidate: revalidateOnTime,
+        revalidate: revalidateTime,
       },
     },
   )

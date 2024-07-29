@@ -1,5 +1,5 @@
 import {client, urlForImage} from '@/lib/sanity'
-import {revalidateOnTime} from '@/lib/utils'
+import {revalidateTime} from '@/lib/utils'
 
 import dynamic from 'next/dynamic'
 import Error from '#/UI/Error'
@@ -39,7 +39,7 @@ async function getData(): Promise<Promo[]> {
     {},
     {
       next: {
-        revalidate: revalidateOnTime,
+        revalidate: revalidateTime,
       },
     },
   )

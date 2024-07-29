@@ -1,5 +1,5 @@
 import {client, urlForImage} from '@/lib/sanity'
-import {revalidateOnTime} from '@/lib/utils'
+import {revalidateTime} from '@/lib/utils'
 
 import Image from 'next/image'
 import PortableBlock from '#/UI/PortableBlock'
@@ -36,7 +36,7 @@ async function getData(slug): Promise<Promo> {
     {},
     {
       next: {
-        revalidate: revalidateOnTime,
+        revalidate: revalidateTime,
       },
     },
   )

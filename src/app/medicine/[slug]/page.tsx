@@ -1,5 +1,5 @@
 import {client, urlForImage} from '@/lib/sanity'
-import {revalidateOnTime} from '@/lib/utils'
+import {revalidateTime} from '@/lib/utils'
 
 import Image from 'next/image'
 import {Fragment} from 'react'
@@ -42,7 +42,7 @@ async function getData(slug): Promise<MedicinePage | null> {
     {},
     {
       next: {
-        revalidate: revalidateOnTime,
+        revalidate: revalidateTime,
       },
     },
   )

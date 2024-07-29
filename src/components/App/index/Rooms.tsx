@@ -2,7 +2,7 @@ import {client, urlForImage} from '@/lib/sanity'
 
 import Heading from '#/UI/Heading'
 import RoomsSlider from '##/index/RoomsSlider'
-import {revalidateOnTime} from '@/lib/utils'
+import {revalidateTime} from '@/lib/utils'
 import Error from '#/UI/Error'
 
 interface Room {
@@ -25,7 +25,7 @@ async function getData(): Promise<Room[]> {
     {},
     {
       next: {
-        revalidate: revalidateOnTime,
+        revalidate: revalidateTime,
       },
     },
   )

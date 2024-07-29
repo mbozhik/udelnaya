@@ -1,5 +1,5 @@
 import {client, urlForImage, urlForFile} from '@/lib/sanity'
-import {revalidateOnTime} from '@/lib/utils'
+import {revalidateTime} from '@/lib/utils'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -37,7 +37,7 @@ async function getData(): Promise<ProgramPage> {
     {},
     {
       next: {
-        revalidate: revalidateOnTime,
+        revalidate: revalidateTime,
       },
     },
   )
