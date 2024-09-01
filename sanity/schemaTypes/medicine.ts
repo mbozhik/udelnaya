@@ -33,14 +33,36 @@ const medicine: SchemaTypeDefinition = {
       name: 'diagnostics',
       title: 'Список диагностических процедур',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'medicine_diagnostics'}}],
+      of: [
+        {
+          type: 'reference',
+          to: {
+            type: 'medicine_diagnostics',
+          },
+          options: {
+            disableNew: true,
+          },
+        },
+      ],
+      validation: (Rule) => Rule.unique(),
       hidden: ({document}) => document?.name !== 'Диагностика',
     },
     {
       name: 'procedures',
       title: 'Список процедур',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'medicine_procedures'}}],
+      of: [
+        {
+          type: 'reference',
+          to: {
+            type: 'medicine_procedures',
+          },
+          options: {
+            disableNew: true,
+          },
+        },
+      ],
+      validation: (Rule) => Rule.unique(),
       hidden: ({document}) => document?.name !== 'Процедуры',
     },
     {
