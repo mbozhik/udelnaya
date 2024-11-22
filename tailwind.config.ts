@@ -3,7 +3,7 @@ import plugin from 'tailwindcss/plugin'
 
 const config = {
   darkMode: ['class'],
-  content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
+  content: ['./components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}', '!./node_modules/**'],
   prefix: '',
   theme: {
     container: {
