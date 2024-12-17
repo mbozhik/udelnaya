@@ -10,7 +10,7 @@ import CorporateEvents from '%/corporate/corporate-events.jpg'
 
 const corporateData = {
   1: {
-    title: 'Груповые заезды',
+    title: 'Групповые заезды',
     image: GroupVisits,
   },
   2: {
