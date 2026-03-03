@@ -91,6 +91,11 @@ const Footer = async () => {
     privacy_policy: 'Политика конфиденциальности',
   }
 
+  const registry = {
+    label: 'Единый реестр объектов классификации в сфере туристской индустрии (№ C502025001037)',
+    link: 'https://tourism.fsa.gov.ru/ru/resorts/hotels/5dd20e90-1a6f-43be-b7f5-4a4a05393abd/about-resort',
+  }
+
   const getCustomAttributes = (key: string, value: any) => {
     const href = key === 'legislation' ? '/sanatorium/legislation/' : urlForFile(value.asset._ref)
     const target = key === 'legislation' ? '_self' : '_blank'
@@ -132,6 +137,12 @@ const Footer = async () => {
               <span>ООО «Санаторий Удельная»</span>
               <span>© 2024 | sanatoriyudelnaya.ru</span>
             </div>
+          </div>
+
+          <div className="flex justify-center !mt-9">
+            <Link href={registry.link} target="_blank" className="w-full py-1.5 text-center text-sm bg-custom-gray/50 text-white rounded-md hover:bg-custom-gray duration-200">
+              {registry.label}
+            </Link>
           </div>
         </div>
       </Container>
