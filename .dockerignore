@@ -1,1 +1,63 @@
+# Dependencies
+node_modules
+.pnpm-store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js build output
+.next
+out
+
+# Sanity
 sanity/
+sanity/node_modules
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Testing
+coverage
+.nyc_output
+
+# Logs
+logs
+*.log
+
+# Misc
+README.md
+CHANGELOG.md
+.editorconfig
+.eslintrc.json
+.prettierrc
+.prettierrc.json
+.prettierrc.js
+.husky
+.github
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Coolify
+.coolify

@@ -6,7 +6,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "dev": "explorer http://localhost:2000 & next dev -p 2000",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
